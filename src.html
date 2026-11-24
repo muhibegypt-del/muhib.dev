@@ -53,9 +53,13 @@ img { max-width: 100%; display: block; }
 code { font: 400 .88em var(--mono); background: var(--wash); border-radius: 4px; padding: 1px 5px; overflow-wrap: anywhere; }
 
 .col { max-width: 680px; margin: 0 auto; padding-inline: 20px; }
-section, header.hero, footer.site { padding-block: 44px; border-bottom: 1px solid var(--rule); }
+section, header.hero, footer.site { padding-block: 56px; border-bottom: 1px solid var(--rule); }
 footer.site { border-bottom: 0; }
 .label { font: 500 12.5px/1 var(--sans); color: var(--muted); margin-bottom: 22px; display: block; }
+.sec { font: 600 22px/1.2 var(--sans); letter-spacing: -.022em; color: var(--ink); margin-bottom: 26px; display: flex; align-items: center; gap: 11px; scroll-margin-top: 72px; }
+.sec::before { content: ""; width: 4px; height: 19px; border-radius: 2px; background: var(--accent); flex: none; }
+.sub { font: 600 14.5px/1.3 var(--sans); color: var(--ink); margin: 0 0 8px; }
+.sub + .plain { margin-bottom: 30px; }
 
 /* ---------- top bar ---------- */
 .topbar { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid var(--rule); }
@@ -83,7 +87,10 @@ header.hero { padding-top: 64px; }
 .pill { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; padding: 5px 11px 5px 9px; border-radius: 999px; border: 1px solid var(--rule); font: 500 12.5px/1 var(--sans); color: var(--ink-2); }
 .pill i { width: 7px; height: 7px; border-radius: 50%; background: #16a34a; box-shadow: 0 0 0 3px color-mix(in srgb, #16a34a 22%, transparent); }
 .headline { font: 600 clamp(30px, 5.4vw, 40px)/1.12 var(--sans); letter-spacing: -.028em; margin-top: 22px; }
-.subline { color: var(--ink-2); margin-top: 18px; max-width: 60ch; font-size: 16px; }
+.subline { color: var(--ink-2); margin-top: 18px; max-width: 62ch; font-size: 16px; }
+.subline + .subline { margin-top: 12px; }
+.creds { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.creds span { font: 500 13px/1 var(--sans); padding: 7px 11px; border-radius: 8px; background: var(--accent-wash); color: var(--accent); }
 header.hero .btns { margin-top: 26px; }
 
 /* ---------- proof strip ---------- */
@@ -127,17 +134,20 @@ header.hero .btns { margin-top: 26px; }
 .row .cover .dots i { border-width: 1px; }
 
 /* ---------- experience, skills, lists ---------- */
-.xp { display: grid; gap: 28px; }
+.xp { display: grid; }
+.job + .job { border-top: 1px solid var(--rule); margin-top: 26px; padding-top: 26px; }
 .job { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 20px; }
-.job h3 { font: 500 15.5px/1.4 var(--sans); }
+.job h3 { font: 600 16.5px/1.35 var(--sans); letter-spacing: -.01em; }
+.job .org { grid-column: 1 / -1; font-size: 14px; color: var(--muted); margin-top: -2px; }
 .job .when { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; text-align: right; }
 .job p, .job ul { grid-column: 1 / -1; color: var(--ink-2); font-size: 14.5px; }
+.job > p:not(.org) { margin-top: 6px; }
 .job ul { list-style: none; display: grid; gap: 6px; margin-top: 6px; }
 .job li { padding-left: 16px; position: relative; }
 .job li::before { content: "–"; position: absolute; left: 0; color: var(--muted); }
 .job li strong { font-weight: 500; color: var(--ink); }
-.skills { display: grid; gap: 22px; }
-.skills h3 { font: 500 13.5px/1.3 var(--sans); margin-bottom: 10px; }
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 30px 32px; }
+.skills h3 { font: 600 14.5px/1.3 var(--sans); margin-bottom: 12px; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .tag { font: 400 13px/1 var(--sans); padding: 6px 9px; border-radius: 6px; border: 1px solid var(--rule); color: var(--ink-2); }
 .plain { list-style: none; }
@@ -158,6 +168,7 @@ details[open] > summary .chev { transform: rotate(90deg); }
 .case-wrap { max-width: 1080px; margin: 0 auto; padding-inline: 20px; display: grid; grid-template-columns: 200px minmax(0, 760px); gap: 56px; justify-content: center; }
 .toc { position: sticky; top: 76px; align-self: start; padding-top: 44px; font-size: 13.5px; }
 .toc .label { margin-bottom: 14px; }
+.case main .sec { font-size: 20px; }
 .toc ol { list-style: none; display: grid; gap: 2px; border-left: 1px solid var(--rule); }
 .toc a { display: flex; justify-content: space-between; gap: 10px; padding: 5px 0 5px 12px; margin-left: -1px; border-left: 1px solid transparent; text-decoration: none; color: var(--muted); }
 .toc a:hover { color: var(--ink); }
@@ -281,7 +292,10 @@ details[open]::details-content { height: auto; }
   .row { grid-template-columns: 84px minmax(0, 1fr); gap: 12px; }
   .row .thumb { width: 84px; }
   .job { grid-template-columns: minmax(0, 1fr); }
-  .job .when { text-align: left; grid-row: 2; }
+  .job .org { grid-row: 2; }
+  .job .when { text-align: left; grid-row: 3; margin-top: 2px; }
+  .sec { font-size: 21px; }
+  .skills { grid-template-columns: minmax(0, 1fr); }
   .ba { grid-template-columns: minmax(0, 1fr); }
   .kids { margin-left: 3px; padding-left: 9px; }
   .kids .kids .kids { margin-left: 0; padding-left: 0; border-left: 0; }
@@ -318,7 +332,10 @@ details[open]::details-content { height: auto; }
     <p class="title">AI Enablement Lead · AI Adoption, Workflow Automation and Change Enablement · Claude and LLM Specialist</p>
     <span class="pill"><i></i>Open to roles · Remote, hybrid and international</span>
     <h1 class="headline">I get teams actually using AI. Then I build the systems that make it stick.</h1>
-    <p class="subline">AI enablement lead for a US publisher across Kuala Lumpur and New York. I built Companion, an AI product acquired by a company and used to transcribe 1M+ words and hundreds of hours of streamed content. Before that, I led fundraising campaigns as a charity campaign director.</p>
+    <p class="subline">I'm an AI enablement lead and builder based in the UK. I've worked with AI since OpenAI's early models in 2021 and with Claude since 2023, and I do two things with it: get people using it well, and build the systems they keep using once I've gone.</p>
+    <p class="subline">At IGP, a US publisher, I moved the CEO and leadership team from ChatGPT to Claude and trained staff in person in Kuala Lumpur and New York. At Transform Recruitment I set up Claude orchestration with agents working in parallel, sharpened their prompts and cut their API spend.</p>
+    <p class="subline">On my own I built Companion, an AI transcription and publishing tool that a company bought, and I build client websites and apps with Claude Code. Before AI, I ran fundraising campaigns as a charity campaign director.</p>
+    <div class="creds"><span>Mythos 5.2 access</span><span>CVP authorized on Claude</span></div>
     <div class="btns" data-links></div>
   </header>
 
@@ -333,20 +350,32 @@ details[open]::details-content { height: auto; }
   </section>
 
   <section class="reveal" id="work-section">
-    <span class="label">Selected work</span>
+    <h2 class="sec" id="work-h">Selected work</h2>
     <p class="intro">Every project opens into its full working: why I built it, the decisions, the back-and-forth with clients and with Claude Code, what broke and how I fixed it, with links to the commits behind it.</p>
     <div id="work-list"></div>
   </section>
 
   <section class="reveal" id="experience-section">
-    <span class="label">Experience</span>
+    <h2 class="sec">Experience</h2>
     <div class="xp">
       <div class="job">
-        <h3>Founder, Praised Studio (UK)</h3><span class="when">Now</span>
+        <h3>Founder</h3><span class="when">Now</span>
+        <p class="org">Praised Studio, UK</p>
         <p>One-person campaign and AI studio for the charity sector: campaigns, websites and AI systems for charities.</p>
       </div>
       <div class="job">
-        <h3>AI Enablement Lead, IGP (US publisher)</h3><span class="when">2024 – 2026</span>
+        <h3>Claude AI Consultant</h3><span class="when">2025 – 2026</span>
+        <p class="org">Transform Recruitment</p>
+        <p>Helped a recruitment firm get more out of Claude, and spend less doing it.</p>
+        <ul>
+          <li><strong>Orchestration:</strong> set up Claude orchestration so several agents work on tasks in parallel instead of one at a time.</li>
+          <li><strong>Prompt engineering:</strong> rewrote and structured the prompts behind their day-to-day AI work.</li>
+          <li><strong>Cost:</strong> reduced their AI spend on the Claude API.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <h3>AI Enablement Lead</h3><span class="when">2024 – 2026</span>
+        <p class="org">IGP, US publisher</p>
         <p>Led AI adoption across a US publishing business, from executive buy-in to hands-on staff training and production AI systems.</p>
         <ul>
           <li><strong>Executive adoption:</strong> led the CEO and leadership's move from ChatGPT to Claude as the company's main AI platform.</li>
@@ -356,17 +385,18 @@ details[open]::details-content { height: auto; }
         </ul>
       </div>
       <div class="job">
-        <h3>Campaign Director, charity sector</h3><span class="when">Earlier</span>
+        <h3>Campaign Director</h3><span class="when">Earlier</span>
+        <p class="org">Charity sector</p>
         <p>Led fundraising campaigns and built high-traffic fundraising websites that held up under peak campaign demand.</p>
       </div>
     </div>
   </section>
 
   <section class="reveal">
-    <span class="label">Skills</span>
+    <h2 class="sec">Skills</h2>
     <div class="skills">
       <div><h3>AI and adoption</h3><div class="tags"><span class="tag">AI enablement</span><span class="tag">AI adoption</span><span class="tag">Change management</span><span class="tag">AI training and upskilling</span><span class="tag">Workshop facilitation</span><span class="tag">Executive stakeholder management</span><span class="tag">AI strategy</span><span class="tag">AI culture</span><span class="tag">Responsible AI use</span></div></div>
-      <div><h3>AI tools and building</h3><div class="tags"><span class="tag">Claude</span><span class="tag">Claude Code</span><span class="tag">Claude Skills</span><span class="tag">Anthropic</span><span class="tag">ChatGPT and OpenAI</span><span class="tag">Copilot</span><span class="tag">LLMs</span><span class="tag">Generative AI</span><span class="tag">Prompt engineering</span><span class="tag">Multi-agent systems</span><span class="tag">Agentic workflows</span><span class="tag">AI pipelines</span><span class="tag">Workflow automation</span><span class="tag">AI translation</span><span class="tag">Remotion</span></div></div>
+      <div><h3>AI tools and building</h3><div class="tags"><span class="tag">Claude</span><span class="tag">Claude Code</span><span class="tag">Claude Skills</span><span class="tag">Anthropic</span><span class="tag">ChatGPT and OpenAI</span><span class="tag">Copilot</span><span class="tag">LLMs</span><span class="tag">Generative AI</span><span class="tag">Prompt engineering</span><span class="tag">Multi-agent systems</span><span class="tag">Claude orchestration</span><span class="tag">Parallel agents</span><span class="tag">Claude API</span><span class="tag">AI cost reduction</span><span class="tag">Agentic workflows</span><span class="tag">AI pipelines</span><span class="tag">Workflow automation</span><span class="tag">AI translation</span><span class="tag">Remotion</span></div></div>
       <div><h3>Marketing and comms</h3><div class="tags"><span class="tag">Campaign strategy</span><span class="tag">Fundraising</span><span class="tag">Content strategy</span><span class="tag">Copywriting</span><span class="tag">Email marketing and newsletters</span><span class="tag">Sales pipeline automation</span><span class="tag">Storytelling</span></div></div>
       <div><h3>Web</h3><div class="tags"><span class="tag">Website development</span><span class="tag">High-traffic sites</span><span class="tag">Native app development (LG webOS)</span></div></div>
       <div><h3>Background</h3><div class="tags"><span class="tag">BA English Language and Creative Writing</span></div></div>
@@ -374,13 +404,19 @@ details[open]::details-content { height: auto; }
   </section>
 
   <section class="reveal">
-    <span class="label">Working with AI since</span>
+    <h2 class="sec">AI background</h2>
+    <h3 class="sub">Claude access</h3>
+    <ul class="plain">
+      <li><span>Mythos 5.2</span><span class="m">Access</span></li>
+      <li><span>CVP on Claude</span><span class="m">Authorized</span></li>
+    </ul>
+    <h3 class="sub">Working with AI since</h3>
     <ul class="plain">
       <li><span>OpenAI's earlier models</span><span class="m">2021</span></li>
       <li><span>ChatGPT, from launch</span><span class="m">2022</span></li>
       <li><span>Claude</span><span class="m">2023 – now</span></li>
     </ul>
-    <span class="label" style="margin-top:40px">Certifications</span>
+    <h3 class="sub">Certifications</h3>
     <ul class="plain">
       <li><span>AWS Certified AI Practitioner</span><span class="m">Exam pending</span></li>
       <li><span>Google AI Essentials Specialization</span><span class="m">Google</span></li>
@@ -544,11 +580,11 @@ function renderCase(p) {
         <div class="facts">${(p.facts || []).map(([k, v]) => `<div><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join("")}${share}</div>
         ${media}
       </header>
-      <section id="${howId}"><span class="label">How it works</span>
+      <section id="${howId}"><h2 class="sec">How it works</h2>
         <div class="flows${horizontal ? " h" : ""}">${p.flows.map(f => `<div>${flowHTML(f)}</div>`).join("")}</div>
         ${key ? `<div class="key">${key}</div>` : ""}
       </section>
-      <section><span class="label">The full working</span>
+      <section><h2 class="sec">The full working</h2>
         <div class="tree-tools"><button type="button" data-tree="open">Expand all</button><button type="button" data-tree="close">Collapse all</button></div>
         <div class="tree">${treeHTML}</div>
       </section>
