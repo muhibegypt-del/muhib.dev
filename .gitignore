@@ -1,0 +1,4 @@
+shots_raw/
+*.png
+.DS_Store
+Thumbs.db

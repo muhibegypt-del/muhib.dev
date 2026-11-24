@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muhib Rashid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one narrow centred column on white for the home page; case pages widen to a sticky
+   section menu plus a reading column. Plain list rows with thumbnails, hairline dividers.
+   Diagrams are monochrome boxes; the AI step is the one accent-blue box. */
+:root {
+  --paper: #ffffff;
+  --ink: #0a0a0a;
+  --ink-2: #374151;
+  --muted: #6b7280;
+  --rule: #e5e7eb;
+  --wash: #f6f7f9;
+  --accent: #2563eb;
+  --accent-wash: #eef3ff;
+  --on-accent: #ffffff;
+  --shot-edge: rgba(10, 10, 10, .08);
+  --fix: #b45309; --pitfall: #b91c1c; --feedback: #7c3aed; --iteration: #0f766e;
+  --sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color-scheme: light;
+  interpolate-size: allow-keywords;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0c0d10; --ink: #f3f4f6; --ink-2: #c9cdd4; --muted: #9aa1ab; --rule: #25282e; --wash: #16181d;
+    --accent: #5b8cff; --accent-wash: #16203a; --on-accent: #0c0d10; --shot-edge: rgba(255, 255, 255, .08);
+    --fix: #f59e0b; --pitfall: #f87171; --feedback: #a78bfa; --iteration: #2dd4bf;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0c0d10; --ink: #f3f4f6; --ink-2: #c9cdd4; --muted: #9aa1ab; --rule: #25282e; --wash: #16181d;
+  --accent: #5b8cff; --accent-wash: #16203a; --on-accent: #0c0d10; --shot-edge: rgba(255, 255, 255, .08);
+  --fix: #f59e0b; --pitfall: #f87171; --feedback: #a78bfa; --iteration: #2dd4bf;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--paper); -webkit-text-size-adjust: 100%; scroll-padding-top: 72px; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 15.5px/1.65 var(--sans); }
+h1, h2, h3, p, ul, ol { margin: 0; padding: 0; }
+h1, h2, h3 { text-wrap: balance; }
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+code { font: 400 .88em var(--mono); background: var(--wash); border-radius: 4px; padding: 1px 5px; overflow-wrap: anywhere; }
+
+.col { max-width: 680px; margin: 0 auto; padding-inline: 20px; }
+section, header.hero, footer.site { padding-block: 44px; border-bottom: 1px solid var(--rule); }
+footer.site { border-bottom: 0; }
+.label { font: 500 12.5px/1 var(--sans); color: var(--muted); margin-bottom: 22px; display: block; }
+
+/* ---------- top bar ---------- */
+.topbar { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid var(--rule); }
+.topbar .inner { max-width: 1080px; margin: 0 auto; padding: 0 20px; height: 52px; display: flex; align-items: center; gap: 18px; }
+.topbar .me { font-weight: 600; font-size: 14.5px; text-decoration: none; margin-right: auto; }
+.topbar nav { display: flex; gap: 16px; font-size: 13.5px; }
+.topbar nav a { text-decoration: none; color: var(--ink-2); }
+.topbar nav a:hover { color: var(--ink); }
+.theme { width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--rule); background: var(--paper); color: var(--ink-2); display: grid; place-items: center; cursor: pointer; }
+.theme:hover { color: var(--ink); border-color: var(--muted); }
+.theme svg { width: 15px; height: 15px; }
+
+/* ---------- buttons ---------- */
+.btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn { display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 8px; font: 500 14px/1 var(--sans); text-decoration: none; border: 1px solid var(--rule); color: var(--ink); background: var(--paper); transition: border-color .15s, background .15s; }
+.btn:hover { border-color: var(--muted); background: var(--wash); }
+.btn.solid { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.btn.solid:hover { opacity: .88; background: var(--ink); }
+.btn.sm { height: 30px; padding: 0 11px; font-size: 13px; }
+
+/* ---------- hero ---------- */
+header.hero { padding-top: 64px; }
+.name { font: 600 15px/1.3 var(--sans); }
+.title { font: 400 13.5px/1.5 var(--sans); color: var(--muted); margin-top: 4px; }
+.pill { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; padding: 5px 11px 5px 9px; border-radius: 999px; border: 1px solid var(--rule); font: 500 12.5px/1 var(--sans); color: var(--ink-2); }
+.pill i { width: 7px; height: 7px; border-radius: 50%; background: #16a34a; box-shadow: 0 0 0 3px color-mix(in srgb, #16a34a 22%, transparent); }
+.headline { font: 600 clamp(30px, 5.4vw, 40px)/1.12 var(--sans); letter-spacing: -.028em; margin-top: 22px; }
+.subline { color: var(--ink-2); margin-top: 18px; max-width: 60ch; font-size: 16px; }
+header.hero .btns { margin-top: 26px; }
+
+/* ---------- proof strip ---------- */
+.proof { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 28px 24px; }
+.proof div { display: grid; gap: 6px; align-content: start; }
+.proof b { font: 600 28px/1.05 var(--sans); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.proof span { font-size: 13.5px; line-height: 1.45; color: var(--muted); }
+
+/* ---------- work list ---------- */
+.intro { color: var(--ink-2); max-width: 60ch; margin-bottom: 26px; font-size: 15px; }
+.group { border-top: 1px solid var(--rule); }
+.group:last-child { border-bottom: 1px solid var(--rule); }
+.group > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding-block: 16px; font: 600 13.5px/1.3 var(--sans); }
+.group > summary::-webkit-details-marker { display: none; }
+.group > summary .grow { flex: 1; }
+.group > summary .n { font-weight: 400; color: var(--muted); font-size: 13px; }
+.rows { list-style: none; padding-bottom: 8px; }
+.rows li + li { border-top: 1px solid var(--rule); }
+.row { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; align-items: start; padding-block: 14px; text-decoration: none; }
+.row .thumb { width: 112px; aspect-ratio: 16 / 10; border-radius: 6px; overflow: hidden; border: 1px solid var(--shot-edge); background: var(--wash); }
+.row .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .3s; }
+.row:hover .thumb img { transform: scale(1.03); }
+.row .meta { display: grid; gap: 3px; min-width: 0; }
+.row .top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.row .t { font-weight: 500; }
+.row:hover .t { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.row .s { font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.row .d { font-size: 14px; color: var(--muted); }
+.live { font: 500 11px/1 var(--sans); padding: 3px 6px; border-radius: 4px; background: var(--accent-wash); color: var(--accent); }
+
+/* generated cover, for projects without a screenshot */
+.cover { width: 100%; height: 100%; display: grid; align-content: space-between; padding: 8% 9%; background: linear-gradient(160deg, var(--wash), color-mix(in srgb, var(--wash) 55%, var(--paper))); }
+.cover b { font: 600 clamp(15px, 3.4vw, 30px)/1.05 var(--sans); letter-spacing: -.02em; color: var(--ink); }
+.cover .dots { display: flex; align-items: center; }
+.cover .dots i { width: 9%; max-width: 22px; aspect-ratio: 1; border-radius: 50%; border: 1.5px solid var(--muted); flex: none; }
+.cover .dots i.ai { background: var(--accent); border-color: var(--accent); }
+.cover .dots i.human { border-radius: 3px; border-style: dashed; }
+.cover .dots s { flex: 1; height: 1px; background: var(--muted); opacity: .5; }
+.row .cover { padding: 9px 10px; }
+.row .cover b { font-size: 10.5px; }
+.row .cover .dots i { border-width: 1px; }
+
+/* ---------- experience, skills, lists ---------- */
+.xp { display: grid; gap: 28px; }
+.job { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 20px; }
+.job h3 { font: 500 15.5px/1.4 var(--sans); }
+.job .when { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; text-align: right; }
+.job p, .job ul { grid-column: 1 / -1; color: var(--ink-2); font-size: 14.5px; }
+.job ul { list-style: none; display: grid; gap: 6px; margin-top: 6px; }
+.job li { padding-left: 16px; position: relative; }
+.job li::before { content: "–"; position: absolute; left: 0; color: var(--muted); }
+.job li strong { font-weight: 500; color: var(--ink); }
+.skills { display: grid; gap: 22px; }
+.skills h3 { font: 500 13.5px/1.3 var(--sans); margin-bottom: 10px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font: 400 13px/1 var(--sans); padding: 6px 9px; border-radius: 6px; border: 1px solid var(--rule); color: var(--ink-2); }
+.plain { list-style: none; }
+.plain li { display: flex; justify-content: space-between; gap: 6px 20px; flex-wrap: wrap; padding-block: 11px; }
+.plain li + li { border-top: 1px solid var(--rule); }
+.plain .m { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+footer.site .open { font: 600 22px/1.3 var(--sans); letter-spacing: -.02em; max-width: 30ch; }
+footer.site .btns { margin-top: 22px; }
+.addr { margin-top: 14px; font: 400 14px/1.4 var(--mono); color: var(--ink-2); }
+.small { margin-top: 36px; font-size: 12.5px; color: var(--muted); }
+
+/* ---------- chevron ---------- */
+.chev { width: 14px; height: 14px; flex: none; color: var(--muted); transition: transform .2s ease; }
+details[open] > summary .chev { transform: rotate(90deg); }
+
+/* ---------- case page ---------- */
+.case-wrap { max-width: 1080px; margin: 0 auto; padding-inline: 20px; display: grid; grid-template-columns: 200px minmax(0, 760px); gap: 56px; justify-content: center; }
+.toc { position: sticky; top: 76px; align-self: start; padding-top: 44px; font-size: 13.5px; }
+.toc .label { margin-bottom: 14px; }
+.toc ol { list-style: none; display: grid; gap: 2px; border-left: 1px solid var(--rule); }
+.toc a { display: flex; justify-content: space-between; gap: 10px; padding: 5px 0 5px 12px; margin-left: -1px; border-left: 1px solid transparent; text-decoration: none; color: var(--muted); }
+.toc a:hover { color: var(--ink); }
+.toc a.on { color: var(--ink); border-left-color: var(--ink); }
+.toc a small { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.toc .back2 { display: block; margin-top: 22px; color: var(--muted); text-decoration: none; }
+.toc .back2:hover { color: var(--ink); }
+.case main { min-width: 0; }
+.case header { padding-block: 40px 36px; border-bottom: 1px solid var(--rule); }
+.back { font-size: 13.5px; color: var(--muted); text-decoration: none; }
+.back:hover { color: var(--ink); }
+.case h1 { font: 600 clamp(28px, 5vw, 38px)/1.12 var(--sans); letter-spacing: -.028em; margin-top: 6px; }
+.status { display: inline-block; margin-top: 14px; font: 500 12.5px/1 var(--sans); padding: 6px 9px; border-radius: 6px; background: var(--wash); color: var(--ink-2); }
+.case .lede { margin-top: 14px; font-size: 16.5px; color: var(--ink-2); max-width: 58ch; }
+.visit { display: inline-flex; margin-top: 16px; font-size: 14px; color: var(--accent); text-decoration: none; }
+.visit:hover { text-decoration: underline; text-underline-offset: 3px; }
+.facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px 20px; margin-top: 26px; }
+.facts div { display: grid; gap: 2px; align-content: start; }
+.facts span { font-size: 12px; color: var(--muted); }
+.facts b { font-weight: 500; font-size: 14px; line-height: 1.4; }
+.share { grid-column: 1 / -1; display: grid; gap: 6px; }
+.share .bar { height: 6px; border-radius: 99px; background: var(--wash); overflow: hidden; border: 1px solid var(--rule); }
+.share .bar i { display: block; height: 100%; background: var(--accent); border-radius: 99px; }
+.share b { font-variant-numeric: tabular-nums; }
+.shot { margin-top: 28px; border-radius: 10px; overflow: hidden; border: 1px solid var(--shot-edge); aspect-ratio: 16 / 10; background: var(--wash); }
+.shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.ba { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
+.ba figure { margin: 0; display: grid; gap: 8px; min-width: 0; align-content: start; }
+.ba .shot { margin-top: 0; }
+.ba figcaption { font-size: 13px; color: var(--muted); }
+.ba figcaption b { font-weight: 500; color: var(--ink); display: block; }
+.case section { padding-block: 40px; }
+
+/* workflow diagram */
+.flows { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
+.flow { list-style: none; display: grid; align-content: start; }
+.fl { font: 500 12.5px/1 var(--sans); color: var(--muted); margin-bottom: 12px; }
+.box { border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; display: grid; gap: 2px; background: var(--paper); align-content: start; }
+.box b { font-weight: 500; font-size: 14.5px; line-height: 1.35; }
+.box span { font-size: 13px; color: var(--muted); line-height: 1.4; }
+.box.ai { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.box.ai span { color: color-mix(in srgb, var(--on-accent) 82%, transparent); }
+.box.human { border-style: dashed; border-color: var(--muted); }
+.arrow { height: 22px; display: grid; place-items: center; color: var(--muted); font-size: 13px; line-height: 1; }
+.arrow::before { content: "↓"; }
+.key { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 18px; font-size: 12.5px; color: var(--muted); }
+.key i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; margin-right: 6px; border: 1px solid var(--rule); }
+.key i.ai { background: var(--accent); border-color: var(--accent); }
+.key i.human { border-style: dashed; border-color: var(--muted); }
+@media (min-width: 900px) {
+  .flows.h { display: block; }
+  .flows.h .flow { display: flex; align-items: stretch; }
+  .flows.h .box { flex: 1 1 0; min-width: 0; }
+  .flows.h .arrow { height: auto; width: 26px; flex: none; }
+  .flows.h .arrow::before { content: "→"; }
+}
+
+/* the tree */
+.tree-tools { display: flex; gap: 8px; margin-bottom: 18px; }
+.tree-tools button { font: 500 12.5px/1 var(--sans); height: 28px; padding: 0 10px; border-radius: 6px; border: 1px solid var(--rule); background: var(--paper); color: var(--ink-2); cursor: pointer; }
+.tree-tools button:hover { border-color: var(--muted); color: var(--ink); }
+.tree { display: grid; }
+.tn > summary, .leaf { display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; align-items: baseline; padding-block: 7px; }
+.tn > summary { list-style: none; cursor: pointer; }
+.tn > summary::-webkit-details-marker { display: none; }
+.tn > summary .chev { align-self: center; }
+.tn > summary:hover .tt { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.tt { font-weight: 500; font-size: 14.5px; line-height: 1.45; }
+.kind { font: 600 10.5px/1 var(--sans); letter-spacing: .05em; text-transform: uppercase; margin-right: 8px; white-space: nowrap; vertical-align: 1px; }
+.kind.fix { color: var(--fix); } .kind.decision { color: var(--accent); } .kind.pitfall { color: var(--pitfall); } .kind.feedback { color: var(--feedback); } .kind.iteration { color: var(--iteration); }
+.anchor { opacity: 0; font: 500 12px/1 var(--mono); color: var(--muted); background: none; border: 0; padding: 2px 4px; cursor: pointer; border-radius: 4px; transition: opacity .15s; }
+.tn > summary:hover .anchor, .leaf:hover .anchor, .anchor:focus-visible { opacity: 1; }
+.anchor:hover { color: var(--accent); }
+.anchor.ok { opacity: 1; color: var(--accent); }
+.tb { margin: 0 0 8px 18px; color: var(--ink-2); font-size: 14.5px; max-width: 62ch; }
+.leaf .dot { color: var(--muted); font-weight: 700; }
+.leaf .tb { grid-column: 2 / -1; margin: 2px 0 0; }
+.kids { margin-left: 6px; padding-left: 15px; border-left: 1px solid var(--rule); }
+.tree > .tn { border-top: 1px solid var(--rule); padding-block: 8px; }
+.tree > .tn:last-child { border-bottom: 1px solid var(--rule); }
+.tree > .tn > summary .tt { font-size: 16px; font-weight: 600; letter-spacing: -.01em; }
+.count { font-size: 12.5px; color: var(--muted); font-weight: 400; margin-left: 8px; letter-spacing: 0; }
+.ev { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: baseline; margin: 4px 0 4px 18px; font: 400 12.5px/1.45 var(--mono); color: var(--muted); text-decoration: none; }
+.ev b { font-weight: 500; color: var(--ink-2); background: var(--wash); border-radius: 4px; padding: 1px 6px; }
+a.ev b::after { content: " ↗"; color: var(--muted); }
+a.ev:hover b { color: var(--accent); }
+a.ev:hover span { color: var(--ink-2); }
+.hit { animation: hit 1.8s ease-out; border-radius: 6px; }
+@keyframes hit { from { background: var(--accent-wash); } to { background: transparent; } }
+
+/* drop-down motion, where the browser supports it */
+details::details-content { transition: height .25s ease, content-visibility .25s allow-discrete; height: 0; overflow: clip; }
+details[open]::details-content { height: auto; }
+
+.nav2 { display: flex; justify-content: space-between; gap: 16px; font-size: 14px; padding-top: 32px; border-top: 1px solid var(--rule); }
+.nav2 a { text-decoration: none; display: grid; gap: 2px; }
+.nav2 a span { font-size: 12.5px; color: var(--muted); }
+.nav2 a:hover b { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.nav2 b { font-weight: 500; }
+.nav2 .r { text-align: right; }
+.allwork { display: inline-block; margin-top: 26px; font-size: 14px; color: var(--accent); text-decoration: none; }
+.allwork:hover { text-decoration: underline; text-underline-offset: 3px; }
+.case-foot { padding-block: 40px 64px; }
+
+[hidden] { display: none !important; }
+
+/* gentle fade-in on scroll, where supported */
+@keyframes rise { from { opacity: .25; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 40%; }
+  }
+}
+@media (max-width: 999px) {
+  .case-wrap { grid-template-columns: minmax(0, 1fr); gap: 0; max-width: 760px; }
+  .toc { display: none; }
+}
+@media (max-width: 520px) {
+  header.hero { padding-top: 40px; }
+  .topbar nav a.opt { display: none; }
+  .row { grid-template-columns: 84px minmax(0, 1fr); gap: 12px; }
+  .row .thumb { width: 84px; }
+  .job { grid-template-columns: minmax(0, 1fr); }
+  .job .when { text-align: left; grid-row: 2; }
+  .ba { grid-template-columns: minmax(0, 1fr); }
+  .kids { margin-left: 3px; padding-left: 9px; }
+  .kids .kids .kids { margin-left: 0; padding-left: 0; border-left: 0; }
+  .ev { margin-left: 0; grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .ev b { justify-self: start; }
+  .anchor { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="inner">
+    <a class="me" href="#">Muhib Rashid</a>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a class="opt" href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <span data-top-cta></span>
+    <button class="theme" type="button" id="theme" aria-label="Switch between light and dark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ================= HOME ================= -->
+<div id="home" class="col">
+  <header class="hero">
+    <p class="name">Muhib Rashid</p>
+    <p class="title">AI Enablement Lead · AI Adoption, Workflow Automation and Change Enablement · Claude and LLM Specialist</p>
+    <span class="pill"><i></i>Open to roles · Remote, hybrid and international</span>
+    <h1 class="headline">I get teams actually using AI. Then I build the systems that make it stick.</h1>
+    <p class="subline">AI enablement lead for a US publisher across Kuala Lumpur and New York. I built Companion, an AI product acquired by a company and used to transcribe 1M+ words and hundreds of hours of streamed content. Before that, I led fundraising campaigns as a charity campaign director.</p>
+    <div class="btns" data-links></div>
+  </header>
+
+  <section class="reveal" aria-label="Results">
+    <div class="proof">
+      <div><b>1M+ words</b><span>turned from recordings into text by Companion, a tool I built. A company bought it.</span></div>
+      <div><b>2 offices</b><span>I trained staff in person to use AI, in Kuala Lumpur and New York</span></div>
+      <div><b>Leadership</b><span>I moved a US publisher's CEO and leadership team from ChatGPT to Claude</span></div>
+      <div><b>~2 hours</b><span>to draft a full book, down from weeks, with a set of AI tools I built</span></div>
+      <div><b>Newsletters</b><span>a Claude tool I built now writes the newsletters an email team used to write</span></div>
+    </div>
+  </section>
+
+  <section class="reveal" id="work-section">
+    <span class="label">Selected work</span>
+    <p class="intro">Every project opens into its full working: why I built it, the decisions, the back-and-forth with clients and with Claude Code, what broke and how I fixed it, with links to the commits behind it.</p>
+    <div id="work-list"></div>
+  </section>
+
+  <section class="reveal" id="experience-section">
+    <span class="label">Experience</span>
+    <div class="xp">
+      <div class="job">
+        <h3>Founder, Praised Studio (UK)</h3><span class="when">Now</span>
+        <p>One-person campaign and AI studio for the charity sector: campaigns, websites and AI systems for charities.</p>
+      </div>
+      <div class="job">
+        <h3>AI Enablement Lead, IGP (US publisher)</h3><span class="when">2024 – 2026</span>
+        <p>Led AI adoption across a US publishing business, from executive buy-in to hands-on staff training and production AI systems.</p>
+        <ul>
+          <li><strong>Executive adoption:</strong> led the CEO and leadership's move from ChatGPT to Claude as the company's main AI platform.</li>
+          <li><strong>Training:</strong> in-person workshops at the Kuala Lumpur and New York offices.</li>
+          <li><strong>Culture:</strong> a company-wide talk on where AI helps, where it doesn't, and how to use it responsibly.</li>
+          <li><strong>Systems:</strong> AI translation pipelines, AI sales pipelines, and a Claude newsletter generator that replaced the outbound email team.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <h3>Campaign Director, charity sector</h3><span class="when">Earlier</span>
+        <p>Led fundraising campaigns and built high-traffic fundraising websites that held up under peak campaign demand.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <span class="label">Skills</span>
+    <div class="skills">
+      <div><h3>AI and adoption</h3><div class="tags"><span class="tag">AI enablement</span><span class="tag">AI adoption</span><span class="tag">Change management</span><span class="tag">AI training and upskilling</span><span class="tag">Workshop facilitation</span><span class="tag">Executive stakeholder management</span><span class="tag">AI strategy</span><span class="tag">AI culture</span><span class="tag">Responsible AI use</span></div></div>
+      <div><h3>AI tools and building</h3><div class="tags"><span class="tag">Claude</span><span class="tag">Claude Code</span><span class="tag">Claude Skills</span><span class="tag">Anthropic</span><span class="tag">ChatGPT and OpenAI</span><span class="tag">Copilot</span><span class="tag">LLMs</span><span class="tag">Generative AI</span><span class="tag">Prompt engineering</span><span class="tag">Multi-agent systems</span><span class="tag">Agentic workflows</span><span class="tag">AI pipelines</span><span class="tag">Workflow automation</span><span class="tag">AI translation</span><span class="tag">Remotion</span></div></div>
+      <div><h3>Marketing and comms</h3><div class="tags"><span class="tag">Campaign strategy</span><span class="tag">Fundraising</span><span class="tag">Content strategy</span><span class="tag">Copywriting</span><span class="tag">Email marketing and newsletters</span><span class="tag">Sales pipeline automation</span><span class="tag">Storytelling</span></div></div>
+      <div><h3>Web</h3><div class="tags"><span class="tag">Website development</span><span class="tag">High-traffic sites</span><span class="tag">Native app development (LG webOS)</span></div></div>
+      <div><h3>Background</h3><div class="tags"><span class="tag">BA English Language and Creative Writing</span></div></div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <span class="label">Working with AI since</span>
+    <ul class="plain">
+      <li><span>OpenAI's earlier models</span><span class="m">2021</span></li>
+      <li><span>ChatGPT, from launch</span><span class="m">2022</span></li>
+      <li><span>Claude</span><span class="m">2023 – now</span></li>
+    </ul>
+    <span class="label" style="margin-top:40px">Certifications</span>
+    <ul class="plain">
+      <li><span>AWS Certified AI Practitioner</span><span class="m">Exam pending</span></li>
+      <li><span>Google AI Essentials Specialization</span><span class="m">Google</span></li>
+      <li><span>Introduction to Responsible AI</span><span class="m">Google Cloud · May 2025</span></li>
+      <li><span>Introduction to Large Language Models</span><span class="m">Google Cloud · May 2025</span></li>
+      <li><span>Introduction to Generative AI</span><span class="m">Google Cloud</span></li>
+    </ul>
+  </section>
+
+  <footer class="site reveal" id="contact-section">
+    <p class="open">My inbox is open. If you're trying to get your team using AI properly, let's talk.</p>
+    <div class="btns" data-links></div>
+    <p class="addr" data-email hidden></p>
+    <p class="small">Muhib Rashid · Built with Claude Code</p>
+  </footer>
+</div>
+
+<!-- ================= CASE PAGE ================= -->
+<div id="case" class="case" hidden></div>
+
+<script>
+/* Portfolio case studies. Every node: N(title, body, ...children). Bodies support `code`.
+   E(hash, message) is a commit reference. Sources: the git history of each repo, the live sites,
+   the local project files, and Muhib's portfolio brief. */
+const N = (t, d, ...c) => ({ t, d, c });
+const E = (h, m) => ({ e: h, m });
+/* Commits that live in a different public repo from the project's default. */
+const COMMIT_REPO = {
+  f423683: "muhibhome2-spec/thelatiffoundationfinal",
+  acb360c: "muhibegypt-del/scwesbitef",
+  "69997f4": "muhibegypt-del/members-area-lite",
+  "8c48adf": "muhibegypt-del/members-area-lite"
+};
+
+const GROUPS = [
+  ["ai", "AI products and enablement"],
+  ["charity", "Charity and community websites"],
+  ["client", "Client websites"],
+  ["apps", "Apps and tools"]
+];
+
+const PROJECTS = [
+/* ------------------------------------------------------------------ COMPANION */
+{
+  id: "companion", group: "ai", name: "Companion",
+  status: "Acquired · 1M+ words",
+  line: "Recorded lectures in, publication-ready articles and typeset books out.",
+  facts: [["Stack", "React, Vite, Tailwind · Python FastAPI · Node"], ["Model", "Gemini 3 Pro, hosted on Replicate"], ["Built with", "Claude Code"], ["Outcome", "Acquired, in production"]],
+  flows: [{ steps: [
+    ["", "Lecture or stream", "Audio upload or a YouTube link"],
+    ["ai", "Scholar-editor pass", "The model reads the audio and writes the article"],
+    ["ai", "Parallel agents", "Each agent takes one job on the book draft"],
+    ["", "Typeset book", "Print-ready pages, non-Latin glyphs intact"]
+  ]}],
+  tree: [
+    N("Why I built it",
+      "Philosophical lectures given in foreign languages switch languages mid-sentence and quote primary texts in the original. Turning one recording into a readable English article meant transcribing it, handling the foreign-language passages, checking every quotation and cleaning up the speech by hand. A whole book of them took weeks."),
+    N("What it does", "",
+      N("Two ways in", "Upload an audio file, or paste a YouTube link. For links, `yt-dlp` pulls the best audio stream and FFmpeg converts it to a 192 kbps MP3."),
+      N("One endpoint", "A FastAPI `/process` route accepts either a file or a URL and returns the finished article, so the front end never has to know which path was taken."),
+      N("The editorial brain", "The system prompt casts the model as a subject expert, chief editor and linguist, then gives it rules a human editor would follow:",
+        N("Multilingual protocol", "Quoted passages stay in their original language and script, followed by the speaker's own translation, or a standard one if they gave none."),
+        N("Citations", "Quotations from primary texts become blockquotes with their source, and the wording is checked against the named work."),
+        N("Names and terms", "Spellings of names and technical terms are standardised across every article."),
+        N("Speech to prose", "Fillers, false starts and stutters are removed; the speaker's meaning and voice stay.")),
+      N("Scale", "The production version runs as a multi-agent orchestration: several agents work on a book in parallel, each with one job, and the result is typeset with correct glyphs for non-Latin scripts.")),
+    N("Decisions I made", "",
+      N("Let the model hear the audio, not a transcript", "One pass from audio keeps the speaker's code-switching and the foreign-language passages together, instead of handing the model a transcript that has already flattened them."),
+      N("Use a hosted model", "Gemini 3 Pro through Replicate meant no GPUs to manage and one API for files and prompts."),
+      N("Make it runnable by a non-developer", "A one-click launcher checks Python and Node are installed, creates the virtual environment, installs dependencies, starts both servers, opens the browser, and shuts everything down when the window closes.")),
+    N("Troubleshooting", "",
+      N("Audio wasn't reaching the model reliably", "I isolated it in steps instead of guessing:",
+        N("Test 1: prompt only", "Does the model answer at all? (`diagnostic_test.mjs`)"),
+        N("Test 2: a known public audio file", "Does audio work at all, with a file nobody could dispute? (`test_public_audio.mjs`)"),
+        N("Test 3: our file through the Files API", "Does our upload path work? (`test_files_api.mjs`)"),
+        N("Read the model's input schema", "`inspect_schema.py` pulls the model's OpenAPI schema to see exactly what it expects."),
+        N("The fix", "Upload through Replicate's Files API with an explicit content type. File types are detected with libmagic, then Python's mimetypes, then a safe `audio/mpeg` fallback. The code still carries the comment: “THIS IS THE KEY FIX”.")),
+      N("Two back ends", "I rebuilt the back end in Node alongside Python to compare how each SDK handled uploads before settling the production path.")),
+    N("Result", "Acquired by a company and in production use. 1M+ words transcribed and hundreds of hours of streamed content processed. A full book draft in about two hours, down from weeks."),
+    N("What I learned", "The hardest bug was plumbing, not AI. Getting the file type right on upload mattered more than any prompt change.")
+  ]
+},
+/* ------------------------------------------------------------------ DONOR CRM */
+{
+  id: "donor-crm", group: "ai", name: "Charity donor CRM",
+  status: "Launched and sold",
+  line: "A donor CRM built for a UK charity, with Gift Aid handled properly.",
+  facts: [["Stack", "Next.js, React, Tailwind, Recharts, Supabase"], ["Client", "A UK charity"], ["Built with", "Claude Code"], ["Outcome", "Launched and sold"]],
+  flows: [{ steps: [
+    ["", "Charity's brief", "How they track donors, gifts and Gift Aid today"],
+    ["ai", "Clickable demo", "Claude Code builds every screen on realistic mock data"],
+    ["human", "Client walk-through", "They judge the product, not a spec"],
+    ["ai", "Built out on Supabase", "Real data and sign-in replace the mock data"],
+    ["", "Launched and sold", ""]
+  ]}],
+  tree: [
+    N("Why I built it", "Generic donor CRMs don't fit how a UK charity actually works: Gift Aid has to be claimed from HMRC, some gifts are restricted to particular uses, and staff need to see at a glance who to thank and who is drifting away. I built a CRM around those, and a demo the charity could click through before committing."),
+    N("What's in it", "",
+      N("Dashboard", "KPI cards, a stacked monthly-raised chart, an action queue and progress on every campaign."),
+      N("Donors", "A list with engagement rings, and a profile with a gift timeline, an AI summary slot and a Gift Aid panel."),
+      N("Gifts", "A ledger with Gift Aid and restricted-fund flags on each gift."),
+      N("Campaigns", "Progress against goal across all eight active programmes."),
+      N("Communications", "A thank-you queue with template previews."),
+      N("Gift Aid claim builder", "Finds eligible, unclaimed gifts and totals the 25% uplift, in the shape of an HMRC R68(i) claim.")),
+    N("Decisions I made", "",
+      N("An engagement score staff can explain", "A transparent RFM formula instead of a black box:",
+        N("Weights", "Recency 40%, frequency 30%, money 30%."),
+        N("Money is square-rooted", "One very large gift can't make a donor look more engaged than a loyal monthly giver."),
+        N("New donors are capped at 50", "Nobody is labelled a champion on their first gift."),
+        N("Seven plain-English tiers", "Champion, loyal, potential, at risk, lapsed, dormant, new.")),
+      N("Gift Aid visible everywhere", "Unclaimed Gift Aid is money left on the table, so eligibility shows on every screen, not just at claim time."),
+      N("Demo first, plumbing later", "Deterministic mock data, no database, no login. An honest “not built” list (auth, persistence, CSV import, a live model call, PDF reports, automation) kept the demo about the product."),
+      N("A brand, not a dashboard template", "Lowercase navigation, warm earth tones, Source Serif 4 with Inter, and a dark mode designed as a peer of light, not an afterthought.")),
+    N("From demo to product", "",
+      N("The demo sold the idea", "The charity judged the CRM by clicking through it, not by reading a spec."),
+      N("Then the plumbing", "The launched version replaced the mock data with a Supabase back end: a real database and sign-in, kept deliberately simple.")),
+    N("Troubleshooting", "",
+      N("The Vercel build failed", "React 19 needs Next.js 15.1 or later to build reliably. I bumped Next and the deploy went green.",
+        E("cef9239", "fix: bump next to 15.1+ for stable react 19 (vercel build)"))),
+    N("Result", "Built out on Supabase, launched and sold. The launched version's address has since been retired."),
+    N("What I learned", "A clickable demo with honest mock data answered the client's questions faster than any spec would have.")
+  ]
+},
+/* ------------------------------------------------------------------ DOCUMENTARY */
+{
+  id: "documentary", group: "ai", name: "Documentary editing skill",
+  status: "Built and tested",
+  line: "A Claude Code skill that turns writer-led documentary editing in Remotion into a guided workflow.",
+  facts: [["Type", "Claude Code skill, plus a voice-cleanup skill"], ["Video", "Remotion"], ["Archives", "Met, LOC, Smithsonian, Europeana, Wellcome"], ["Audio", "ClearVoice MossFormer2, offline"]],
+  flows: [
+    { label: "Before: by hand", steps: [["", "Watch all the footage", ""], ["", "Transcribe", ""], ["", "Choose cuts by feel", ""], ["", "Hunt for archive images", ""], ["", "Fix the audio", ""], ["", "Build the timeline", ""]] },
+    { label: "After: with the skill", steps: [
+      ["", "Interview and transcript", "Recording with synced text"],
+      ["ai", "Beat sheet and cut plan", "Claude classes each beat, proposes cuts and images"],
+      ["ai", "Validator", "A script checks the plan before render"],
+      ["human", "Review in Remotion Studio", "I judge the joins and borderline cuts"],
+      ["", "Rendered film", "Clean audio, plain end titles"]
+    ]}
+  ],
+  tree: [
+    N("Why I built it", "Short films about a writer's life live or die on restraint. Left alone, AI edits reach for zooms, kinetic type and stock footage, and the emotion goes. I wanted Claude to edit the way a careful documentary editor would."),
+    N("The rulebook Claude follows", "",
+      N("Start from the face", "The cut begins as the speaker alone. Every departure has to give the viewer something the face can't. Ties go to the face."),
+      N("Six kinds of beat", "Each beat is classed as fact, memory, teaching, turn, confession or thesis, given one job (hold, transport, contrast) and one owner (face, paper, world)."),
+      N("Paper is thought, film is memory", "Teaching passages appear as typeset pages in EB Garamond; memories as full-bleed archive stills with one shared film grade."),
+      N("A priority order for conflicts", "Emotion has first veto, story second, rhythm third."),
+      N("What's banned", "No energy zooms, kinetic type, stock gestures, fake film damage, or cuts added just to fill a gap.")),
+    N("How it's built", "",
+      N("References loaded only when needed", "`editorial.md`, `remotion.md`, a cut-plan contract and evaluation cases for testing the skill itself."),
+      N("A validator", "`check_cut.py` checks the cut plan frame by frame and pulls sample frames for visual review."),
+      N("Archive search through MCP", "Connected tools search five public collections for memory sequences with clear licences."),
+      N("A second opinion", "When allowed, a read-only subagent is given the transcript and rendered frames and asked one question, such as “Which cut hides a change in the performance?”. The edit decision stays in the main session.")),
+    N("The voice-cleanup skill", "",
+      N("Offline speech cleanup", "Runs the ClearVoice MossFormer2 model locally on the CPU, so recordings never leave the machine."),
+      N("Made for phone footage", "Outputs 48 kHz audio, or swaps the cleaned track straight into an MP4 or MOV, including iPhone ProRes."),
+      N("A strength dial", "Mixes cleaned and original audio when the full effect sounds processed.")),
+    N("Pitfalls I designed around", "",
+      N("Don't clean a finished mix", "A film mix with music in it gets the music suppressed. The skill insists on the original speech recording."),
+      N("Echo stays", "The model removes noise, not room echo, so the skill says so instead of over-promising."),
+      N("Check alignment before swapping audio", "Long files are processed in overlapping windows so the sample count, and lip sync, is preserved.")),
+    N("What I learned", "Rules beat style prompts. Writing down what not to do changed the output more than describing the look I wanted.")
+  ]
+},
+/* ------------------------------------------------------------------ PITCH ANGLE */
+{
+  id: "pitch-angle", group: "ai", name: "Pitch Angle Finder",
+  status: "Used on my own outreach",
+  line: "A Claude skill that finds the strongest pitch angle for a charity before I contact them.",
+  facts: [["Type", "Claude skill"], ["Window", "Next 6 to 12 months"], ["Output", "A Loom script for the decision-maker"]],
+  flows: [{ steps: [
+    ["", "Charity name or URL", "One line to start"],
+    ["ai", "Research and rank angles", "Claude finds upcoming moments and links every claim"],
+    ["human", "Check sources, pick one", "I open the links and choose the angle"],
+    ["", "Loom script", "Recorded and sent"]
+  ]}],
+  tree: [
+    N("Why I built it", "A good pitch to a charity hangs on what it has coming up in the next six to twelve months. Researching that by hand is slow, so most outreach stays generic."),
+    N("How it works", "",
+      N("Research", "Claude researches the named charity and finds what is really happening for it in the coming months."),
+      N("The giving calendar is built in", "Angles are tied to the charity's peak giving seasons, including US year-end giving."),
+      N("The deliverable", "A Loom script written for the decision-maker, ending in a discovery-call ask.")),
+    N("Decisions I made", "",
+      N("No link, no claim", "Every claim must link to its source, and every angle must attach to something real."),
+      N("A script, not a report", "The output is the thing I record, so there's no second writing step.")),
+    N("What I learned", "Making sources mandatory is what makes an angle safe to put in front of a charity's director.")
+  ]
+},
+/* ------------------------------------------------------------------ GUARDIAN */
+{
+  img: "img/guardian-malaysia", repo: "muhibegypt-del/guardianmalaysia", id: "guardian-malaysia", group: "charity", name: "Guardian Malaysia",
+  status: "Live · guardianmalaysia.org",
+  line: "The website for a non-profit giving free youth jiu-jitsu scholarships in Malaysia.",
+  url: "https://www.guardianmalaysia.org",
+  facts: [["Stack", "Next.js App Router, Tailwind"], ["Hosting", "Netlify, then Vercel with a custom domain"], ["Built with", "Claude Code, Playwright MCP"], ["History", "Feb to Mar 2026"]],
+  flows: [{ steps: [
+    ["", "Charity's story", "What they do and who for"],
+    ["ai", "First build in one session", "Claude Code builds the whole single page"],
+    ["human", "My audit passes", "Typography, real numbers, partner changes"],
+    ["", "Live site", "On the charity's own domain"]
+  ]}],
+  tree: [
+    N("Why", "Guardian Malaysia gives children free jiu-jitsu scholarships. They needed one page that shows the impact and makes it easy to support them."),
+    N("Build", "",
+      N("One session, one page", "Claude Code built the first version: sticky nav that turns solid on scroll, full-screen hero, impact stats, an image marquee in pure CSS, mission blocks, story, gallery, call to action, partner logos and footer.",
+        E("be4a09f", "feat: build Guardian Malaysia single-page website")),
+      N("No fake photos", "Image slots were marked with REPLACE comments so nothing stock made it to the live site.")),
+    N("My passes after the first build", "",
+      N("Typography audit", "Removed em-dashes, added kicker labels, normalised the type scale, strengthened the call to action, added a favicon.",
+        E("d785ebe", "UI/UX & typography audit")),
+      N("Real numbers and names", "Updated the stat to 929 kids, renamed Guardian Gym to Guardian Project, added the AJJFP as a partner, used a real group photo behind the call to action.",
+        E("9f157c8", "Update stats (929 kids), rename Guardian Gym to Guardian Project, add AJJFP partner")),
+      N("Socials cut to where they're active", "Instagram stays; Facebook and YouTube went.",
+        E("2cdf411", "Update social links: add IG and remove FB/YT"))),
+    N("Troubleshooting", "",
+      N("Nav background invisible on scroll", "The transparent-to-solid transition left the nav unreadable over some sections. Fixed the scroll state.",
+        E("6f0611d", "Fix navbar scroll background visibility issue")),
+      N("Visual checks", "Playwright MCP let the agent screenshot the page and check its own layout changes.")),
+    N("Result", "Live on guardianmalaysia.org, showing 929 children reached."),
+    N("What I learned", "A first build in one session is the easy part. The value is in the passes after it: real numbers, real photos, fewer channels done well.")
+  ]
+},
+/* ------------------------------------------------------------------ LATIF */
+{
+  repo: "muhibhome2-spec/ltfweb", id: "latif-foundation", group: "charity", name: "The Latif Foundation",
+  status: "Live · thelatiffoundation.org",
+  line: "A memorial foundation's website, rebuilt through several versions until it felt like a memorial, not a campaign.",
+  url: "https://www.thelatiffoundation.org",
+  facts: [["Stack", "React, Vite, TypeScript, Tailwind"], ["Repos", "6 iterations, about 100 commits"], ["Built with", "Bolt, then Claude Code"], ["History", "Feb to May 2026"]],
+  flows: [{ steps: [
+    ["", "First draft in Bolt", "Seasonal-appeal-led, heavily decorated"],
+    ["ai", "Redesign and accessibility pass", "Claude Code on pull-request branches"],
+    ["human", "Tone decision", "A memorial, not a campaign"],
+    ["ai", "Clean rebuild", "Design tokens, guidelines, an appeal page"],
+    ["", "Live site", "Custom domain"]
+  ]}],
+  tree: [
+    N("Why", "The foundation is in memory of Abdul Lateef Ayodele. The site has to raise support without forgetting that it is, first, a memorial."),
+    N("Version history", "",
+      N("Feb 2026: first build and restructure", "A Bolt draft, then a full restructure, then Claude Code redesigning the home page, navigation and footer on its own branch."),
+      N("Feb 2026: accessibility overhaul", "A WCAG 2.1 AA pass (details under Troubleshooting)."),
+      N("Feb 2026: a parallel rebuild in phases", "A second repo rebuilt the design from a written plan: phase 1 foundations, phase 2 the global shell, phase 3 the home page."),
+      N("Apr 2026: brand tokens", "Brand colours and spacing moved into design tokens with uniform scaling."),
+      N("May 2026: recast as a memorial", "The hero became a book's dedication page: the foundation's name small at the top, “In loving memory of” in italic, his name as the centrepiece, one quiet link to his story.",
+        E("f423683", "Recast hero as a memorial dedication page")),
+      N("May 2026: the clean rebuild that's live", "A fresh repo applying web interface guidelines, an editorial split hero that keeps the face in frame, fluid type, and a seasonal appeal page.")),
+    N("Decisions I made", "",
+      N("Memorials don't shout", "Two loud buttons became one underlined link, and the nav and footer were quietened to match."),
+      N("Remove the seasonal page", "A seasonal page dates a memorial site, so it went in the guidelines pass."),
+      N("One donate link, in one place", "The donation URL was duplicated five times. It became a single constant."),
+      N("Delete decoration", "Zellige separators, stained-glass overlays and Moroccan pattern backgrounds were all removed in the final rebuild.")),
+    N("Troubleshooting and pitfalls", "",
+      N("Decoration destroyed readability", "A Moroccan pattern was fixed over the whole page and a stained-glass overlay sat on the text. Pattern limited to the hero, overlay halved, then both deleted."),
+      N("Text failed contrast", "Body text moved from stone-500/600 to stone-600/700 to reach 4.5:1. Faded goal cards were made legible."),
+      N("Smooth scrolling ignored reduced motion", "Lenis now respects `prefers-reduced-motion`, and a global rule stops animation for those users."),
+      N("Layout shift from images", "Every image got width, height and async decoding."),
+      N("Pages 404'd on refresh", "Direct links to client-side routes failed on Vercel. A `vercel.json` rewrite fixed it.",
+        E("ce538e4", "fix: add vercel.json SPA rewrite for client-side routing")),
+      N("Small leaks", "An unused Inter font (about 20 KB per visitor) removed; an OG image still named `gemini_generated_…` renamed.")),
+    N("What I learned", "Restraint was the brief. Most of the improvement came from deleting things.")
+  ]
+},
+/* ------------------------------------------------------------------ SOUL CARAVAN */
+{
+  img: "img/soul-caravan", repo: "muhibhome2-spec/scwesbitef", id: "soul-caravan", group: "charity", name: "Soul Caravan Foundation",
+  status: "Live · 280+ commits",
+  line: "An appeals website for a foundation supporting communities in Kenya.",
+  url: "https://scwesbitef.vercel.app",
+  facts: [["Stack", "React, Vite, TypeScript, Tailwind"], ["Integrations", "ImageKit video, MailerLite"], ["Built with", "Bolt, local AI agents, Playwright MCP"], ["History", "Dec 2025 to Mar 2026"]],
+  flows: [{ steps: [
+    ["", "Appeals and photos", "Water wells, education, orphan care"],
+    ["ai", "Design system and components", "Built in numbered phases with AI agents"],
+    ["human", "Device testing", "Real phones, real connections"],
+    ["ai", "Performance rounds", "Video, images, headers"],
+    ["", "Live site", "With newsletter and fundraiser sign-up"]
+  ]}],
+  tree: [
+    N("Why", "The foundation runs appeals for water wells, education and orphan care in Kenya. Donors need to see the story, then the appeal, then a way to give."),
+    N("How the build went", "",
+      N("Dec 2025: first version in Bolt", "Appeal cards, a water well card and an appeal index."),
+      N("Architecture refactor", "Design system, navigation, routing and component state reorganised before adding more pages."),
+      N("Jan 2026: story first", "A hero video, a geometric-pattern design system, then a story-first hero, a component library, a cinematic story card and an appeal system."),
+      N("Numbered phases", "Navigation standardised and routing cleaned (phase 10), footer call to action redesigned (phase 11), then a responsiveness pass across every block."),
+      N("Asset tooling", "Scripts to inventory every image (`inventory_images.py`, `IMAGE_MANIFEST.md`) so nothing broken or oversized shipped.")),
+    N("Troubleshooting", "",
+      N("Routing broke on Vercel", "Four attempts, each one recorded: anchor tags swapped for router links, Vercel pointed at the Vite `dist` output, rewrites simplified, rebuild forced.",
+        E("3ffc074", "Fix: Replace anchor tags with Router Links and add Vercel SPA config"),
+        E("5d113c5", "Fix: Explicitly configure Vercel for Vite output dist"),
+        E("0878160", "Fix: Simplify vercel.json rewrites for SPA routing")),
+      N("Hero video wouldn't autoplay on phones", "Forced the `muted` property, tried programmatic play and a direct `src`, then moved the mobile video to ImageKit with a preload for the largest paint."),
+      N("Menu overlapping content", "Fixed by lifting the menu state up so the page knew when it was open.")),
+    N("Performance rounds", "",
+      N("Backup first", "A backup commit before the optimisation audit, so any change could be rolled back.",
+        E("acb360c", "backup: pre-performance optimization audit")),
+      N("Round 1: images", "Preloading, lazy-loaded timeline images, card images resized to 600 px wide."),
+      N("Round 2: video", "ImageKit-optimised mobile hero video."),
+      N("Round 3: headers and SEO", "Security headers, SEO links, `robots.txt`, font-display swap.")),
+    N("What I learned", "Take a backup before an optimisation pass, and test video on a real phone. Desktop browsers hide every autoplay problem.")
+  ]
+},
+/* ------------------------------------------------------------------ BRIGGS */
+{
+  repo: "muhibhome2-spec/briggsbookclub", claude: [20, 48], id: "briggs-book-club", group: "charity", name: "Briggs' Book Club",
+  status: "Live · 500+ members",
+  line: "A pay-what-you-can reading circle's website, and a members' replay library, iterated over a year.",
+  url: "https://www.briggsbook.club",
+  facts: [["Stack", "React, Vite, Tailwind, Supabase"], ["Payments", "Memberful pledge form"], ["Built with", "Bolt, then Claude Code via pull requests"], ["History", "Dec 2025 to Nov 2026"]],
+  flows: [{ steps: [
+    ["", "A new reading or special", "What's being taught next"],
+    ["ai", "Branch and pull request", "Claude Code makes the change on its own branch"],
+    ["human", "I review and merge", "Copy, tone, mobile"],
+    ["", "Live on Vercel", "With share cards and analytics"]
+  ]}],
+  tree: [
+    N("Why", "A teacher runs a reading circle on classical texts. Membership is a monthly pay-what-you-can donation, so the site has to explain the circle, show what's being read now, and make joining easy."),
+    N("A year of iterations", "",
+      N("Dec 2025 to Mar 2026: Bolt", "Built and edited in Bolt's visual editor. One page was saved 14 times in a single day while I worked through it."),
+      N("Apr 2026: a special series page", "A landing page for a special series, built by Claude Code on a branch and merged by pull request.",
+        N("Hero image", "A historic manuscript page from a museum collection, with text kept inside the image so it couldn't bleed onto the page."),
+        N("Inclusive copy", "Region-specific wording replaced so every reader felt invited."),
+        N("Iterated with the teacher's plans", "Retitled, then changed to a two-part special on 10 and 17 May, with a shorter route.")),
+      N("Jul 2026: redesign, then put the soul back", "",
+        N("Too simple", "A mobile-first single page cut seven sections down to one scroll."),
+        N("A chaptered journey", "The next pass restored the spirit as six chapters a visitor scrolls through like a book."),
+        N("Armed for conversion", "Preset amounts (£5, £10 marked Popular, £25), a five-question FAQ, reassurance under the button (“60 seconds, cancel in two taps”), share cards and analytics.",
+          E("2cc75ef", "Arm the page for conversion: date, anchored pricing, FAQ, meta, analytics")),
+        N("Plain language", "Copy rewritten in direct sentences, every em-dash removed.")),
+      N("Aug 2026: rebrand and accessibility", "A rebrand to a new name and palette, and the join section moved to a light ground so the whole page meets WCAG 2.1 AA."),
+      N("Sep 2026: a design system", "Two hidden concept routes (Manuscript and Sanctuary) and a review PDF. Sanctuary won and became a design system with tokens, components and its own unlisted `/design-system` page.",
+        E("63e5222", "Rebuild the home page on the Sanctuary design system")),
+      N("Nov 2026: the members' replay library", "A separate app at members.briggsbook.club (below).")),
+    N("The members' replay library", "",
+      N("What it does", "Members watch past sittings, find reading resources and mark sittings as watched."),
+      N("Security decisions", "",
+        N("Confirmed accounts only", "Supabase database policies require a confirmed email to see the library."),
+        N("Your data is yours", "Profiles and progress are confined to their owner."),
+        N("Videos stay private", "Replays live in a restricted Google Drive folder shared only with members."),
+        N("The old roster is locked down", "Kept for history, no longer controls access.")),
+      N("A demo mode", "Fictional sittings and in-browser progress, so it can be shown without a real account."),
+      N("Registration opened", "Moved from a roster-based claim flow to open registration for any verified email.",
+        E("69997f4", "Open registration to all verified email addresses"))),
+    N("Troubleshooting", "",
+      N("Refresh gave a 404", "Direct visits to client-side routes failed. A Vercel rewrite fixed them.",
+        E("d3a1152", "Add vercel.json with SPA rewrite")),
+      N("Hero text bled onto the page", "Moved text inside the image bounds."),
+      N("Tiny text on phones", "Eyebrow labels raised from 11.2 px to 12 px."),
+      N("Sign-out cleared the screen twice", "Fixed in the members' app.",
+        E("8c48adf", "Avoid clearing the sign-in screen twice on logout"))),
+    N("Result", "A live site for a circle of 500+ members, with a members' library on its own subdomain."),
+    N("What I learned", "Simplifying cut the soul out. The next pass put it back as structure, and only then did I tune it for joining.")
+  ]
+},
+/* ------------------------------------------------------------------ A TEXTURED WORD */
+{
+  img: "img/a-textured-word", repo: "muhibegypt-del/awesbite1", claude: [80, 97], before: { src: "img/a-textured-word-before.jpg", was: "August 2026: the first client preview", now: "November 2026: live, after five feedback rounds" }, id: "a-textured-word", group: "client", name: "a textured word",
+  status: "100 accessibility · 98–100 performance",
+  line: "A boutique site for an English tutor and voice artist, built with Claude Code through five rounds of client feedback.",
+  url: "https://awesbite1.vercel.app",
+  facts: [["Stack", "Astro, vanilla CSS, 6 KB of JavaScript"], ["Commits", "97, of which 80 with Claude Code"], ["History", "Aug to Nov 2026"], ["Client", "Aneesa, tutor and voice artist"]],
+  flows: [{ steps: [
+    ["", "Client feedback", "Numbered items with her screenshots"],
+    ["ai", "One commit per item", "Claude Code works from CLAUDE.md rules"],
+    ["ai", "Regression check", "Recorded in the project's single source of truth"],
+    ["human", "Preview to client", "She signs off or sends the next round"],
+    ["", "Live site", "Measured before and after"]
+  ]}],
+  tree: [
+    N("Why", "Aneesa teaches English, voices adverts and repurposes content. She needed one site that sells all three without feeling like three sites."),
+    N("How I set Claude Code up", "",
+      N("CLAUDE.md as the contract", "Every client decision became a rule the agent can't forget:",
+        N("Never black", "Text is a warm ink. The client rejected black."),
+        N("Two accents, not interchangeable", "The terracotta fails contrast at small sizes (4.09:1), so small text uses a darker twin."),
+        N("No shadows", "Depth comes from tone and hairlines."),
+        N("One primary button per screen", ""),
+        N("Copy lives in JSON", "Never inline, and unwritten copy stays as a visible placeholder. Never lorem ipsum."),
+        N("Budgets", "LCP under 2 s on phones, layout shift under 0.05, home page under 900 KB.")),
+      N("Docs the agent reads only when needed", "A full brief and a content slot map, kept out of routine work to save context."),
+      N("A hook for cloud sessions", "A SessionStart hook installs dependencies so cloud sessions start ready."),
+      N("A single source of truth", "Each feedback item, its fix and its regression result recorded in one table.")),
+    N("Rounds with the client", "",
+      N("Aug: draft preview and three palettes", "Terracotta, plum and sage, each with computed contrast. Sage was darkened until it cleared 4.62:1 rather than sitting on the 4.50 boundary."),
+      N("Sep: two directions, she chose B", "Two design-direction collages. She chose Direction B with her portrait, and every page was rebuilt in it."),
+      N("Oct: eight numbered changes", "One commit per item: plain offer first, real voice samples, one content page instead of five."),
+      N("Oct: “the fonts change partway through”", "She spotted three styles in her introduction. Set in one style throughout."),
+      N("Nov: palette and banner", "Forest green fought the mulberry; the banner became a deep aubergine from the same family (13.18:1 contrast)."),
+      N("Nov: feedback 5, 27 items", "Each item its own commit: larger text on phones, a bigger discovery-call button, social badges as scalloped stamps like her picture, two more voice samples.")),
+    N("Decisions I made", "",
+      N("Astro and plain CSS", "Static pages, no framework, 6 KB of JavaScript in total."),
+      N("Measure contrast, don't eyeball it", "On the portrait hero the italic moved from the accent to ink: about 6:1 instead of 2:1. The headline is sized to clear her face at every width from 1024 to 2560 px."),
+      N("Third-party scripts on demand", "Calendly and Instagram load only when someone interacts.")),
+    N("Troubleshooting", "",
+      N("Fades died after the first page", "Two faults:",
+        N("Navigation wiped a class", "Astro's client router replaced the attributes on the page root, removing the flag the fades relied on. Fixed by re-applying it on `astro:after-swap`."),
+        N("The fail-safe raced the script", "A 3-second timer meant to rescue a failed script fired on slow connections and showed everything at once. Now cleared first, at 10 seconds.")),
+      N("Then I replaced the whole system", "The scroll-timeline version was the wrong call. A plain observer replaced it, and a double setup that had left 32 blocks stuck invisible was fixed.",
+        E("60c3a94", "Replace the reveal system with a plain scroll-in fade")),
+      N("The contact form was losing enquiries", "",
+        N("The honeypot was visible to screen readers", "Labelled “Do not fill this in”. Anyone who filled it had their enquiry silently discarded while being told it was sent."),
+        N("Every untouched form filed as tuition", "The topic menu had a real value preselected. Now it starts empty so `required` works.")),
+      N("The wrong font on Macs", "A local Avenir Next was loading instead of the self-hosted Jost. Removed from the font stack.")),
+    N("Result: measured before and after", "Lighthouse 12.8, eight pages, phone and desktop:",
+      N("Performance", "Phone 96–99 → 98–99. Desktop 100."),
+      N("Accessibility", "100 on all 32 runs; axe-core WCAG 2.2 AA, zero violations."),
+      N("Layout shift", "Up to 0.020 → 0.000 on every run."),
+      N("Home page weight", "265 KB → 189 KB."),
+      N("Best practices", "Contact page 79 → 100."),
+      N("Security headers", "None of four → all four."),
+      N("Still open", "The client's domain is parked, which needs her decision. Reported plainly in a one-page health check for her.")),
+    N("What I learned", "Write the rules down once. CLAUDE.md turned every client decision into a rule Claude couldn't forget, so 27 feedback items landed with a regression check for each.")
+  ]
+},
+/* ------------------------------------------------------------------ KHALED */
+{
+  img: "img/khaled-siddiq", repo: "muhibhome2-spec/khxledsiddiqwebapp", claude: [15, 85], id: "khaled-siddiq", group: "client", name: "Khaled Siddiq",
+  status: "Live · khaledsiddiq.com",
+  line: "A membership landing page for a UK artist, video-first, with Stripe checkout.",
+  url: "https://www.khaledsiddiq.com",
+  facts: [["Stack", "React, Vite, Tailwind"], ["Payments", "Stripe checkout link"], ["Built with", "Bolt, then Claude Code"], ["History", "Nov 2025 to Apr 2026, 85 commits"]],
+  flows: [{ steps: [
+    ["", "Artist's video and offer", "One membership tier"],
+    ["ai", "Layout iterations", "Claude Code, one change per commit"],
+    ["human", "I judge each on screen", "Desktop and phone"],
+    ["", "Live page", "Stripe checkout"]
+  ]}],
+  tree: [
+    N("Why", "The artist wanted a single page that sells a membership: their video first, then one clear way to join."),
+    N("Two phases", "",
+      N("Nov to Dec 2025: Bolt", "Many style experiments: glassmorphism, small caps, background photo opacity, parallax on then off."),
+      N("Apr 2026: Claude Code", "Rebuilt the landing page on a branch, merged by pull request.")),
+    N("Decisions I made", "",
+      N("One tier", "Consolidated to a single membership price, then switched it to £4.99 because the artist is UK-based."),
+      N("Let the video carry it", "Removed the hero title so the video fills the frame; the gold call to action appears on interaction."),
+      N("Stripe checkout link", "The join button goes straight to Stripe. No custom payment code to maintain.")),
+    N("The back-and-forth on desktop", "A vertical video on a wide screen took several rounds, each committed separately:",
+      N("1. Letterbox the video", "Vertical video centred with grain, mobile untouched."),
+      N("2. Editorial split screen", "Video one side, content the other."),
+      N("3. Hide the seam", "A fade between video and panel, then moved into the panel so the video wasn't masked."),
+      N("4. The portrait backdrop", "Full panel, then a faint ghost, then a tiny fragment, then resized: each time less."),
+      N("5. Kill the dead zone", "Content anchored right so the screen had no empty middle."),
+      N("6. Feather the corners", "A radial vignette, strengthened until the corners actually faded into black.")),
+    N("Troubleshooting and pitfalls", "",
+      N("AI builder syntax errors", "The Bolt phase produced repeated breakages: unterminated strings, comments and JSX, a duplicated component, a render loop that lagged the page. Each needed its own fix commit."),
+      N("Mobile padding", "A right padding meant for desktop applied on every screen size. Fixed with a breakpoint.")),
+    N("What I learned", "A vertical video on a desktop screen is a layout problem, not a styling one. Small, separate commits made each attempt easy to judge and undo.")
+  ]
+},
+/* ------------------------------------------------------------------ MR STUDIOS */
+{
+  id: "mr-studios", group: "client", name: "MR Studios",
+  status: "Live",
+  line: "“The Ink of the Scholar”: a community-funded studio's site, restructured around the StoryBrand framework.",
+  url: "https://umrstudio.vercel.app",
+  facts: [["Stack", "Next.js, GSAP, Lenis, Framer Motion"], ["Built with", "Local AI agents in numbered phases, Playwright MCP"], ["History", "Feb 2026"]],
+  flows: [{ steps: [
+    ["", "Hero", ""], ["", "The problem", ""], ["", "The guide", ""], ["", "The plan", ""], ["", "The stakes", ""], ["", "The ask", ""]
+  ], label: "StoryBrand page order" }],
+  tree: [
+    N("Why", "A studio funded by its community needed its site to tell a story people would back, not just show work."),
+    N("How it was built", "",
+      N("Numbered phases", "Phases 30 to 35: scroll-style pillars with acts, the hero reconceived, a folio-style works index, a clear type hierarchy and more breathing room between sections."),
+      N("A clarity pass", "Hero trimmed to one sentence, works index reordered, support copy and button made clearer."),
+      N("A StoryBrand overhaul", "A new Problem section, the studio as the guide with credentials, “Here's what we're building” as the plan, “Why now” as the stakes, and “Community-funded from day one” as the ask.")),
+    N("Checks", "A Lighthouse report saved in the repo, and Playwright MCP for visual checks. The hero video is preloaded."),
+    N("What I learned", "A framework is useful when it reorders the page. StoryBrand moved the problem above the work, which is where visitors needed it.")
+  ]
+},
+/* ------------------------------------------------------------------ BLOOB */
+{
+  repo: "muhibegypt-del/Bloob", claude: [123, 148], id: "bloob", group: "apps", name: "Bloob",
+  status: "Built · version 5.0",
+  line: "A native C++ film and series app for my own rooted LG TV, built over five weeks with Claude Code.",
+  facts: [["Stack", "C++ native webOS app, Node service on the TV"], ["Commits", "148, of which 123 with Claude Code"], ["History", "12 Oct to 16 Nov 2026"], ["Versions", "0.3 to 5.0"]],
+  flows: [{ steps: [
+    ["", "One increment", "Next numbered item on the App Map"],
+    ["ai", "Build and test", "Claude Code makes the change and runs checks"],
+    ["human", "Watch it on the TV", "I report what felt wrong"],
+    ["ai", "Plan from the report", "Feedback becomes numbered contracts"],
+    ["", "TV package", "Versioned, with a handover"]
+  ]}],
+  tree: [
+    N("Why", "I wanted a calm, premium TV app for my own films and series: clear artwork, predictable focus, quiet player controls, fast starts and correct HDR and audio on the TV's own hardware."),
+    N("The biggest decision: go native", "",
+      N("Web app first", "The first version ran as a web app on the TV. I then chose native, for playback on the TV's own hardware decoders and a more responsive interface."),
+      N("Prove it before committing", "Built and loaded a 32-bit ARM binary on the TV first, and documented the approach that failed.",
+        E("33c79e7", "Prove 32-bit ARM build and load on rooted TV"),
+        E("68a30ff", "Document native host blockers and failed approach")),
+      N("Then the whole app, natively", "C++ with the community webOS toolchain. Version 0.4 had every screen.")),
+    N("How I ran Claude Code on it", "",
+      N("An App Map", "The app split into 24 layers. Each has its job, files, state with evidence (seen on the TV, or only on desktop), gaps and numbered next increments."),
+      N("A quality ranking", "Every layer scored against a written definition of quality."),
+      N("Review by a second session", "An independent branch review, then a separate validation that confirmed all ten findings and added five more."),
+      N("Handover docs", "HANDOVER.md for the next developer, and GitHub checks on every push.")),
+    N("Feedback loops with myself as the user", "",
+      N("“Looks right, but not intelligent”", "After watching a whole series on 2.0, the look was right but the behaviour wasn't. That report became a UX plan with 13 numbered contracts: progress, next episode, version continuity, track choice, the Back map and more."),
+      N("Corrections recorded", "When I found Dolby Vision in MKV did work on my TV, the code and docs were updated as “owner's correction”."),
+      N("Direct Play reversed", "Play once jumped straight to the best version. I wanted to choose, so Play now opens the versions list.")),
+    N("Design rounds", "",
+      N("Glass (2.0)", "Chosen from a concept canvas. Apple's tvOS type scale and safe areas, frosted panels baked per backdrop so text stays readable."),
+      N("Spoken focus", "With LG Audio Guidance on, focus is read aloud: label, role and position."),
+      N("Swiss (4.1)", "The first draft wasn't approved and was rebuilt to the concept, then 4.2 went back to Glass."),
+      N("A rule for the reference app", "Copy its measured design values; never its code, assets, text or branding.")),
+    N("A detour I cut", "I built TV calibration into the app, proved it on a simulated TV, then removed it in 4.1 to keep the app focused on watching.",
+      E("4f63094", "4.1 part 1: remove calibration, HDR10 by default, faster 4K starts")),
+    N("Troubleshooting", "",
+      N("No shell access under the TV's profile", "The standard tool wasn't available, so logs are read over SSH."),
+      N("Crashes on exit", "Unload before unsubscribing, and log every command, state event, first frame and seek.",
+        E("69ea069", "native 0.3.1: unload before unsubscribing")),
+      N("Audio the TV can't decode", "Tracks it can't play are skipped, and versions that only have them are explained instead of failing."),
+      N("A Bluetooth report of 0", "Means “unknown”, not zero. Handled as such, with timeouts.")),
+    N("What I learned", "An agent needs a map more than a prompt. Separating “seen on the TV” from “passed on desktop” stopped false claims that something was done.")
+  ]
+}
+];
+</script>
+<script>
+/* Fill these in and the buttons appear. Empty ones stay hidden. */
+const LINKS = { email: "", linkedin: "", cv: "" };
+
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const fmt = s => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>");
+const slug = s => String(s).toLowerCase().replace(/[`“”'’]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 42).replace(/-+$/, "");
+const CHEV = '<svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5"/></svg>';
+
+/* ---------- theme ---------- */
+(function () {
+  let saved = null;
+  try { saved = localStorage.getItem("theme"); } catch (e) {}
+  if (saved === "dark" || saved === "light") document.documentElement.dataset.theme = saved;
+  $("#theme").addEventListener("click", () => {
+    const cur = document.documentElement.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    const next = cur === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+})();
+
+function linksHTML() {
+  const b = [];
+  if (LINKS.email) b.push(`<a class="btn solid" href="mailto:${esc(LINKS.email)}">Email me</a>`);
+  if (LINKS.linkedin) b.push(`<a class="btn" href="${esc(LINKS.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>`);
+  if (LINKS.cv) b.push(`<a class="btn" href="${esc(LINKS.cv)}" target="_blank" rel="noopener">CV</a>`);
+  return b.join("");
+}
+
+function coverHTML(p) {
+  const kinds = p.flows[p.flows.length - 1].steps.map(s => s[0]);
+  return `<div class="cover" aria-hidden="true"><b>${esc(p.name)}</b><span class="dots">${kinds.map((k, i) => `${i ? "<s></s>" : ""}<i class="${k}"></i>`).join("")}</span></div>`;
+}
+const thumbHTML = p => p.img ? `<img src="${p.img}-t.jpg" alt="" loading="lazy" width="480" height="300">` : coverHTML(p);
+
+/* ---------- home ---------- */
+function renderHome() {
+  $("#work-list").innerHTML = GROUPS.map(([g, label]) => {
+    const ps = PROJECTS.filter(p => p.group === g);
+    return `<details class="group" open>
+      <summary>${CHEV}<span class="grow">${esc(label)}</span><span class="n">${ps.length} project${ps.length > 1 ? "s" : ""}</span></summary>
+      <ul class="rows">${ps.map(p => `
+        <li><a class="row" href="#${p.id}">
+          <span class="thumb">${thumbHTML(p)}</span>
+          <span class="meta">
+            <span class="top"><span class="t">${esc(p.name)}</span>${p.url ? '<span class="live">Live ↗</span>' : ""}</span>
+            <span class="s">${esc(p.status)}</span>
+            <span class="d">${esc(p.line)}</span>
+          </span>
+        </a></li>`).join("")}</ul>
+    </details>`;
+  }).join("");
+  document.querySelectorAll("[data-links]").forEach(el => { el.innerHTML = linksHTML(); el.hidden = !el.innerHTML; });
+  const em = $("[data-email]");
+  if (LINKS.email) { em.textContent = LINKS.email; em.hidden = false; }
+  if (LINKS.email) $("[data-top-cta]").innerHTML = `<a class="btn solid sm" href="mailto:${esc(LINKS.email)}">Email me</a>`;
+}
+
+/* ---------- case page ---------- */
+function kindFor(sectionTitle) {
+  const t = sectionTitle.toLowerCase();
+  if (/troubleshoot/.test(t)) return ["fix", "Fix"];
+  if (/pitfall/.test(t)) return ["pitfall", "Pitfall"];
+  if (/decision/.test(t)) return ["decision", "Decision"];
+  if (/client|feedback/.test(t)) return ["feedback", "Feedback"];
+  if (/round|back-and-forth|version|iteration|history|how the build went|phases/.test(t)) return ["iteration", "Iteration"];
+  return null;
+}
+
+function flowHTML(f) {
+  const steps = f.steps.map(([k, t, n], i) => `
+    ${i ? '<li class="arrow" aria-hidden="true"></li>' : ""}
+    <li class="box ${k}"><b>${esc(t)}</b>${n ? `<span>${esc(n)}</span>` : ""}</li>`).join("");
+  return `${f.label ? `<p class="fl">${esc(f.label)}</p>` : ""}<ol class="flow">${steps}</ol>`;
+}
+
+function renderCase(p) {
+  const used = new Set();
+  const uid = s => { const b = slug(s) || "item"; let u = b, i = 2; while (used.has(u)) u = `${b}-${i++}`; used.add(u); return u; };
+  const repoFor = h => (typeof COMMIT_REPO !== "undefined" && COMMIT_REPO[h]) || p.repo;
+
+  function node(n, depth, kind) {
+    if (n.e) {
+      const r = repoFor(n.e);
+      const inner = `<b>${esc(n.e)}</b><span>${esc(n.m)}</span>`;
+      return r ? `<a class="ev" href="https://github.com/${r}/commit/${n.e}" target="_blank" rel="noopener" title="Open this commit on GitHub">${inner}</a>` : `<div class="ev">${inner}</div>`;
+    }
+    const id = `${p.id}--${uid(n.t)}`;
+    const k = depth === 1 && kind ? `<span class="kind ${kind[0]}">${kind[1]}</span>` : "";
+    const a = `<button class="anchor" type="button" data-link="${id}" aria-label="Copy a link to this point">#</button>`;
+    const kids = n.c || [];
+    if (!kids.length) return `<div class="leaf" id="${id}"><span class="dot">·</span><span class="tt">${k}${fmt(n.t)}</span>${a}${n.d ? `<p class="tb">${fmt(n.d)}</p>` : ""}</div>`;
+    const childKind = depth === 0 ? kindFor(n.t) : null;
+    const pts = kids.filter(x => !x.e).length;
+    const count = depth === 0 && pts > 1 ? `<span class="count">${pts}</span>` : "";
+    return `<details class="tn" id="${id}"${depth === 0 ? " open" : ""}>
+      <summary>${CHEV}<span class="tt">${k}${fmt(n.t)}${count}</span>${a}</summary>
+      ${n.d ? `<p class="tb">${fmt(n.d)}</p>` : ""}
+      <div class="kids">${kids.map(x => node(x, depth + 1, childKind)).join("")}</div>
+    </details>`;
+  }
+
+  const i = PROJECTS.indexOf(p);
+  const prev = PROJECTS[(i - 1 + PROJECTS.length) % PROJECTS.length];
+  const next = PROJECTS[(i + 1) % PROJECTS.length];
+  const kinds = new Set(p.flows.flatMap(f => f.steps.map(s => s[0])));
+  const key = [
+    kinds.has("ai") ? '<span><i class="ai"></i>AI step</span>' : "",
+    kinds.has("human") ? `<span><i class="human"></i>${esc(p.keyHuman || "Person checks")}</span>` : ""
+  ].join("");
+  const group = (GROUPS.find(g => g[0] === p.group) || ["", ""])[1];
+  const horizontal = p.flows.length === 1 && p.flows[0].steps.length <= 4;
+  const treeHTML = p.tree.map(n => node(n, 0, null)).join("");
+  const pct = p.claude ? 100 * p.claude[0] / p.claude[1] : 0;
+  const share = p.claude ? `<div class="share"><span>Commits made with Claude Code</span><b>${p.claude[0]} of ${p.claude[1]} (${Math.round(pct)}%)</b><div class="bar"><i style="width:${pct.toFixed(1)}%"></i></div></div>` : "";
+  const media = p.before
+    ? `<div class="ba">
+        <figure><div class="shot"><img src="${p.before.src}" alt="${esc(p.name)}, early design" loading="lazy" width="1200" height="750"></div><figcaption><b>Before</b>${esc(p.before.was)}</figcaption></figure>
+        <figure><div class="shot"><img src="${p.img}.jpg" alt="${esc(p.name)}, live site" width="1200" height="750"></div><figcaption><b>After</b>${esc(p.before.now)}</figcaption></figure>
+      </div>`
+    : `<div class="shot">${p.img ? `<img src="${p.img}.jpg" alt="${esc(p.name)}, home page" width="1200" height="750">` : coverHTML(p)}</div>`;
+  const howId = `${p.id}--how-it-works`;
+
+  $("#case").innerHTML = `<div class="case-wrap">
+    <aside class="toc" aria-label="On this page">
+      <span class="label">On this page</span>
+      <ol id="toc-list"></ol>
+      <a class="back2" href="#work">← All work</a>
+    </aside>
+    <main>
+      <header>
+        <a class="back" href="#work">← All work</a>
+        <p class="title" style="margin-top:26px">${esc(group)}</p>
+        <h1>${esc(p.name)}</h1>
+        <span class="status">${esc(p.status)}</span>
+        <p class="lede">${esc(p.line)}</p>
+        ${p.url ? `<a class="visit" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.url.replace(/^https:\/\/(www\.)?/, ""))} ↗</a>` : ""}
+        <div class="facts">${(p.facts || []).map(([k, v]) => `<div><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join("")}${share}</div>
+        ${media}
+      </header>
+      <section id="${howId}"><span class="label">How it works</span>
+        <div class="flows${horizontal ? " h" : ""}">${p.flows.map(f => `<div>${flowHTML(f)}</div>`).join("")}</div>
+        ${key ? `<div class="key">${key}</div>` : ""}
+      </section>
+      <section><span class="label">The full working</span>
+        <div class="tree-tools"><button type="button" data-tree="open">Expand all</button><button type="button" data-tree="close">Collapse all</button></div>
+        <div class="tree">${treeHTML}</div>
+      </section>
+      <div class="case-foot">
+        <nav class="nav2" aria-label="More work">
+          <a href="#${prev.id}"><span>← Previous</span><b>${esc(prev.name)}</b></a>
+          <a class="r" href="#${next.id}"><span>Next →</span><b>${esc(next.name)}</b></a>
+        </nav>
+        <a class="allwork" href="#work">Back to all work</a>
+        <div class="btns" style="margin-top:28px">${linksHTML()}</div>
+      </div>
+    </main>
+  </div>`;
+
+  /* section menu from the top-level tree nodes */
+  const tops = [...document.querySelectorAll("#case .tree > .tn, #case .tree > .leaf")];
+  $("#toc-list").innerHTML = `<li><a href="#${howId}">How it works</a></li>` + tops.map((el, j) => {
+    const n = p.tree[j];
+    const c = (n.c || []).filter(x => !x.e).length;
+    return `<li><a href="#${el.id}">${esc(n.t)}${c > 1 ? `<small>${c}</small>` : ""}</a></li>`;
+  }).join("");
+  const links = [...document.querySelectorAll("#toc-list a")];
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => {
+        if (!e.isIntersecting) return;
+        links.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id));
+      });
+    }, { rootMargin: "-80px 0px -65% 0px" });
+    links.forEach(a => { const t = document.getElementById(a.getAttribute("href").slice(1)); if (t) io.observe(t); });
+  }
+}
+
+/* expand / collapse all, copy-link buttons */
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-tree]");
+  if (b) {
+    const open = b.dataset.tree === "open";
+    document.querySelectorAll("#case .tree details").forEach(d => { d.open = open; });
+    return;
+  }
+  const a = e.target.closest(".anchor");
+  if (a) {
+    e.preventDefault(); e.stopPropagation();
+    const id = a.dataset.link;
+    const url = location.href.split("#")[0] + "#" + id;
+    const done = () => { a.textContent = "Copied"; a.classList.add("ok"); setTimeout(() => { a.textContent = "#"; a.classList.remove("ok"); }, 1400); };
+    const fallback = () => { history.replaceState(null, "", "#" + id); done(); };
+    try { navigator.clipboard.writeText(url).then(done, fallback); } catch (err) { fallback(); }
+  }
+});
+
+let current = null;
+function route() {
+  const h = decodeURIComponent(location.hash.slice(1));
+  const pid = h.split("--")[0];
+  const p = PROJECTS.find(x => x.id === pid);
+  if (p) {
+    if (current !== p.id) { renderCase(p); current = p.id; }
+    $("#home").hidden = true; $("#case").hidden = false;
+    document.title = p.name + " · Muhib Rashid";
+    const target = h.includes("--") ? document.getElementById(h) : null;
+    if (target) {
+      for (let d = target.parentElement; d && d.id !== "case"; d = d.parentElement) if (d.tagName === "DETAILS") d.open = true;
+      if (target.tagName === "DETAILS") target.open = true;
+      requestAnimationFrame(() => { target.scrollIntoView({ block: "start" }); target.classList.remove("hit"); void target.offsetWidth; target.classList.add("hit"); });
+    } else window.scrollTo(0, 0);
+  } else {
+    current = null;
+    $("#case").hidden = true; $("#home").hidden = false;
+    document.title = "Muhib Rashid";
+    const map = { work: "work-section", experience: "experience-section", contact: "contact-section" };
+    if (map[h]) requestAnimationFrame(() => document.getElementById(map[h]).scrollIntoView());
+    else if (!h) window.scrollTo(0, 0);
+  }
+}
+
+renderHome();
+route();
+addEventListener("hashchange", route);
+</script>
+</body>
+</html>
