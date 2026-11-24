@@ -411,26 +411,6 @@ const PROJECTS = [
     N("What I learned", "A vertical video on a desktop screen is a layout problem, not a styling one. Small, separate commits made each attempt easy to judge and undo.")
   ]
 },
-/* ------------------------------------------------------------------ MR STUDIOS */
-{
-  id: "mr-studios", group: "client", name: "MR Studios",
-  status: "Live",
-  line: "“The Ink of the Scholar”: a community-funded studio's site, restructured around the StoryBrand framework.",
-  url: "https://umrstudio.vercel.app",
-  facts: [["Stack", "Next.js, GSAP, Lenis, Framer Motion"], ["Built with", "Local AI agents in numbered phases, Playwright MCP"], ["History", "Feb 2026"]],
-  flows: [{ steps: [
-    ["", "Hero", ""], ["", "The problem", ""], ["", "The guide", ""], ["", "The plan", ""], ["", "The stakes", ""], ["", "The ask", ""]
-  ], label: "StoryBrand page order" }],
-  tree: [
-    N("Why", "A studio funded by its community needed its site to tell a story people would back, not just show work."),
-    N("How it was built", "",
-      N("Numbered phases", "Phases 30 to 35: scroll-style pillars with acts, the hero reconceived, a folio-style works index, a clear type hierarchy and more breathing room between sections."),
-      N("A clarity pass", "Hero trimmed to one sentence, works index reordered, support copy and button made clearer."),
-      N("A StoryBrand overhaul", "A new Problem section, the studio as the guide with credentials, “Here's what we're building” as the plan, “Why now” as the stakes, and “Community-funded from day one” as the ask.")),
-    N("Checks", "A Lighthouse report saved in the repo, and Playwright MCP for visual checks. The hero video is preloaded."),
-    N("What I learned", "A framework is useful when it reorders the page. StoryBrand moved the problem above the work, which is where visitors needed it.")
-  ]
-},
 /* ------------------------------------------------------------------ MEMBERS AREA */
 {
   img: "img/members-area", repo: "muhibegypt-del/members-area-lite", id: "members-area", group: "apps", name: "Briggs' Book Club members area",
