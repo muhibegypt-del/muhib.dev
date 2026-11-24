@@ -201,7 +201,7 @@ const PROJECTS = [
 /* ------------------------------------------------------------------ LATIF */
 {
   repo: "muhibhome2-spec/ltfweb", id: "latif-foundation", group: "charity", name: "The Latif Foundation",
-  status: "Live · thelatiffoundation.org",
+  status: "Live · £50,000 raised",
   line: "A memorial foundation's website, rebuilt through several versions until it felt like a memorial, not a campaign.",
   url: "https://www.thelatiffoundation.org",
   facts: [["Stack", "React, Vite, TypeScript, Tailwind"], ["Repos", "6 iterations, about 100 commits"], ["Built with", "Bolt, then Claude Code"], ["History", "Feb to May 2026"]],
@@ -235,6 +235,7 @@ const PROJECTS = [
       N("Pages 404'd on refresh", "Direct links to client-side routes failed on Vercel. A `vercel.json` rewrite fixed it.",
         E("ce538e4", "fix: add vercel.json SPA rewrite for client-side routing")),
       N("Small leaks", "An unused Inter font (about 20 KB per visitor) removed; an OG image still named `gemini_generated_…` renamed.")),
+    N("Result", "I wrote the whole website and all of its copy. The foundation's team raised £50,000."),
     N("What I learned", "Restraint was the brief. Most of the improvement came from deleting things.")
   ]
 },

@@ -150,6 +150,16 @@ header.hero .btns { margin-top: 26px; }
 .skills h3 { font: 600 14.5px/1.3 var(--sans); margin-bottom: 12px; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .tag { font: 400 13px/1 var(--sans); padding: 6px 9px; border-radius: 6px; border: 1px solid var(--rule); color: var(--ink-2); }
+.orgs { list-style: none; display: grid; }
+.orgs li { display: grid; gap: 4px; padding-block: 18px; }
+.orgs li + li { border-top: 1px solid var(--rule); }
+.orgs .hd { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; }
+.orgs b { font: 600 16px/1.35 var(--sans); letter-spacing: -.01em; }
+.orgs .where { font-size: 13px; color: var(--muted); }
+.orgs .size { font-size: 14px; color: var(--ink-2); }
+.orgs .did { font-size: 14px; color: var(--muted); }
+.orgs .did strong { color: var(--ink); font-weight: 500; }
+.orgs-note { margin-top: 14px; font-size: 12.5px; color: var(--muted); }
 .plain { list-style: none; }
 .plain li { display: flex; justify-content: space-between; gap: 6px 20px; flex-wrap: wrap; padding-block: 11px; }
 .plain li + li { border-top: 1px solid var(--rule); }
@@ -334,7 +344,8 @@ details[open]::details-content { height: auto; }
     <h1 class="headline">I get teams actually using AI. Then I build the systems that make it stick.</h1>
     <p class="subline">I'm an AI enablement lead and builder based in the UK. I've worked with AI since OpenAI's early models in 2021 and with Claude since 2023, and I do two things with it: get people using it well, and build the systems they keep using once I've gone.</p>
     <p class="subline">At IGP, a US publisher, I moved the CEO and leadership team from ChatGPT to Claude and trained staff in person in Kuala Lumpur and New York. At Transform Recruitment I set up Claude orchestration with agents working in parallel, sharpened their prompts and cut their API spend.</p>
-    <p class="subline">On my own I built Companion, an AI transcription and publishing tool that a company bought, and I build client websites and apps with Claude Code. Before AI, I ran fundraising campaigns as a charity campaign director.</p>
+    <p class="subline">On my own I built Companion, an AI transcription and publishing tool that a company bought, and I build client websites and apps with Claude Code.</p>
+    <p class="subline">For five years I've also been a freelance content and creative lead for charities, including Penny Appeal and Orphans In Need: planning fundraising campaigns, and scripting and directing their films. One reached 1.4 million views.</p>
     <div class="creds"><span>Early access: Claude Mythos 5.2</span><span>Verified: Anthropic Cyber Verification Program</span></div>
     <div class="btns" data-links></div>
   </header>
@@ -345,6 +356,7 @@ details[open]::details-content { height: auto; }
       <div><b>2 offices</b><span>I trained staff in person to use AI, in Kuala Lumpur and New York</span></div>
       <div><b>Leadership</b><span>I moved a US publisher's CEO and leadership team from ChatGPT to Claude</span></div>
       <div><b>~2 hours</b><span>to draft a full book, down from weeks, with a set of AI tools I built</span></div>
+      <div><b>1.4M views</b><span>on a fundraising film I scripted, voiced and directed for Penny Appeal Canada</span></div>
       <div><b>Newsletters</b><span>a Claude tool I built now writes the newsletters an email team used to write</span></div>
     </div>
   </section>
@@ -385,11 +397,53 @@ details[open]::details-content { height: auto; }
         </ul>
       </div>
       <div class="job">
-        <h3>Campaign Director</h3><span class="when">Earlier</span>
+        <h3>Freelance Content and Creative Lead</h3><span class="when">2021 – now</span>
         <p class="org">Charity sector</p>
-        <p>Led fundraising campaigns and built high-traffic fundraising websites that held up under peak campaign demand.</p>
+        <p>I plan fundraising campaigns, turn complex issues into clear stories, and write for film, websites, email and social media.</p>
+        <ul>
+          <li><strong>Penny Appeal:</strong> worked on flagship campaigns for Penny Appeal Canada and Penny Appeal Australia, and gave creative direction for Penny Appeal UK. I scripted, voiced and directed Canada's campaign film <em>With you, we can</em>, which reached 1.4 million views.</li>
+          <li><strong>Orphans In Need:</strong> scripted and directed the charity's anniversary campaign film.</li>
+          <li><strong>The Latif Foundation:</strong> wrote the whole website and all of its copy. The team raised £50,000.</li>
+          <li><strong>Also:</strong> website copy for IAC UK, and ongoing appeal writing and campaign support for other UK charities.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <h3>Head of Creative and Development</h3><span class="when">2021</span>
+        <p class="org">New Roots</p>
+        <p>Managed the people delivering creative work and fundraising dinners, and served as Head of Youth.</p>
       </div>
     </div>
+  </section>
+
+  <section class="reveal" id="charities-section">
+    <h2 class="sec">Charities I've worked with</h2>
+    <ul class="orgs">
+      <li>
+        <div class="hd"><b>Penny Appeal</b><span class="where">UK · Canada · Australia</span></div>
+        <p class="size">International aid charity founded in 2009, working in 30 crisis-hit countries. £13.1M income in the UK and C$19.1M in Canada in 2024.</p>
+        <p class="did"><strong>My work:</strong> flagship campaigns in Canada and Australia, creative direction in the UK, and a campaign film seen 1.4 million times.</p>
+      </li>
+      <li>
+        <div class="hd"><b>Orphans In Need</b><span class="where">UK</span></div>
+        <p class="size">£23.5M income in its latest year, supporting more than 40,000 orphans and their families across 13 countries.</p>
+        <p class="did"><strong>My work:</strong> scripted and directed its anniversary campaign film.</p>
+      </li>
+      <li>
+        <div class="hd"><b>The Latif Foundation</b><span class="where">UK</span></div>
+        <p class="size">A memorial foundation.</p>
+        <p class="did"><strong>My work:</strong> the whole website and all of its copy. The team raised £50,000.</p>
+      </li>
+      <li>
+        <div class="hd"><b>IAC UK</b><span class="where">UK</span></div>
+        <p class="size">International Aid Charity UK, a Birmingham grant-maker working in Africa, Asia and Türkiye.</p>
+        <p class="did"><strong>My work:</strong> website copy.</p>
+      </li>
+      <li>
+        <div class="hd"><b>New Roots</b><span class="where">UK</span></div>
+        <p class="did"><strong>My work:</strong> Head of Creative and Development, and Head of Youth.</p>
+      </li>
+    </ul>
+    <p class="orgs-note">Figures are from the Charity Commission register, Charity Intelligence Canada's audited figures and the charities' own published reports.</p>
   </section>
 
   <section class="reveal">
@@ -397,7 +451,7 @@ details[open]::details-content { height: auto; }
     <div class="skills">
       <div><h3>AI and adoption</h3><div class="tags"><span class="tag">AI enablement</span><span class="tag">AI adoption</span><span class="tag">Change management</span><span class="tag">AI training and upskilling</span><span class="tag">Workshop facilitation</span><span class="tag">Executive stakeholder management</span><span class="tag">AI strategy</span><span class="tag">AI culture</span><span class="tag">Responsible AI use</span></div></div>
       <div><h3>AI tools and building</h3><div class="tags"><span class="tag">Claude</span><span class="tag">Claude Code</span><span class="tag">Claude Skills</span><span class="tag">Anthropic</span><span class="tag">ChatGPT and OpenAI</span><span class="tag">Copilot</span><span class="tag">LLMs</span><span class="tag">Generative AI</span><span class="tag">Prompt engineering</span><span class="tag">Multi-agent systems</span><span class="tag">Claude orchestration</span><span class="tag">Parallel agents</span><span class="tag">Claude API</span><span class="tag">AI cost reduction</span><span class="tag">Agentic workflows</span><span class="tag">AI pipelines</span><span class="tag">Workflow automation</span><span class="tag">AI translation</span><span class="tag">Remotion</span></div></div>
-      <div><h3>Marketing and comms</h3><div class="tags"><span class="tag">Campaign strategy</span><span class="tag">Fundraising</span><span class="tag">Content strategy</span><span class="tag">Copywriting</span><span class="tag">Email marketing and newsletters</span><span class="tag">Sales pipeline automation</span><span class="tag">Storytelling</span></div></div>
+      <div><h3>Marketing and comms</h3><div class="tags"><span class="tag">Campaign strategy</span><span class="tag">Fundraising</span><span class="tag">Content strategy</span><span class="tag">Copywriting</span><span class="tag">Email marketing and newsletters</span><span class="tag">Sales pipeline automation</span><span class="tag">Storytelling</span><span class="tag">Film scripting and directing</span><span class="tag">Voiceover</span><span class="tag">Creative direction</span></div></div>
       <div><h3>Web</h3><div class="tags"><span class="tag">Website development</span><span class="tag">High-traffic sites</span><span class="tag">Native app development (LG webOS)</span></div></div>
       <div><h3>Background</h3><div class="tags"><span class="tag">BA English Language and Creative Writing</span></div></div>
     </div>
@@ -641,7 +695,7 @@ const PROJECTS = [
 /* ------------------------------------------------------------------ LATIF */
 {
   repo: "muhibhome2-spec/ltfweb", id: "latif-foundation", group: "charity", name: "The Latif Foundation",
-  status: "Live · thelatiffoundation.org",
+  status: "Live · £50,000 raised",
   line: "A memorial foundation's website, rebuilt through several versions until it felt like a memorial, not a campaign.",
   url: "https://www.thelatiffoundation.org",
   facts: [["Stack", "React, Vite, TypeScript, Tailwind"], ["Repos", "6 iterations, about 100 commits"], ["Built with", "Bolt, then Claude Code"], ["History", "Feb to May 2026"]],
@@ -675,6 +729,7 @@ const PROJECTS = [
       N("Pages 404'd on refresh", "Direct links to client-side routes failed on Vercel. A `vercel.json` rewrite fixed it.",
         E("ce538e4", "fix: add vercel.json SPA rewrite for client-side routing")),
       N("Small leaks", "An unused Inter font (about 20 KB per visitor) removed; an OG image still named `gemini_generated_…` renamed.")),
+    N("Result", "I wrote the whole website and all of its copy. The foundation's team raised £50,000."),
     N("What I learned", "Restraint was the brief. Most of the improvement came from deleting things.")
   ]
 },
