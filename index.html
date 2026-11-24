@@ -356,8 +356,8 @@ details[open]::details-content { height: auto; }
   <div class="inner">
     <a class="me" href="#">Muhib Rashid</a>
     <nav aria-label="Sections">
-      <a href="#work">Work</a>
       <a class="opt" href="#experience">Experience</a>
+      <a href="#work">Work</a>
       <a href="#contact">Contact</a>
     </nav>
     <span data-top-cta></span>
@@ -390,15 +390,6 @@ details[open]::details-content { height: auto; }
       <div><b>~2 hours</b><span>to draft a full book, down from weeks, with AI tools I built</span></div>
       <div><b>Leadership</b><span>moved a US publisher's CEO and leadership from ChatGPT to Claude</span></div>
     </div>
-  </section>
-
-  <section class="reveal" id="work-section">
-    <h2 class="sec" id="work-h">Selected work</h2>
-    <p class="intro">Every project opens into its full working: why I built it, the decisions, the back-and-forth with clients and with Claude Code, what broke and how I fixed it, with links to the commits behind it.</p>
-    <p class="sub-h">Start here</p>
-    <div class="picks" id="picks"></div>
-    <p class="sub-h">Everything</p>
-    <div id="work-list"></div>
   </section>
 
   <section class="reveal" id="experience-section">
@@ -449,6 +440,16 @@ details[open]::details-content { height: auto; }
       </div>
     </div>
   </section>
+
+  <section class="reveal" id="work-section">
+    <h2 class="sec" id="work-h">Selected work</h2>
+    <p class="intro">Every project opens into its full working: why I built it, the decisions, the back-and-forth with clients and with Claude Code, what broke and how I fixed it, with links to the commits behind it.</p>
+    <p class="sub-h">Start here</p>
+    <div class="picks" id="picks"></div>
+    <p class="sub-h">Everything</p>
+    <div id="work-list"></div>
+  </section>
+
 
   <section class="reveal" id="charities-section">
     <h2 class="sec">Charities I've worked with</h2>
@@ -944,7 +945,7 @@ const PROJECTS = [
 },
 /* ------------------------------------------------------------------ THIS SITE */
 {
-  img: "img/this-site", repo: "muhibegypt-del/muhib.dev", claude: [9, 9], id: "this-site", group: "apps", name: "muhib.dev (this site)",
+  img: "img/this-site", repo: "muhibegypt-del/muhib.dev", claude: [10, 10], id: "this-site", group: "apps", name: "muhib.dev (this site)",
   status: "Live · every commit made with Claude Code",
   line: "This portfolio: researched from my own git history, written, built and deployed with Claude Code.",
   url: "https://muhib.dev",
