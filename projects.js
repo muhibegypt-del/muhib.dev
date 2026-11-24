@@ -412,6 +412,55 @@ const PROJECTS = [
     N("What I learned", "A vertical video on a desktop screen is a layout problem, not a styling one. Small, separate commits made each attempt easy to judge and undo.")
   ]
 },
+/* ------------------------------------------------------------------ THIS SITE */
+{
+  img: "img/this-site", repo: "muhibegypt-del/muhib.dev", claude: [8, 8], id: "this-site", group: "apps", name: "muhib.dev (this site)",
+  status: "Live · every commit made with Claude Code",
+  line: "This portfolio: researched from my own git history, written, built and deployed with Claude Code.",
+  url: "https://muhib.dev",
+  facts: [["Stack", "One HTML page, plain JavaScript, no framework"], ["Hosting", "Vercel, domain on Namecheap"], ["Built with", "Claude Code"], ["Research", "The git history of 27 repositories"]],
+  flows: [{ steps: [
+    ["", "My brief", "What to show, and a rule: no invented numbers"],
+    ["ai", "Claude Code researches", "Reads 27 repositories' history and the live sites"],
+    ["ai", "Claude Code builds and ships", "Case studies, screenshots, hosting, DNS"],
+    ["human", "I review every round", "Accuracy, tone, what a recruiter sees first"],
+    ["", "muhib.dev", "Updates on every push"]
+  ]}],
+  tree: [
+    N("Why I built it", "Anyone can write “skilled with Claude Code” on a CV. I wanted a portfolio that proves it: every project shows its full working, and every claim links back to the commit behind it. This site is itself one of those projects."),
+    N("How it was made", "",
+      N("Research from the source", "Claude Code read the commit history of 27 repositories across three GitHub accounts, using history-only copies so nothing heavy had to download, plus the live sites and my local project files."),
+      N("Every case is data", "Each project is one entry in `projects.js`: a summary, a workflow diagram and a tree of decisions, fixes and lessons. The page turns that into the drop-downs you're reading."),
+      N("One small page", "Plain HTML, CSS and JavaScript, built into a single file. No framework, so it loads fast and every part is easy to change.")),
+    N("Decisions I made", "",
+      N("Show the working", "Recruiters see finished sites everywhere. The difference here is the reasoning, so every case opens into why, decisions, back-and-forth, fixes and lessons."),
+      N("No invented numbers", "My brief's first rule. Where a number wasn't confirmed, the line says what happened without one."),
+      N("Every point has its own link", "Any decision or fix can be linked to directly, so I can send someone straight to the part that matters to them."),
+      N("Plain words", "Short sentences, no jargon, outcome first. If a recruiter has to decode a line, it isn't working.")),
+    N("Rounds of feedback", "",
+      N("Cut to the strongest", "Dropped thinner case studies so every project on the page carries its weight."),
+      N("Say it in plain words", "Rewrote the numbers strip after it read as jargon."),
+      N("Make the sections easy to see", "Turned small grey labels into clear headings after the page read like a wall of text."),
+      N("Add the rest of my career", "Added my consulting role, my charity creative work and a members' dashboard, and researched each charity's size from public registers.")),
+    N("Troubleshooting", "",
+      N("Vercel couldn't link the repository", "The Vercel account signed in with a different GitHub account from the one that owned the repository, so Vercel had no write access. Moving the repository to the account Vercel already trusted fixed it."),
+      N("Pop-ups blocked in the browser", "Connecting GitHub to Vercel opens a pop-up, and the browser Claude Code drives only allows pop-ups from my own clicks. I did that one click; Claude Code did the rest."),
+      N("Connecting the domain", "Removed Namecheap's parking page and redirect, added the two records Vercel asked for, then checked them at Namecheap's own servers and at public DNS before calling it done."),
+      N("A blank screenshot", "One site wouldn't render in an automated browser, so that project uses a generated cover instead of a broken image."),
+      N("A saved login stopped working", "The Windows GitHub login started asking for a password, so pushes went through the GitHub command-line login for the right account instead.")),
+    N("Pitfalls I avoided", "",
+      N("A check that passed for the wrong reason", "After one push, a check for the new project's name passed, but only because the old page already mentioned a similar name. The push had actually failed. Checking for the new screenshot's address instead caught it, and the push was redone.",
+        E("2c36b0d", "Add Briggs' Book Club members area case study")),
+      N("Claims a recruiter can't check", "Charity sizes come from the Charity Commission register and audited accounts, with the sources named on the page.")),
+    N("How it grew", "",
+      E("7b02354", "Portfolio site: Muhib Rashid"),
+      E("1c073a1", "Add profile intro, Transform Recruitment role, Claude access; clearer section headings"),
+      E("2c36b0d", "Add Briggs' Book Club members area case study"),
+      E("4a7e86c", "Add charity creative work, charities section and 1.4M views")),
+    N("Result", "Live at muhib.dev on Vercel, with its own domain, share cards and dark mode. A push to GitHub updates it in about 20 seconds, and every commit so far was made with Claude Code."),
+    N("What I learned", "“Live” means checked at the real address, with a test that can only pass if the new version is there.")
+  ]
+},
 /* ------------------------------------------------------------------ MEMBERS AREA */
 {
   img: "img/members-area", repo: "muhibegypt-del/members-area-lite", id: "members-area", group: "apps", name: "Briggs' Book Club members area",

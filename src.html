@@ -3,7 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Muhib Rashid</title>
+<title>Muhib Rashid · AI Enablement Lead, Claude specialist</title>
+<meta name="description" content="I get teams using AI, then build the Claude systems that keep them using it. 238 commits made with Claude Code, an AI product I built and sold, and a fundraising film seen 1.4M times.">
+<link rel="canonical" href="https://muhib.dev/">
+<link rel="icon" href="https://muhib.dev/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://muhib.dev/">
+<meta property="og:title" content="Muhib Rashid · AI Enablement Lead, Claude specialist">
+<meta property="og:description" content="I get teams using AI, then build the Claude systems that keep them using it. 238 commits made with Claude Code, an AI product I built and sold, and a fundraising film seen 1.4M times.">
+<meta property="og:image" content="https://muhib.dev/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Muhib Rashid · AI Enablement Lead, Claude specialist">
+<meta name="twitter:description" content="I get teams using AI, then build the Claude systems that keep them using it. 238 commits made with Claude Code, an AI product I built and sold, and a fundraising film seen 1.4M times.">
+<meta name="twitter:image" content="https://muhib.dev/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
@@ -89,6 +103,22 @@ header.hero { padding-top: 64px; }
 .headline { font: 600 clamp(30px, 5.4vw, 40px)/1.12 var(--sans); letter-spacing: -.028em; margin-top: 22px; }
 .subline { color: var(--ink-2); margin-top: 18px; max-width: 62ch; font-size: 16px; }
 .subline + .subline { margin-top: 12px; }
+.names { margin-top: 22px; font-size: 14px; color: var(--ink-2); }
+.names span { color: var(--muted); margin-right: 6px; }
+.names b { font-weight: 600; color: var(--ink); }
+.sig { display: inline-block; margin-top: 16px; font-size: 14.5px; color: var(--accent); text-decoration: none; }
+.sig:hover { text-decoration: underline; text-underline-offset: 3px; }
+.picks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-bottom: 30px; }
+.pick { display: grid; gap: 8px; text-decoration: none; padding: 10px; border: 1px solid var(--rule); border-radius: 10px; transition: border-color .15s, transform .15s; }
+.pick:hover { border-color: var(--muted); transform: translateY(-2px); }
+.pick .thumb { aspect-ratio: 16 / 10; border-radius: 6px; overflow: hidden; border: 1px solid var(--shot-edge); background: var(--wash); }
+.pick .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.pick .cover b { font-size: 13px; }
+.pick .meta2 { display: grid; gap: 3px; min-width: 0; }
+.pick .t { font: 600 14.5px/1.3 var(--sans); }
+.pick .s { font-size: 12.5px; color: var(--muted); }
+.sub-h { font: 600 13px/1 var(--sans); color: var(--muted); margin-bottom: 12px; }
+.orgs-lead { font: 600 18px/1.4 var(--sans); letter-spacing: -.015em; margin: -6px 0 8px; max-width: 46ch; }
 .creds { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
 .creds span { font: 500 13px/1 var(--sans); padding: 7px 11px; border-radius: 8px; background: var(--accent-wash); color: var(--accent); }
 header.hero .btns { margin-top: 26px; }
@@ -306,6 +336,8 @@ details[open]::details-content { height: auto; }
   .job .when { text-align: left; grid-row: 3; margin-top: 2px; }
   .sec { font-size: 21px; }
   .skills { grid-template-columns: minmax(0, 1fr); }
+  .picks { grid-template-columns: minmax(0, 1fr); }
+  .pick { grid-template-columns: 110px minmax(0, 1fr); align-items: center; }
   .ba { grid-template-columns: minmax(0, 1fr); }
   .kids { margin-left: 3px; padding-left: 9px; }
   .kids .kids .kids { margin-left: 0; padding-left: 0; border-left: 0; }
@@ -339,31 +371,33 @@ details[open]::details-content { height: auto; }
 <div id="home" class="col">
   <header class="hero">
     <p class="name">Muhib Rashid</p>
-    <p class="title">AI Enablement Lead · AI Adoption, Workflow Automation and Change Enablement · Claude and LLM Specialist</p>
+    <p class="title">AI Enablement Lead · Claude specialist</p>
     <span class="pill"><i></i>Open to roles · Remote, hybrid and international</span>
     <h1 class="headline">I get teams actually using AI. Then I build the systems that make it stick.</h1>
-    <p class="subline">I'm an AI enablement lead and builder based in the UK. I've worked with AI since OpenAI's early models in 2021 and with Claude since 2023, and I do two things with it: get people using it well, and build the systems they keep using once I've gone.</p>
-    <p class="subline">At IGP, a US publisher, I moved the CEO and leadership team from ChatGPT to Claude and trained staff in person in Kuala Lumpur and New York. At Transform Recruitment I set up Claude orchestration with agents working in parallel, sharpened their prompts and cut their API spend.</p>
-    <p class="subline">On my own I built Companion, an AI transcription and publishing tool that a company bought, and I build client websites and apps with Claude Code.</p>
-    <p class="subline">For five years I've also been a freelance content and creative lead for charities, including Penny Appeal and Orphans In Need: planning fundraising campaigns, and scripting and directing their films. One reached 1.4 million views.</p>
+    <p class="subline">Adoption is persuasion. I spent five years getting people to act for charities like Penny Appeal and Orphans In Need. Now I do it with AI: I moved a US publisher's leadership onto Claude, trained its staff on two continents, and build the Claude systems that keep teams using it.</p>
+    <a class="sig" href="#work">Every project below shows its full working, down to the commit →</a>
+    <p class="names"><span>Worked with</span><b>IGP</b> · <b>Transform Recruitment</b> · <b>Penny Appeal</b> · <b>Orphans In Need</b></p>
     <div class="creds"><span>Early access: Claude Mythos 5.2</span><span>Verified: Anthropic Cyber Verification Program</span></div>
     <div class="btns" data-links></div>
   </header>
 
   <section class="reveal" aria-label="Results">
     <div class="proof">
-      <div><b>1M+ words</b><span>turned from recordings into text by Companion, a tool I built. A company bought it.</span></div>
-      <div><b>2 offices</b><span>I trained staff in person to use AI, in Kuala Lumpur and New York</span></div>
-      <div><b>Leadership</b><span>I moved a US publisher's CEO and leadership team from ChatGPT to Claude</span></div>
-      <div><b>~2 hours</b><span>to draft a full book, down from weeks, with a set of AI tools I built</span></div>
       <div><b>1.4M views</b><span>on a fundraising film I scripted, voiced and directed for Penny Appeal Canada</span></div>
-      <div><b>Newsletters</b><span>a Claude tool I built now writes the newsletters an email team used to write</span></div>
+      <div><b>238 commits</b><span>made with Claude Code across four shipped projects, each one linked below</span></div>
+      <div><b>1M+ words</b><span>transcribed by Companion, the AI product I built and sold</span></div>
+      <div><b>£45M+</b><span>combined yearly income of the charities I've done creative work for</span></div>
+      <div><b>~2 hours</b><span>to draft a full book, down from weeks, with AI tools I built</span></div>
+      <div><b>Leadership</b><span>moved a US publisher's CEO and leadership from ChatGPT to Claude</span></div>
     </div>
   </section>
 
   <section class="reveal" id="work-section">
     <h2 class="sec" id="work-h">Selected work</h2>
     <p class="intro">Every project opens into its full working: why I built it, the decisions, the back-and-forth with clients and with Claude Code, what broke and how I fixed it, with links to the commits behind it.</p>
+    <p class="sub-h">Start here</p>
+    <div class="picks" id="picks"></div>
+    <p class="sub-h">Everything</p>
     <div id="work-list"></div>
   </section>
 
@@ -378,32 +412,33 @@ details[open]::details-content { height: auto; }
       <div class="job">
         <h3>Claude AI Consultant</h3><span class="when">2025 – 2026</span>
         <p class="org">Transform Recruitment</p>
-        <p>Helped a recruitment firm get more out of Claude, and spend less doing it.</p>
+        <p>Made a recruitment firm's Claude work faster and cheaper.</p>
         <ul>
-          <li><strong>Orchestration:</strong> set up Claude orchestration so several agents work on tasks in parallel instead of one at a time.</li>
-          <li><strong>Prompt engineering:</strong> rewrote and structured the prompts behind their day-to-day AI work.</li>
-          <li><strong>Cost:</strong> reduced their AI spend on the Claude API.</li>
+          <li><strong>Agents in parallel:</strong> set up Claude orchestration so several agents run tasks at once instead of one at a time.</li>
+          <li><strong>Lower API spend:</strong> cut what they paid for the Claude API.</li>
+          <li><strong>Sharper prompts:</strong> rewrote and structured the prompts behind their day-to-day AI work.</li>
         </ul>
       </div>
       <div class="job">
         <h3>AI Enablement Lead</h3><span class="when">2024 – 2026</span>
         <p class="org">IGP, US publisher</p>
-        <p>Led AI adoption across a US publishing business, from executive buy-in to hands-on staff training and production AI systems.</p>
+        <p>Took a US publisher from executive buy-in, to staff training, to AI systems in production.</p>
         <ul>
-          <li><strong>Executive adoption:</strong> led the CEO and leadership's move from ChatGPT to Claude as the company's main AI platform.</li>
-          <li><strong>Training:</strong> in-person workshops at the Kuala Lumpur and New York offices.</li>
+          <li><strong>Leadership on Claude:</strong> moved the CEO and leadership from ChatGPT to Claude as the company's main AI platform.</li>
+          <li><strong>Two offices trained:</strong> ran in-person workshops in Kuala Lumpur and New York.</li>
+          <li><strong>A team's work automated:</strong> built a Claude newsletter generator that replaced the outbound email team.</li>
+          <li><strong>More systems:</strong> AI translation pipelines and AI sales pipelines.</li>
           <li><strong>Culture:</strong> a company-wide talk on where AI helps, where it doesn't, and how to use it responsibly.</li>
-          <li><strong>Systems:</strong> AI translation pipelines, AI sales pipelines, and a Claude newsletter generator that replaced the outbound email team.</li>
         </ul>
       </div>
       <div class="job">
         <h3>Freelance Content and Creative Lead</h3><span class="when">2021 – now</span>
         <p class="org">Charity sector</p>
-        <p>I plan fundraising campaigns, turn complex issues into clear stories, and write for film, websites, email and social media.</p>
+        <p>Plan fundraising campaigns, and script and direct the films behind them, for charities with £45M+ in combined yearly income.</p>
         <ul>
-          <li><strong>Penny Appeal:</strong> worked on flagship campaigns for Penny Appeal Canada and Penny Appeal Australia, and gave creative direction for Penny Appeal UK. I scripted, voiced and directed Canada's campaign film <em>With you, we can</em>, which reached 1.4 million views.</li>
-          <li><strong>Orphans In Need:</strong> scripted and directed the charity's anniversary campaign film, marking its 100 millionth meal.</li>
-          <li><strong>The Latif Foundation:</strong> wrote the whole website and all of its copy. The team raised £50,000.</li>
+          <li><strong>1.4M views:</strong> scripted, voiced and directed Penny Appeal Canada's campaign film <em>With you, we can</em>. Also worked on flagship campaigns for Penny Appeal Canada and Australia, and gave creative direction for Penny Appeal UK.</li>
+          <li><strong>100 millionth meal:</strong> scripted and directed Orphans In Need's anniversary campaign film marking the milestone.</li>
+          <li><strong>£50,000 raised:</strong> wrote the whole website and all the copy for The Latif Foundation.</li>
           <li><strong>Also:</strong> website copy for IAC UK, and ongoing appeal writing and campaign support for other UK charities.</li>
         </ul>
       </div>
@@ -417,6 +452,7 @@ details[open]::details-content { height: auto; }
 
   <section class="reveal" id="charities-section">
     <h2 class="sec">Charities I've worked with</h2>
+    <p class="orgs-lead">Creative work for charities with a combined £45M+ in yearly income.</p>
     <ul class="orgs">
       <li>
         <div class="hd"><b>Penny Appeal</b><span class="where">UK · Canada · Australia</span></div>
@@ -443,7 +479,7 @@ details[open]::details-content { height: auto; }
         <p class="did"><strong>My work:</strong> Head of Creative and Development, and Head of Youth.</p>
       </li>
     </ul>
-    <p class="orgs-note">Figures are from the Charity Commission register, Charity Intelligence Canada's audited figures and the charities' own published reports.</p>
+    <p class="orgs-note">£45M+ is Orphans In Need (£23.5M), Penny Appeal UK (£13.1M) and Penny Appeal Canada (C$19.1M, about £10M). Figures are from the Charity Commission register, Penny Appeal Canada's audited statements and the charities' own reports.</p>
   </section>
 
   <section class="reveal">
@@ -481,10 +517,10 @@ details[open]::details-content { height: auto; }
   </section>
 
   <footer class="site reveal" id="contact-section">
-    <p class="open">My inbox is open. If you're trying to get your team using AI properly, let's talk.</p>
+    <p class="open">If you want your team actually using AI, not just trying it, let's talk.</p>
     <div class="btns" data-links></div>
     <p class="addr" data-email hidden></p>
-    <p class="small">Muhib Rashid · Built with Claude Code</p>
+    <p class="small">Muhib Rashid · This site was built with Claude Code. <a href="#this-site">See how it was made →</a></p>
   </footer>
 </div>
 
@@ -517,7 +553,7 @@ const CHEV = '<svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentC
 
 function linksHTML() {
   const b = [];
-  if (LINKS.email) b.push(`<a class="btn solid" href="mailto:${esc(LINKS.email)}">Email me</a>`);
+  if (LINKS.email) b.push(`<a class="btn solid" href="mailto:${esc(LINKS.email)}">Email me about your team</a>`);
   if (LINKS.linkedin) b.push(`<a class="btn" href="${esc(LINKS.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>`);
   if (LINKS.cv) b.push(`<a class="btn" href="${esc(LINKS.cv)}" target="_blank" rel="noopener">CV</a>`);
   return b.join("");
@@ -530,7 +566,10 @@ function coverHTML(p) {
 const thumbHTML = p => p.img ? `<img src="${p.img}-t.jpg" alt="" loading="lazy" width="480" height="300">` : coverHTML(p);
 
 /* ---------- home ---------- */
+const PICKS = ["companion", "bloob", "this-site"];
 function renderHome() {
+  $("#picks").innerHTML = PICKS.map(id => PROJECTS.find(p => p.id === id)).filter(Boolean).map(p => `
+    <a class="pick" href="#${p.id}"><span class="thumb">${thumbHTML(p)}</span><span class="meta2"><span class="t">${esc(p.name)}</span><span class="s">${esc(p.status)}</span></span></a>`).join("");
   $("#work-list").innerHTML = GROUPS.map(([g, label]) => {
     const ps = PROJECTS.filter(p => p.group === g);
     return `<details class="group" open>
@@ -709,7 +748,7 @@ function route() {
   } else {
     current = null;
     $("#case").hidden = true; $("#home").hidden = false;
-    document.title = "Muhib Rashid";
+    document.title = "Muhib Rashid · AI Enablement Lead, Claude specialist";
     const map = { work: "work-section", experience: "experience-section", contact: "contact-section" };
     if (map[h]) requestAnimationFrame(() => document.getElementById(map[h]).scrollIntoView());
     else if (!h) window.scrollTo(0, 0);
