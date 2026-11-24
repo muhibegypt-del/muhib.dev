@@ -103,7 +103,7 @@ const PROJECTS = [
 /* ------------------------------------------------------------------ DOCUMENTARY */
 {
   id: "documentary", group: "ai", name: "Documentary editing skill",
-  status: "Built and tested",
+  status: "Claude skill · built and tested",
   line: "A Claude Code skill that turns writer-led documentary editing in Remotion into a guided workflow.",
   facts: [["Type", "Claude Code skill, plus a voice-cleanup skill"], ["Video", "Remotion"], ["Archives", "Met, LOC, Smithsonian, Europeana, Wellcome"], ["Audio", "ClearVoice MossFormer2, offline"]],
   flows: [
@@ -143,7 +143,7 @@ const PROJECTS = [
 /* ------------------------------------------------------------------ PITCH ANGLE */
 {
   id: "pitch-angle", group: "ai", name: "Pitch Angle Finder",
-  status: "Used on my own outreach",
+  status: "Claude skill · used in my own outreach",
   line: "A Claude skill that finds the strongest pitch angle for a charity before I contact them.",
   facts: [["Type", "Claude skill"], ["Window", "Next 6 to 12 months"], ["Output", "A Loom script for the decision-maker"]],
   flows: [{ steps: [
@@ -204,7 +204,7 @@ const PROJECTS = [
   status: "Live · £50,000 raised",
   line: "A memorial foundation's website, rebuilt through several versions until it felt like a memorial, not a campaign.",
   url: "https://www.thelatiffoundation.org",
-  facts: [["Stack", "React, Vite, TypeScript, Tailwind"], ["Repos", "6 iterations, about 100 commits"], ["Built with", "Bolt, then Claude Code"], ["History", "Feb to May 2026"]],
+  facts: [["Stack", "React, Vite, TypeScript, Tailwind"], ["Versions", "6 iterations"], ["Built with", "Bolt, then Claude Code"], ["History", "Feb to May 2026"]],
   flows: [{ steps: [
     ["", "First draft in Bolt", "Seasonal-appeal-led, heavily decorated"],
     ["ai", "Redesign and accessibility pass", "Claude Code on pull-request branches"],
@@ -242,7 +242,7 @@ const PROJECTS = [
 /* ------------------------------------------------------------------ SOUL CARAVAN */
 {
   img: "img/soul-caravan", repo: "muhibhome2-spec/scwesbitef", id: "soul-caravan", group: "charity", name: "Soul Caravan Foundation",
-  status: "Live · 280+ commits",
+  status: "Live · appeals for Kenya",
   line: "An appeals website for a foundation supporting communities in Kenya.",
   url: "https://scwesbitef.vercel.app",
   facts: [["Stack", "React, Vite, TypeScript, Tailwind"], ["Integrations", "ImageKit video, MailerLite"], ["Built with", "Bolt, local AI agents, Playwright MCP"], ["History", "Dec 2025 to Mar 2026"]],
@@ -279,7 +279,7 @@ const PROJECTS = [
 },
 /* ------------------------------------------------------------------ BRIGGS */
 {
-  repo: "muhibhome2-spec/briggsbookclub", claude: [20, 48], id: "briggs-book-club", group: "charity", name: "Briggs' Book Club",
+  repo: "muhibhome2-spec/briggsbookclub", id: "briggs-book-club", group: "charity", name: "Briggs' Book Club",
   status: "Live · 500+ members",
   line: "A pay-what-you-can reading circle's website, and a members' replay library, iterated over a year.",
   url: "https://www.briggsbook.club",
@@ -321,10 +321,10 @@ const PROJECTS = [
 /* ------------------------------------------------------------------ A TEXTURED WORD */
 {
   img: "img/a-textured-word", repo: "muhibegypt-del/awesbite1", claude: [80, 97], before: { src: "img/a-textured-word-before.jpg", was: "August 2026: the first client preview", now: "November 2026: live, after five feedback rounds" }, id: "a-textured-word", group: "client", name: "a textured word",
-  status: "100 accessibility · 98–100 performance",
+  status: "Live · 100/100 accessibility score",
   line: "A boutique site for an English tutor and voice artist, built with Claude Code through five rounds of client feedback.",
   url: "https://awesbite1.vercel.app",
-  facts: [["Stack", "Astro, vanilla CSS, 6 KB of JavaScript"], ["Commits", "97, of which 80 with Claude Code"], ["History", "Aug to Nov 2026"], ["Client", "Aneesa, tutor and voice artist"]],
+  facts: [["Stack", "Astro, vanilla CSS, 6 KB of JavaScript"], ["Built with", "Claude Code"], ["History", "Aug to Nov 2026"], ["Client", "Aneesa, tutor and voice artist"]],
   flows: [{ steps: [
     ["", "Client feedback", "Numbered items with her screenshots"],
     ["ai", "One commit per item", "Claude Code works from CLAUDE.md rules"],
@@ -379,11 +379,11 @@ const PROJECTS = [
 },
 /* ------------------------------------------------------------------ KHALED */
 {
-  img: "img/khaled-siddiq", repo: "muhibhome2-spec/khxledsiddiqwebapp", claude: [15, 85], id: "khaled-siddiq", group: "client", name: "Khaled Siddiq",
+  img: "img/khaled-siddiq", repo: "muhibhome2-spec/khxledsiddiqwebapp", id: "khaled-siddiq", group: "client", name: "Khaled Siddiq",
   status: "Live · khaledsiddiq.com",
   line: "A membership landing page for a UK artist, video-first, with Stripe checkout.",
   url: "https://www.khaledsiddiq.com",
-  facts: [["Stack", "React, Vite, Tailwind"], ["Payments", "Stripe checkout link"], ["Built with", "Bolt, then Claude Code"], ["History", "Nov 2025 to Apr 2026, 85 commits"]],
+  facts: [["Stack", "React, Vite, Tailwind"], ["Payments", "Stripe checkout link"], ["Built with", "Bolt, then Claude Code"], ["History", "Nov 2025 to Apr 2026"]],
   flows: [{ steps: [
     ["", "Artist's video and offer", "One membership tier"],
     ["ai", "Layout iterations", "Claude Code, one change per commit"],
@@ -414,7 +414,7 @@ const PROJECTS = [
 },
 /* ------------------------------------------------------------------ THIS SITE */
 {
-  img: "img/this-site", repo: "muhibegypt-del/muhib.dev", claude: [11, 11], id: "this-site", group: "apps", name: "muhib.dev (this site)",
+  img: "img/this-site", repo: "muhibegypt-del/muhib.dev", claude: [12, 12], id: "this-site", group: "apps", name: "muhib.dev (this site)",
   status: "Live · every commit made with Claude Code",
   line: "This portfolio: researched from my own git history, written, built and deployed with Claude Code.",
   url: "https://muhib.dev",
@@ -527,9 +527,9 @@ const PROJECTS = [
 /* ------------------------------------------------------------------ BLOOB */
 {
   repo: "muhibegypt-del/Bloob", claude: [123, 148], id: "bloob", group: "apps", name: "Bloob",
-  status: "Built · version 5.0",
+  status: "Native TV app · fully built",
   line: "A native C++ film and series app for my own rooted LG TV, built over five weeks with Claude Code.",
-  facts: [["Stack", "C++ native webOS app, Node service on the TV"], ["Commits", "148, of which 123 with Claude Code"], ["History", "12 Oct to 16 Nov 2026"], ["Versions", "0.3 to 5.0"]],
+  facts: [["Stack", "C++ native webOS app, Node service on the TV"], ["Built with", "Claude Code"], ["History", "12 Oct to 16 Nov 2026"], ["Versions", "0.3 to 5.0"]],
   flows: [{ steps: [
     ["", "One increment", "Next numbered item on the App Map"],
     ["ai", "Build and test", "Claude Code makes the change and runs checks"],
