@@ -531,7 +531,7 @@ details[open]::details-content { height: auto; }
 <script src="projects.js"></script>
 <script>
 /* Fill these in and the buttons appear. Empty ones stay hidden. */
-const LINKS = { email: "", linkedin: "", cv: "" };
+const LINKS = { email: "", phone: "+447448365635", phoneShown: "+44 7448 365635", linkedin: "", cv: "" };
 
 const $ = (s, r = document) => r.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -555,6 +555,7 @@ const CHEV = '<svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentC
 function linksHTML() {
   const b = [];
   if (LINKS.email) b.push(`<a class="btn solid" href="mailto:${esc(LINKS.email)}">Email me about your team</a>`);
+  if (LINKS.phone) b.push(`<a class="btn${LINKS.email ? "" : " solid"}" href="tel:${esc(LINKS.phone)}">Call or text ${esc(LINKS.phoneShown || LINKS.phone)}</a>`);
   if (LINKS.linkedin) b.push(`<a class="btn" href="${esc(LINKS.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>`);
   if (LINKS.cv) b.push(`<a class="btn" href="${esc(LINKS.cv)}" target="_blank" rel="noopener">CV</a>`);
   return b.join("");
@@ -590,6 +591,7 @@ function renderHome() {
   const em = $("[data-email]");
   if (LINKS.email) { em.textContent = LINKS.email; em.hidden = false; }
   if (LINKS.email) $("[data-top-cta]").innerHTML = `<a class="btn solid sm" href="mailto:${esc(LINKS.email)}">Email me</a>`;
+  else if (LINKS.phone) $("[data-top-cta]").innerHTML = `<a class="btn solid sm" href="tel:${esc(LINKS.phone)}">Call me</a>`;
 }
 
 /* ---------- case page ---------- */
