@@ -414,7 +414,7 @@ const PROJECTS = [
 },
 /* ------------------------------------------------------------------ THIS SITE */
 {
-  img: "img/this-site", repo: "muhibegypt-del/muhib.dev", claude: [14, 14], id: "this-site", group: "apps", name: "muhib.dev (this site)",
+  img: "img/this-site", repo: "muhibegypt-del/muhib.dev", claude: [15, 15], id: "this-site", group: "apps", name: "muhib.dev (this site)",
   status: "Live · every commit made with Claude Code",
   line: "This portfolio: researched from my own git history, written, built and deployed with Claude Code.",
   url: "https://muhib.dev",
