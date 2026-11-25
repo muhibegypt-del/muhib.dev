@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PRAISED · Creative studio for charities</title>
+<meta name="description" content="PRAISED is an independent creative studio for charities, led by Muhib Rashid. Campaign films, appeals, websites and copy for charities including Penny Appeal and Orphans In Need.">
+<link rel="canonical" href="https://praised.studio/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://praised.studio/">
+<meta property="og:title" content="PRAISED · Creative studio for charities">
+<meta property="og:description" content="Campaign films, appeals, websites and copy for charities including Penny Appeal and Orphans In Need. Led by Muhib Rashid.">
+<meta property="og:image" content="https://praised.studio/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PRAISED · Creative studio for charities">
+<meta name="twitter:description" content="Campaign films, appeals, websites and copy for charities including Penny Appeal and Orphans In Need. Led by Muhib Rashid.">
+<meta name="twitter:image" content="https://praised.studio/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=Geist:wght@400;500;600;700&display=swap">
+<style>
+/* Editorial system: one family (Geist), emphasis by tone, not by a second typeface.
+   Square-ish corners, hairline grids, numbered sections, one cinematic film at the top. */
+:root {
+  --paper: #ffffff; --ink: #0a0a0a; --ink-2: #3b3f47; --muted: #6b7280; --rule: #e4e4e2; --wash: #f5f5f3;
+  --accent: #5f6f2a; --accent-wash: #f1f4e6; --olive: #708238;
+  --shot-edge: rgba(10, 10, 10, .08);
+  --t-default: #f1efea; --t-warm: #f3ebe0; --t-dark: #1d1a17;
+  --r: 4px;
+  --sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif: var(--sans);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0b0b0c; --ink: #f2f2f0; --ink-2: #c6c8cc; --muted: #8f949c; --rule: #232427; --wash: #141416;
+    --accent: #a3b55c; --accent-wash: #1c2210; --olive: #9bae55; --shot-edge: rgba(255, 255, 255, .08);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0b0b0c; --ink: #f2f2f0; --ink-2: #c6c8cc; --muted: #8f949c; --rule: #232427; --wash: #141416;
+  --accent: #a3b55c; --accent-wash: #1c2210; --olive: #9bae55; --shot-edge: rgba(255, 255, 255, .08);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--paper); -webkit-text-size-adjust: 100%; scroll-padding-top: 72px; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.65 var(--sans); -webkit-font-smoothing: antialiased; }
+h1, h2, h3, p, ul, ol, figure { margin: 0; padding: 0; }
+h1, h2, h3 { text-wrap: balance; font-weight: inherit; }
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+em.s { font-style: normal; color: var(--olive); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+[hidden] { display: none !important; }
+
+.wrap { max-width: 1240px; margin: 0 auto; padding-inline: 32px; }
+.band { padding-block: 128px; border-bottom: 1px solid var(--rule); }
+.eyebrow { display: flex; gap: 14px; align-items: baseline; font: 500 13px/1.3 var(--sans); color: var(--muted); letter-spacing: .01em; }
+.eyebrow .no { font-variant-numeric: tabular-nums; color: var(--ink); }
+.h2 { font: 500 clamp(34px, 4.4vw, 58px)/1.04 var(--sans); letter-spacing: -.035em; margin-top: 18px; max-width: 18ch; }
+.lead { color: var(--ink-2); font-size: 18px; max-width: 54ch; margin-top: 20px; }
+.head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 24px 48px; margin-bottom: 64px; }
+
+/* top bar */
+.topbar { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--paper) 86%, transparent); backdrop-filter: saturate(1.4) blur(12px); -webkit-backdrop-filter: saturate(1.4) blur(12px); border-bottom: 1px solid var(--rule); }
+.topbar .inner { max-width: 1240px; margin: 0 auto; padding: 0 32px; height: 64px; display: flex; align-items: center; gap: 26px; }
+.topbar .me { font: 900 30px/1 "Big Shoulders Display", "Arial Narrow", sans-serif; letter-spacing: -.01em; text-transform: uppercase; text-decoration: none; margin-right: auto; }
+.topbar .me b { color: var(--olive); font-weight: 900; }
+.topbar nav { display: flex; gap: 26px; font-size: 14px; }
+.topbar nav a { text-decoration: none; color: var(--ink-2); position: relative; }
+.topbar nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
+.topbar nav a:hover { color: var(--ink); }
+.topbar nav a:hover::after { transform: scaleX(1); }
+.theme { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--rule); background: var(--paper); color: var(--ink-2); display: grid; place-items: center; cursor: pointer; }
+.theme:hover { color: var(--ink); border-color: var(--muted); }
+.theme svg { width: 15px; height: 15px; }
+
+/* buttons */
+.btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { white-space: nowrap; display: inline-flex; align-items: center; gap: 10px; height: 48px; padding: 0 22px; border-radius: 999px; font: 500 15px/1 var(--sans); text-decoration: none; border: 1px solid var(--rule); color: var(--ink); background: var(--paper); transition: border-color .15s, background .15s, opacity .15s; }
+.btn:hover { border-color: var(--ink); }
+.btn.solid { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.btn.solid:hover { opacity: .86; }
+.btn .ar { transition: transform .2s ease; }
+.btn:hover .ar { transform: translateX(3px); }
+.btn.sm { height: 36px; padding: 0 16px; font-size: 13.5px; }
+
+/* hero */
+.hero { padding-top: 96px; }
+.hero .top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px 24px; }
+.pill { display: inline-flex; align-items: center; gap: 9px; padding: 7px 14px 7px 12px; border-radius: 999px; border: 1px solid var(--rule); font: 500 13px/1 var(--sans); color: var(--ink-2); }
+.pill i { width: 7px; height: 7px; border-radius: 50%; background: #16a34a; box-shadow: 0 0 0 3px color-mix(in srgb, #16a34a 22%, transparent); }
+.headline { font: 500 clamp(46px, 8vw, 116px)/.95 var(--sans); letter-spacing: -.05em; margin-top: 44px; }
+.headline em.s { display: block; }
+.hero .row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px 64px; align-items: end; margin-top: 48px; }
+.subline { color: var(--ink-2); max-width: 46ch; font-size: 19px; line-height: 1.55; }
+.film { margin-top: 72px; }
+.film figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; margin-top: 16px; padding-bottom: 96px; font-size: 14px; color: var(--muted); }
+.film figcaption b { color: var(--ink); font-weight: 500; }
+
+/* video player (still until pressed) */
+.player { position: relative; aspect-ratio: 16 / 9; border-radius: var(--r); overflow: hidden; background: #000; }
+.film .player { aspect-ratio: 2.2 / 1; }
+.player button { all: unset; cursor: pointer; display: block; width: 100%; height: 100%; position: relative; }
+.player img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; transition: transform 1.2s cubic-bezier(.2, .7, .2, 1); }
+.player button:hover img { transform: scale(1.025); }
+.player .pbtn { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 96px; height: 96px; border-radius: 50%; display: grid; place-items: center; background: rgba(255, 255, 255, .92); color: #0a0a0a; transition: transform .3s cubic-bezier(.2, .7, .2, 1), background .2s; }
+.player .pbtn svg { width: 26px; height: 26px; margin-left: 4px; }
+.player button:hover .pbtn, .player button:focus-visible .pbtn { transform: translate(-50%, -50%) scale(1.08); background: #fff; }
+.player .plabel { position: absolute; left: 24px; bottom: 22px; color: #fff; font: 500 14px/1 var(--sans); text-shadow: 0 1px 12px rgba(0, 0, 0, .5); }
+.player iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+/* trust banner: a hairline grid of client logos */
+.trust { padding-block: 0 112px; }
+.trust .cap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.trust .cap b { color: var(--ink); font-weight: 500; }
+.logos { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.logos li { background: var(--paper); display: grid; place-items: center; height: 136px; padding: 20px; }
+.logos img { width: auto; max-width: 100%; filter: grayscale(1) brightness(0); opacity: .78; transition: opacity .25s; }
+.logos li:hover img { opacity: 1; }
+.l-pa { height: 26px; } .l-oin { height: 30px; } .l-amwt { height: 46px; } .l-nb { height: 70px; } .l-iac { height: 62px; } .l-ltf { height: 58px; } .l-sc { height: 62px; } .l-gm { height: 70px; }
+:root[data-theme="dark"] .logos img, :root[data-theme="dark"] .orgs .lg img { filter: grayscale(1) brightness(0) invert(1); opacity: .82; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .logos img, :root:not([data-theme="light"]) .orgs .lg img { filter: grayscale(1) brightness(0) invert(1); opacity: .82; } }
+
+/* proof */
+.proof { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--rule); }
+.proof div { display: grid; gap: 14px; align-content: start; padding: 40px 32px 0 0; }
+.proof div + div { padding-left: 32px; border-left: 1px solid var(--rule); }
+.proof b { font: 500 clamp(40px, 4.4vw, 62px)/.95 var(--sans); white-space: nowrap; letter-spacing: -.05em; font-variant-numeric: tabular-nums; }
+.proof span { font-size: 15px; line-height: 1.5; color: var(--ink-2); max-width: 24ch; }
+
+/* work */
+.filters { display: flex; flex-wrap: wrap; gap: 6px 26px; }
+.filters button { all: unset; cursor: pointer; font: 500 15px/1 var(--sans); color: var(--muted); padding-block: 8px; border-bottom: 1px solid transparent; transition: color .15s, border-color .15s; }
+.filters button:hover { color: var(--ink); }
+.filters button[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--ink); }
+.filters button sup { font-size: 10.5px; margin-left: 3px; font-variant-numeric: tabular-nums; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 88px 40px; }
+.card { display: grid; gap: 22px; text-decoration: none; align-content: start; }
+.card.wide { grid-column: 1 / -1; }
+.card .media { aspect-ratio: 4 / 3; border-radius: var(--r); overflow: hidden; background: var(--wash); position: relative; }
+.card.wide .media { aspect-ratio: 2.2 / 1; }
+.card .media > img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 1.1s cubic-bezier(.2, .7, .2, 1); }
+.card .media > img.c { object-position: center 35%; }
+.card:hover .media > img, .card:hover .cover { transform: scale(1.03); }
+.card .play { position: absolute; left: 20px; bottom: 20px; display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px 9px 12px; border-radius: 999px; background: rgba(255, 255, 255, .92); color: #0a0a0a; font: 500 13px/1 var(--sans); }
+.card .play svg { width: 12px; height: 12px; }
+.card .meta { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 4px 16px; align-items: baseline; }
+.card .idx { font: 500 13px/1.6 var(--sans); color: var(--muted); font-variant-numeric: tabular-nums; grid-row: span 2; }
+.card .t { font: 500 clamp(22px, 2.2vw, 30px)/1.15 var(--sans); letter-spacing: -.03em; }
+.card .st { font-size: 14px; color: var(--accent); white-space: nowrap; text-align: right; }
+.card .who { grid-column: 2 / -1; font-size: 14.5px; color: var(--muted); }
+.card .nw { white-space: nowrap; }
+.card .ar { display: inline-block; transition: transform .25s ease; }
+.card:hover .ar { transform: translateX(4px); }
+
+/* covers for work without a photograph: the client's logo on a tinted panel */
+.cover { position: absolute; inset: 0; display: grid; place-items: center; padding: 14%; background: var(--t-default); transition: transform 1.1s cubic-bezier(.2, .7, .2, 1); }
+.cover.pa { background: #f26a03; color: #fff; } .cover.ink { background: #151412; color: #f4efe6; } .cover.iac { background: #123f33; color: #fff; }
+.cover.amwt { background: #008c70; color: #fff; } .cover.ink2 { background: #0f1a17; color: #e9f5f1; }
+.cover.warm { background: var(--t-warm); color: #1d1a17; } .cover.dark { background: var(--t-dark); color: #f4efe6; }
+.cover img { max-height: 30%; max-width: 64%; width: auto; }
+.cover img.white { filter: brightness(0) invert(1); }
+.cover .sub { position: absolute; left: 24px; right: 24px; bottom: 22px; display: flex; justify-content: space-between; gap: 16px; font: 500 12px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; opacity: .8; }
+.cover .word { font: 600 clamp(30px, 4vw, 54px)/1 var(--sans); letter-spacing: -.035em; text-align: center; }
+
+/* artist page */
+.artist { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 64px; align-items: end; text-decoration: none; }
+.artist .media { aspect-ratio: 16 / 10; border-radius: var(--r); overflow: hidden; background: var(--wash); }
+.artist .media img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 1.1s cubic-bezier(.2, .7, .2, 1); }
+.artist:hover .media img { transform: scale(1.03); }
+.artist .t { display: block; font: 500 clamp(28px, 3vw, 42px)/1.08 var(--sans); letter-spacing: -.035em; margin-top: 14px; }
+.artist p.d { color: var(--ink-2); margin-top: 18px; font-size: 17px; }
+.artist .roles { display: block; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--muted); }
+.artist .go { display: inline-flex; gap: 8px; margin-top: 26px; font-size: 15px; font-weight: 500; }
+.artist .go .ar { transition: transform .25s ease; }
+.artist:hover .go .ar { transform: translateX(4px); }
+
+/* services: a numbered index */
+.svc { list-style: none; border-top: 1px solid var(--ink); }
+.svc li { display: grid; grid-template-columns: 64px minmax(0, 1fr) minmax(0, 1fr); gap: 8px 32px; align-items: baseline; padding-block: 30px; border-bottom: 1px solid var(--rule); transition: padding .3s ease; }
+.svc li:hover { padding-left: 12px; }
+.svc .n { font: 500 13px/1 var(--sans); color: var(--muted); font-variant-numeric: tabular-nums; }
+.svc h3 { font: 500 clamp(22px, 2.4vw, 32px)/1.15 var(--sans); letter-spacing: -.03em; transition: color .2s; }
+.svc li:hover h3 { color: var(--accent); }
+.svc p { font-size: 16.5px; color: var(--ink-2); max-width: 42ch; }
+
+/* process and principles */
+.steps { list-style: none; counter-reset: st; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--rule); }
+.steps li { counter-increment: st; display: grid; gap: 14px; align-content: start; padding: 36px 36px 0 0; }
+.steps li + li { padding-left: 36px; border-left: 1px solid var(--rule); }
+.steps li::before { content: counter(st, decimal-leading-zero); font: 500 clamp(48px, 5vw, 72px)/.9 var(--sans); letter-spacing: -.04em; color: var(--olive); }
+.steps b { font: 500 22px/1.25 var(--sans); letter-spacing: -.02em; margin-top: 10px; }
+.steps span { font-size: 16px; color: var(--ink-2); }
+.creed { margin-top: 120px; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 40px 80px; align-items: end; }
+.creed blockquote { margin: 0; font: 500 clamp(28px, 3.2vw, 44px)/1.12 var(--sans); letter-spacing: -.035em; }
+.creed blockquote em { color: var(--olive); font-style: normal; }
+.creed ul { list-style: none; }
+.creed li { padding-block: 16px; border-top: 1px solid var(--rule); font-size: 16px; color: var(--ink-2); }
+.creed li:last-child { border-bottom: 1px solid var(--rule); }
+
+/* about */
+.about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 80px; align-items: start; }
+.about .big { font: 400 clamp(22px, 2.2vw, 29px)/1.38 var(--sans); letter-spacing: -.02em; margin-top: 28px; }
+.xp { display: grid; border-top: 1px solid var(--ink); }
+.job { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 20px; padding-block: 26px; border-bottom: 1px solid var(--rule); }
+.job h3 { font: 500 19px/1.35 var(--sans); letter-spacing: -.015em; }
+.job .org { grid-column: 1 / -1; font-size: 15px; color: var(--muted); }
+.job .when { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.job p.d { grid-column: 1 / -1; color: var(--ink-2); font-size: 15.5px; margin-top: 6px; }
+
+/* charities: a reference table */
+.orgs { list-style: none; border-top: 1px solid var(--ink); }
+.orgs li { display: grid; grid-template-columns: 180px minmax(0, 1.1fr) minmax(0, 1fr); gap: 16px 48px; align-items: start; padding-block: 36px; border-bottom: 1px solid var(--rule); }
+.orgs .lg { height: 64px; display: grid; place-items: center start; }
+.orgs .lg img { max-height: 44px; max-width: 150px; width: auto; filter: grayscale(1) brightness(0); opacity: .8; }
+.orgs .lg img.tall { max-height: 64px; }
+.orgs b { font: 500 22px/1.25 var(--sans); letter-spacing: -.02em; display: block; }
+.orgs .where { font-size: 14px; color: var(--muted); display: block; margin-top: 4px; }
+.orgs .size { font-size: 16px; color: var(--ink-2); margin-top: 12px; max-width: 46ch; }
+.orgs .did { font-size: 16px; color: var(--ink-2); }
+.orgs .did strong { display: block; font: 500 13px/1.3 var(--sans); color: var(--muted); margin-bottom: 8px; }
+.note { margin-top: 28px; font-size: 13px; color: var(--muted); max-width: 90ch; }
+
+/* AI, as a quiet side note */
+.ai { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 80px; align-items: start; }
+.plain { list-style: none; border-top: 1px solid var(--rule); }
+.plain li { display: grid; gap: 4px; padding-block: 18px; border-bottom: 1px solid var(--rule); font-size: 16px; }
+.plain .m { font-size: 13.5px; color: var(--muted); }
+
+/* footer */
+footer.site { padding-block: 144px 48px; }
+footer .open { font: 500 clamp(36px, 5vw, 72px)/1.02 var(--sans); letter-spacing: -.045em; max-width: 17ch; margin-top: 26px; }
+.mail { display: inline-flex; align-items: baseline; gap: .25em; margin-top: 56px; font: 500 clamp(30px, 5vw, 72px)/1.1 var(--sans); letter-spacing: -.045em; text-decoration: none; background: linear-gradient(currentColor, currentColor) left bottom / 0 1px no-repeat; padding-bottom: 8px; transition: background-size .45s cubic-bezier(.2, .7, .2, 1), color .2s; overflow-wrap: anywhere; }
+.mail:hover { background-size: 100% 1px; color: var(--accent); }
+.mail .ar { font-family: var(--sans); font-style: normal; font-size: .5em; transition: transform .3s ease; }
+.mail:hover .ar { transform: translate(6px, -6px); }
+.small { margin-top: 128px; padding-top: 24px; border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-size: 13px; color: var(--muted); }
+
+/* project page */
+.case { padding-block: 48px 0; }
+.back { font-size: 14px; color: var(--muted); text-decoration: none; }
+.back:hover { color: var(--ink); }
+.case h1 { font: 500 clamp(44px, 7vw, 104px)/.95 var(--sans); letter-spacing: -.05em; margin-top: 18px; max-width: 14ch; }
+.case .top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px 64px; align-items: end; margin-top: 40px; }
+.case .line { font-size: 19px; color: var(--ink-2); max-width: 40ch; }
+.case .visit { display: inline-flex; gap: 8px; margin-top: 16px; font-size: 15px; font-weight: 500; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 4px; }
+.case .visit:hover { border-color: var(--ink); }
+.case .hero-media { margin-top: 56px; }
+.case .shot { aspect-ratio: 16 / 9; border-radius: var(--r); overflow: hidden; background: var(--wash); position: relative; }
+.case .shot > img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.case .shot .cover img { max-height: 24%; }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-bottom: 1px solid var(--rule); margin-top: 56px; border-top: 1px solid var(--ink); }
+.facts div { display: grid; gap: 6px; align-content: start; padding: 22px 24px 28px 0; }
+.facts div + div { padding-left: 24px; border-left: 1px solid var(--rule); }
+.facts span { font-size: 13px; color: var(--muted); }
+.facts b { font-weight: 500; font-size: 16px; line-height: 1.4; }
+.story section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 16px 48px; padding-block: 48px; border-bottom: 1px solid var(--rule); }
+.story h2 { font: 500 15px/1.4 var(--sans); color: var(--muted); }
+.story p { font-size: clamp(20px, 2.1vw, 26px); line-height: 1.45; letter-spacing: -.015em; max-width: 36ch; }
+.gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 56px; }
+.gallery figure { display: grid; gap: 10px; }
+.gallery img { width: 100%; height: auto; border-radius: var(--r); background: var(--wash); }
+.gallery figcaption { font-size: 13.5px; color: var(--muted); }
+.more { padding-block: 112px; }
+.more .grid { margin-top: 48px; }
+
+/* gentle rise on scroll */
+@keyframes rise { from { opacity: .15; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 32%; }
+  }
+}
+@media (max-width: 960px) {
+  .band { padding-block: 96px; }
+  .hero .row, .about, .ai, .artist, .creed, .case .top { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .logos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .proof { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .proof div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .proof div:nth-child(n+3) { padding-top: 48px; }
+  .steps { grid-template-columns: minmax(0, 1fr); }
+  .steps li, .steps li + li { padding: 32px 0; border-left: 0; border-bottom: 1px solid var(--rule); }
+  .svc li { grid-template-columns: 48px minmax(0, 1fr); }
+  .svc p { grid-column: 2; }
+  .orgs li { grid-template-columns: 140px minmax(0, 1fr); }
+  .orgs .did { grid-column: 2; }
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .facts div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .story section { grid-template-columns: minmax(0, 1fr); }
+  .gallery { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .wrap, .topbar .inner { padding-inline: 20px; }
+  .topbar nav a.opt { display: none; }
+  .topbar .inner { gap: 14px; }
+  .topbar .me { font-size: 26px; }
+  .band { padding-block: 80px; }
+  .hero { padding-top: 48px; }
+  .headline { margin-top: 32px; }
+  .film { margin-top: 48px; }
+  .film .player, .card.wide .media { aspect-ratio: 4 / 3; }
+  .film figcaption { padding-bottom: 72px; }
+  .player .pbtn { width: 72px; height: 72px; }
+  .grid { grid-template-columns: minmax(0, 1fr); gap: 64px; }
+  .card .meta { grid-template-columns: 32px minmax(0, 1fr); }
+  .card .st { grid-column: 2; text-align: left; grid-row: 3; }
+  .logos li { height: 110px; }
+  .l-pa { height: 21px; } .l-oin { height: 24px; } .l-amwt { height: 36px; } .l-nb { height: 54px; } .l-iac { height: 48px; } .l-ltf { height: 46px; } .l-sc { height: 48px; } .l-gm { height: 54px; }
+  .proof { grid-template-columns: minmax(0, 1fr); }
+  .proof div, .proof div + div { padding: 32px 0; border-left: 0; border-bottom: 1px solid var(--rule); }
+  .svc li { grid-template-columns: minmax(0, 1fr); padding-block: 24px; }
+  .svc p { grid-column: auto; }
+  .orgs li { grid-template-columns: minmax(0, 1fr); }
+  .orgs .did { grid-column: auto; }
+  .creed { margin-top: 80px; }
+  .facts { grid-template-columns: minmax(0, 1fr); }
+  .facts div, .facts div + div { padding: 18px 0; border-left: 0; border-bottom: 1px solid var(--rule); }
+  .small { margin-top: 88px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="inner">
+    <a class="me" href="#" aria-label="PRAISED, home">PRAISED<b>.</b></a>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a class="opt" href="#services">Services</a>
+      <a class="opt" href="#about">About</a>
+      <a class="opt" href="#contact">Contact</a>
+    </nav>
+    <span data-top-cta></span>
+    <button class="theme" type="button" id="theme" aria-label="Switch between light and dark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ================= HOME ================= -->
+<div id="home">
+  <header class="wrap hero">
+    <div class="top">
+      <p class="eyebrow">Creative studio for charities · Led by Muhib Rashid</p>
+      <span class="pill"><i></i>Now booking Ramadan 2027 campaigns</span>
+    </div>
+    <h1 class="headline">Your team delivers the aid. <em class="s">I take on the creative.</em></h1>
+    <div class="row">
+      <p class="subline">Campaign films, appeals, websites and copy for charities. I develop your campaign, work out what it needs to say, and write it: the appeal, the film script and every word around it.</p>
+      <div class="btns"><span data-mail-btn></span><a class="btn" href="#work">See the work</a></div>
+    </div>
+    <figure class="film">
+      <div class="player" data-video="4g_SJN-kkX0"><button type="button" aria-label="Play With you, we can, a film for Penny Appeal Canada"><img src="img/penny-appeal-canada.jpg" alt="A boy speaking to camera, from the film With you, we can" width="1200" height="750"><span class="pbtn"></span><span class="plabel">Play the film · 1.4M views</span></button></div>
+      <figcaption><span><b>With you, we can</b> · Penny Appeal Canada · 2023</span><span>Script by Muhib Rashid</span></figcaption>
+    </figure>
+  </header>
+
+  <section class="trust reveal" aria-label="Clients">
+    <div class="wrap">
+      <p class="cap"><span>Selected clients</span><span><b>£235M+</b> raised in the last five years · aid in <b>40 countries</b></span></p>
+      <ul class="logos">
+        <li><img class="l-pa" src="logos/penny-appeal.svg" alt="Penny Appeal" width="330" height="50"></li>
+        <li><img class="l-oin" src="logos/orphans-in-need.svg" alt="Orphans In Need" width="219" height="44"></li>
+        <li><img class="l-amwt" src="logos/al-mustafa.svg" alt="Al Mustafa Welfare Trust" width="198" height="60"></li>
+        <li><img class="l-nb" src="logos/new-beginnings.svg" alt="New Beginnings" width="935" height="430"></li>
+        <li><img class="l-iac" src="logos/iac-uk.svg" alt="IAC UK, International Aid Charity" width="180" height="83"></li>
+        <li><img class="l-ltf" src="logos/latif-foundation.svg" alt="The Latif Foundation" width="216" height="92"></li>
+        <li><img class="l-sc" src="logos/soul-caravan.svg" alt="Soul Caravan Foundation" width="1300" height="710"></li>
+        <li><img class="l-gm" src="logos/guardian-malaysia.png" alt="Guardian Malaysia" width="520" height="508"></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="reveal" aria-label="Results" style="padding-bottom:128px;border-bottom:1px solid var(--rule)">
+    <div class="wrap">
+      <div class="proof">
+        <div><b>1.6M+</b><span>views on campaign films I wrote for Penny Appeal and Al Mustafa</span></div>
+        <div><b>£235M+</b><span>raised by the charities I've worked for, in the last five years</span></div>
+        <div><b>40</b><span>countries where those charities deliver aid</span></div>
+        <div><b>5</b><span>years of creative work for charities, since 2021</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="work-section">
+    <div class="wrap">
+      <div class="head reveal">
+        <div>
+          <p class="eyebrow"><span class="no">01</span>Selected work</p>
+          <h2 class="h2">Films, campaigns and websites <em class="s">for charities.</em></h2>
+          <p class="lead">Individual credits from my career, before and since PRAISED, each with exactly what I did.</p>
+        </div>
+        <div class="filters" id="filters" role="group" aria-label="Filter the work"></div>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="band" id="artist-section">
+    <div class="wrap">
+      <div class="head reveal">
+        <div>
+          <p class="eyebrow"><span class="no">02</span>Artist page</p>
+          <h2 class="h2">And work <em class="s">for artists.</em></h2>
+        </div>
+      </div>
+      <div id="artist"></div>
+    </div>
+  </section>
+
+  <section class="band" id="services-section">
+    <div class="wrap">
+      <div class="head reveal">
+        <div>
+          <p class="eyebrow"><span class="no">03</span>What I do</p>
+          <h2 class="h2">Finished work, <em class="s">not another supplier to manage.</em></h2>
+        </div>
+        <p class="lead" style="max-width:40ch">For charities whose communications have fallen behind while the team gets the real work done.</p>
+      </div>
+      <ol class="svc reveal">
+        <li><span class="n">01</span><h3>Campaign strategy</h3><p>Who the campaign is for, why they should give, and what it needs to say.</p></li>
+        <li><span class="n">02</span><h3>Film scripts</h3><p>The script for your campaign film, written around the ask.</p></li>
+        <li><span class="n">03</span><h3>Appeals and campaign writing</h3><p>Appeal pages, emails and social posts that all tell the same story.</p></li>
+        <li><span class="n">04</span><h3>Campaign development</h3><p>The idea and the line that tie every piece of a campaign together.</p></li>
+        <li><span class="n">05</span><h3>Websites, copy and SEO</h3><p>How your charity describes its work, and how supporters find it when they search.</p></li>
+        <li><span class="n">06</span><h3>Seasonal campaigns</h3><p>Ramadan, winter and year-end appeals, planned early enough to land well.</p></li>
+        <li><span class="n">07</span><h3>Rescue sprint</h3><p>A late or half-finished campaign. We agree what matters most, then I finish it.</p></li>
+        <li><span class="n">08</span><h3>Ongoing creative support</h3><p>Alongside your team, across every campaign of the year.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="head reveal">
+        <div>
+          <p class="eyebrow"><span class="no">04</span>How we'd work together</p>
+          <h2 class="h2">Three steps, <em class="s">agreed up front.</em></h2>
+        </div>
+      </div>
+      <ol class="steps reveal">
+        <li><b>Send me what needs doing</b><span>The brief, the deadline and whatever you already have. Half-finished is fine.</span></li>
+        <li><b>We agree the work</b><span>What I'll make, the review dates and the fee, all before anything starts.</span></li>
+        <li><b>I make it and hand it over</b><span>You review, I finish, and your team gets work it can use straight away.</span></li>
+      </ol>
+      <div class="creed reveal">
+        <blockquote>People shown with dignity and context. <em>Never suffering as a shortcut.</em></blockquote>
+        <ul>
+          <li>A clear scope and fee before any work starts</li>
+          <li>You deal with me directly, with no account managers in between</li>
+          <li>No promises about money raised that I can't back up</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="about-section">
+    <div class="wrap about">
+      <div class="reveal">
+        <p class="eyebrow"><span class="no">05</span>About</p>
+        <h2 class="h2">Five years of creative work <em class="s">for charities.</em></h2>
+        <p class="big">I'm Muhib Rashid. Since 2021 I've written campaign films, developed fundraising campaigns and written websites for charities in the UK, Canada and Australia. <em class="s">PRAISED is the studio I set up to do that work directly with charity teams.</em></p>
+        <p class="lead">I studied English Language and Creative Writing.</p>
+      </div>
+      <div class="xp reveal">
+        <div class="job"><h3>Founder</h3><span class="when">2026 – now</span><p class="org">PRAISED, UK</p><p class="d">An independent creative studio for charities.</p></div>
+        <div class="job"><h3>Freelance Content and Creative Lead</h3><span class="when">2021 – 2026</span><p class="org">Charity sector</p><p class="d">Films, campaigns and websites for Penny Appeal, Orphans In Need, Al Mustafa Welfare Trust, New Beginnings, The Latif Foundation, IAC UK and other UK charities.</p></div>
+        <div class="job"><h3>Creative and SEO support</h3><span class="when">3 years</span><p class="org">Al Mustafa Welfare Trust</p><p class="d">Its Ramadan 2023 and 2024 campaigns, and three years of consistent creative support and SEO.</p></div>
+        <div class="job"><h3>Head of Creative and Development, Head of Curriculum</h3><span class="when">2021</span><p class="org">New Roots, Birmingham</p><p class="d">Built its creative side from the ground up, led the team behind its fundraising dinners, shaped what its youth programmes teach, and served as Head of Youth.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="charities-section">
+    <div class="wrap">
+      <div class="head reveal">
+        <div>
+          <p class="eyebrow"><span class="no">06</span>The charities behind the work</p>
+          <h2 class="h2">Creative work for charities that raised <em class="s">£235M+ in five years.</em></h2>
+        </div>
+      </div>
+      <ul class="orgs reveal">
+        <li>
+          <span class="lg"><img src="logos/penny-appeal.svg" alt="Penny Appeal" width="330" height="50"></span>
+          <div><b>Penny Appeal</b><span class="where">UK · Canada · Australia</span>
+            <p class="size">International aid charity founded in 2009. £85.8M income in the UK over the last five years, and C$19.1M in Canada in 2024.</p></div>
+          <p class="did"><strong>My work</strong>The script for a campaign film seen 1.4 million times, flagship campaigns in Canada and Australia, and a Ramadan campaign in the UK.</p>
+        </li>
+        <li>
+          <span class="lg"><img src="logos/orphans-in-need.svg" alt="Orphans In Need" width="219" height="44"></span>
+          <div><b>Orphans In Need</b><span class="where">UK</span>
+            <p class="size">£99.6M income over the last five years, supporting more than 40,000 orphans and their families.</p></div>
+          <p class="did"><strong>My work</strong>Wrote the script for the film marking its 100 millionth meal.</p>
+        </li>
+        <li>
+          <span class="lg"><img class="tall" src="logos/al-mustafa.svg" alt="Al Mustafa Welfare Trust" width="198" height="60"></span>
+          <div><b>Al Mustafa Welfare Trust</b><span class="where">Hounslow, UK · since 1983</span>
+            <p class="size">£47.3M income over the last five years. Food aid, eye care, clean water and emergency relief, reaching more than 15 million people in a single year.</p></div>
+          <p class="did"><strong>My work</strong>Developed its whole Ramadan 2023 campaign, including the script for the film <em>Another Blessed Ramadan</em> (238K views), its Ramadan 2024 campaign, and three years of creative and SEO support.</p>
+        </li>
+        <li>
+          <span class="lg"><img class="tall" src="logos/new-beginnings.svg" alt="New Beginnings" width="935" height="430"></span>
+          <div><b>New Beginnings</b><span class="where">Oldham, UK</span></div>
+          <p class="did"><strong>My work</strong>The script for its fundraising gala film.</p>
+        </li>
+        <li>
+          <span class="lg"><img class="tall" src="logos/iac-uk.svg" alt="IAC UK" width="180" height="83"></span>
+          <div><b>IAC UK</b><span class="where">Birmingham, UK</span>
+            <p class="size">International Aid Charity UK, a grant-maker working in Africa, Asia and Türkiye.</p></div>
+          <p class="did"><strong>My work</strong>The full website copy, across all of its programmes.</p>
+        </li>
+        <li>
+          <span class="lg"><img class="tall" src="logos/latif-foundation.svg" alt="The Latif Foundation" width="216" height="92"></span>
+          <div><b>The Latif Foundation</b><span class="where">Memorial foundation</span></div>
+          <p class="did"><strong>My work</strong>The brand, the whole website and all of its copy.</p>
+        </li>
+      </ul>
+      <p class="note">£235M+ is the income reported to the Charity Commission over the last five financial years by Orphans In Need (£99.6M), Penny Appeal (£85.8M), Al Mustafa Welfare Trust (£47.3M) and IAC UK (£2.7M). It leaves out Penny Appeal Canada and Australia, so the real total is higher. The 40 countries are where these charities, and the others on this page, deliver aid, from the Charity Commission register and the charities' own reports: Afghanistan, Azerbaijan, Bangladesh, Bosnia and Herzegovina, Cameroon, Central African Republic, Djibouti, Eritrea, Ethiopia, Greece, Guinea, Guinea-Bissau, India, Indonesia, Iraq, Kenya, Lebanon, Malawi, Malaysia, Mali, Mauritania, Myanmar, Nepal, Niger, Nigeria, Pakistan, Palestine, Rwanda, Senegal, Sierra Leone, Somalia, South Africa, Sri Lanka, Sudan, Syria, Tanzania, The Gambia, Türkiye, the United Kingdom and Yemen. Logos are shown with permission.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap ai">
+      <div class="reveal">
+        <p class="eyebrow"><span class="no">07</span>And if your team wants it</p>
+        <h2 class="h2">A little help <em class="s">with AI.</em></h2>
+        <p class="lead">I also help charity teams use AI for one useful job at a time, like first drafts of thank-you emails, with a person checking and signing off every piece. It's optional, and it never replaces the creative.</p>
+      </div>
+      <ul class="plain reveal">
+        <li><span>Moved a US publisher's leadership onto Claude, and trained its staff in Kuala Lumpur and New York</span><span class="m">IGP · 2024 – 2026</span></li>
+        <li><span>Made a recruitment firm's AI work faster and cheaper</span><span class="m">Transform Recruitment · 2025 – 2026</span></li>
+        <li><span>Early access to Claude Mythos 5.2, Anthropic's restricted frontier model</span><span class="m">Anthropic</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="wrap site reveal" id="contact-section">
+    <p class="eyebrow"><span class="no">08</span>Contact</p>
+    <p class="open">Got an appeal, a film or a campaign that's running late? <em class="s">Send me the brief and the deadline.</em></p>
+    <a class="mail" data-mail href="#">hello@praised.studio <span class="ar">↗</span></a>
+    <p class="small"><span>PRAISED · Led by Muhib Rashid · United Kingdom</span><span>© 2026 PRAISED</span></p>
+  </footer>
+</div>
+
+<!-- ================= PROJECT PAGE ================= -->
+<div id="case" hidden></div>
+
+<script>
+/* PRAISED portfolio. Individual credits from Muhib Rashid's career, before and since PRAISED.
+   Each project: client, title, year, roles, image or logo, and a short story (brief, what I did, outcome).
+   Sources: Muhib's handover and CV, the live sites, and each site's repository. No figures are estimated. */
+
+const GROUPS = [
+  ["film", "Films"],
+  ["campaign", "Campaigns"],
+  ["web", "Websites and copy"]
+];
+
+const PROJECTS = [
+{
+  id: "with-you-we-can", group: "film", featured: true,
+  client: "Penny Appeal Canada", title: "With you, we can", year: "2023",
+  roles: ["Script"],
+  img: "img/penny-appeal-canada", video: "4g_SJN-kkX0",
+  status: "1.4M views",
+  line: "A Ramadan campaign film, from my script.",
+  url: "https://www.youtube.com/watch?v=4g_SJN-kkX0", urlLabel: "Watch on YouTube",
+  facts: [["Client", "Penny Appeal Canada"], ["Year", "2023"], ["My role", "Script"], ["Views", "About 1.4 million"]],
+  story: [
+    ["The brief", "Penny Appeal Canada needed the film at the centre of its Ramadan campaign."],
+    ["What I did", "I wrote the script."],
+    ["The result", "About 1.4 million views."],
+    ["Why it worked", "The script was built around one clear ask, so every line moves the viewer towards giving."]
+  ]
+},
+{
+  id: "100-million-meals", group: "film", featured: true,
+  client: "Orphans In Need", title: "100 Million Meals", year: "2024",
+  roles: ["Script"],
+  img: "img/orphans-in-need", video: "_9vb_mBRBoo", pos: "center 22%",
+  status: "Milestone film",
+  line: "A film marking the charity's 100 millionth meal, from my script.",
+  url: "https://www.youtube.com/watch?v=_9vb_mBRBoo", urlLabel: "Watch on YouTube",
+  facts: [["Client", "Orphans In Need"], ["Year", "2024"], ["My role", "Script"], ["Marks", "The charity's 100 millionth meal"]],
+  story: [
+    ["The brief", "Orphans In Need reached its 100 millionth meal and wanted a film to mark it."],
+    ["What I did", "I wrote the script."],
+    ["A note on credit", "The 100 million meals are the charity's achievement. My job was a film worthy of it."]
+  ]
+},
+{
+  id: "another-blessed-ramadan", group: "campaign", featured: true,
+  client: "Al Mustafa Welfare Trust", title: "Another Blessed Ramadan", year: "2023",
+  roles: ["Campaign development", "Film script", "48-page appeal report"],
+  img: "img/al-mustafa-ramadan-2023", video: "NRyu1rqd2c0", pos: "center 28%",
+  status: "238K views",
+  line: "The charity's whole Ramadan 2023 campaign: the line, the film script and a 48-page appeal report.",
+  url: "https://www.youtube.com/watch?v=NRyu1rqd2c0", urlLabel: "Watch the ad on YouTube",
+  facts: [["Client", "Al Mustafa Welfare Trust"], ["Year", "Ramadan 2023"], ["My role", "Campaign development and script"], ["Film views", "238K on YouTube"]],
+  gallery: [
+    ["img/amwt-report-cover.jpg", "The appeal report cover"],
+    ["img/amwt-report-food.jpg", "But not just another food parcel"],
+    ["img/amwt-report-sight.jpg", "But not just another cataract surgery"],
+    ["img/amwt-report-water.jpg", "But not just another water well"]
+  ],
+  story: [
+    ["The brief", "Al Mustafa's Ramadan 2023 appeal, in a year when disasters and a cost-of-living crisis had stretched its supporters."],
+    ["The idea", "Another Blessed Ramadan. And our commitment remains the same. Every appeal then opens with the same turn of phrase: but not just another food parcel, cataract surgery, orphan sponsorship or water well. One line turns a long list of appeals into one campaign."],
+    ["What I did", "Developed the whole campaign: the line, the script for the film, and the 48-page appeal report that carries it through every appeal, from food aid and eye care to water and emergency relief."],
+    ["The result", "The campaign film has 238,000 views on YouTube."]
+  ]
+},
+{
+  id: "new-beginnings-gala", group: "film",
+  client: "New Beginnings", title: "A film for a fundraising gala",
+  roles: ["Script"],
+  img: "img/new-beginnings", video: "Mshw24A08ZQ",
+  status: "Gala dinner film",
+  line: "A short fundraising film made to be shown to major donors at a gala dinner.",
+  url: "https://www.youtube.com/watch?v=Mshw24A08ZQ", urlLabel: "Watch on YouTube",
+  facts: [["Client", "New Beginnings"], ["Format", "Short film for a fundraising gala"], ["Audience", "Major donors"], ["My role", "Script"]],
+  story: [
+    ["The brief", "New Beginnings needed a short film to show at its fundraising gala: a room of major donors, one chance to make the case."],
+    ["What I did", "I wrote the script."],
+    ["Why it matters", "A gala film has a few minutes to move a room before the ask. Every line has to earn its place."]
+  ]
+},
+{
+  id: "al-mustafa-ramadan-2024", group: "campaign",
+  client: "Al Mustafa Welfare Trust", title: "Ramadan 2024 campaign", year: "2024",
+  roles: ["Campaign development"],
+  logo: "logos/al-mustafa.svg", tint: "amwt", logoWhite: true, coverSub: "Ramadan 2024",
+  status: "Second Ramadan",
+  line: "The charity's Ramadan campaign the following year.",
+  facts: [["Client", "Al Mustafa Welfare Trust"], ["Year", "Ramadan 2024"], ["My role", "Campaign development"]],
+  story: [
+    ["The brief", "A year after Another Blessed Ramadan, the charity came back for its next Ramadan campaign."],
+    ["What I did", "Campaign development for its Ramadan 2024 appeal."]
+  ]
+},
+{
+  id: "al-mustafa-support", group: "campaign",
+  client: "Al Mustafa Welfare Trust", title: "Three years with the team",
+  roles: ["Creative support", "SEO"],
+  logo: "logos/al-mustafa.svg", tint: "ink2", coverSub: "Three years",
+  status: "3 years",
+  line: "Ongoing creative support and search help for a £10.6M charity.",
+  url: "https://www.almustafatrust.org", urlLabel: "Visit almustafatrust.org",
+  facts: [["Client", "Al Mustafa Welfare Trust"], ["Length", "Three years"], ["My role", "Creative support and SEO"], ["Charity size", "£10.6M yearly income"]],
+  story: [
+    ["The client", "Al Mustafa Welfare Trust has worked since 1983 on food aid, eye care, clean water, orphan care and emergency relief, and reported helping more than 15 million people in a single year."],
+    ["What I did", "Three years alongside its team: consistent creative support across its appeals, and help with SEO so supporters find the charity when they search."],
+    ["Why it matters", "Campaigns land better when the person writing them already knows the charity, its supporters and its voice."]
+  ]
+},
+{
+  id: "penny-appeal-flagship", group: "campaign",
+  client: "Penny Appeal Canada and Australia", title: "Flagship campaigns in two countries",
+  roles: ["Campaign development"],
+  logo: "logos/penny-appeal.svg", tint: "pa", logoWhite: true, coverSub: "Canada · Australia",
+  status: "C$19.1M yearly income",
+  line: "Campaign development on Penny Appeal's flagship fundraising campaigns in Canada and Australia.",
+  facts: [["Client", "Penny Appeal Canada and Penny Appeal Australia"], ["My role", "Campaign development"], ["Charity size", "C$19.1M yearly income in Canada (2024)"]],
+  story: [
+    ["The client", "Penny Appeal is an international aid charity founded in 2009, working in 30 crisis-hit countries, with offices in the UK, Canada and Australia."],
+    ["What I did", "Campaign development on flagship campaigns for the Canadian and Australian offices, alongside the film With you, we can in Canada."]
+  ]
+},
+{
+  id: "penny-appeal-uk", group: "campaign",
+  client: "Penny Appeal UK", title: "A Ramadan campaign",
+  roles: ["Campaign development"],
+  logo: "logos/penny-appeal.svg", tint: "ink", coverSub: "United Kingdom",
+  status: "£85.8M in five years",
+  line: "Campaign development on Penny Appeal UK's Ramadan campaign.",
+  facts: [["Client", "Penny Appeal UK"], ["My role", "Campaign development"], ["Charity size", "£85.8M income over the last five years"]],
+  story: [
+    ["The client", "The UK home of Penny Appeal, an international aid charity working in 30 crisis-hit countries."],
+    ["What I did", "Developed its Ramadan campaign: what it needed to say, and how each piece would say it."]
+  ]
+},
+{
+  id: "new-roots", group: "campaign",
+  client: "New Roots", title: "Building the creative from the ground up", year: "2021",
+  roles: ["Head of Creative", "Head of Curriculum", "Fundraising dinners"],
+  tint: "warm",
+  status: "Head of Creative",
+  line: "Built a Birmingham community organisation's creative work from scratch, and led what its youth programmes teach.",
+  url: "https://nwrts.co.uk/our-story/", urlLabel: "Visit nwrts.co.uk",
+  facts: [["Client", "New Roots, Birmingham"], ["Year", "2021"], ["My role", "Head of Creative and Development, Head of Curriculum and Head of Youth"], ["Programmes", "Youth clubs and Open Circle, for up to 60 teenagers a week"]],
+  story: [
+    ["The client", "New Roots is a Birmingham community organisation, set up in 2014, running youth clubs and Open Circle, a weekly programme for up to 60 teenagers."],
+    ["What I did", "Built its creative side from the ground up as Head of Creative and Development, and led the team behind its creative work and fundraising dinners."],
+    ["Curriculum", "As Head of Curriculum, I shaped what its youth programmes teach. I also served as Head of Youth."]
+  ]
+},
+{
+  id: "latif-foundation", group: "web", featured: true,
+  client: "The Latif Foundation", title: "A website that reads like a memorial",
+  roles: ["Brand", "Website", "Copy"],
+  img: "img/latif-foundation", logo: "logos/latif-foundation.svg",
+  status: "Brand, site and copy",
+  line: "The whole website and every word of it, for a memorial foundation.",
+  url: "https://www.thelatiffoundation.org", urlLabel: "Visit thelatiffoundation.org",
+  facts: [["Client", "The Latif Foundation"], ["Year", "2026"], ["My role", "Brand, website and all of the copy"], ["Live at", "thelatiffoundation.org"]],
+  story: [
+    ["The brief", "The foundation is in memory of Abdul Lateef Ayodele. The site had to raise support without forgetting that it is, first, a memorial."],
+    ["What I did", "Wrote the whole website and all of its copy, and shaped how it feels. The opening became a dedication page, like the front of a book. Two loud buttons became one quiet link. Six versions, each calmer than the last."],
+    ["What it taught me", "Restraint was the brief. Most of the improvement came from taking things away."]
+  ]
+},
+{
+  id: "iac-uk", group: "web",
+  client: "IAC UK", title: "One voice across every programme",
+  roles: ["Website copy"],
+  logo: "logos/iac-uk.svg", tint: "iac", logoWhite: true, coverSub: "Birmingham, UK",
+  status: "Full website copy",
+  line: "The full website copy for International Aid Charity UK.",
+  url: "https://iacharity.uk", urlLabel: "Visit iacharity.uk",
+  facts: [["Client", "International Aid Charity UK"], ["My role", "Website copy"], ["Charity", "A Birmingham grant-maker working in Africa, Asia and Türkiye"]],
+  story: [
+    ["The brief", "A charity with several different programmes, each of which needed explaining, without the site sounding like several different charities."],
+    ["What I did", "Wrote the full website copy, so every programme speaks in one consistent voice. The copy is mine; the design and build are not."]
+  ]
+},
+{
+  id: "soul-caravan", group: "web",
+  client: "Soul Caravan Foundation", title: "Appeals for Kenya, told story first",
+  roles: ["Website design", "Appeals"],
+  img: "img/soul-caravan", logo: "logos/soul-caravan.svg",
+  status: "Live",
+  line: "An appeals website for a foundation supporting communities in Kenya.",
+  url: "https://scwesbitef.vercel.app", urlLabel: "Visit the site",
+  facts: [["Client", "Soul Caravan Foundation"], ["Years", "2025 to 2026"], ["My role", "Website design and build"]],
+  story: [
+    ["The brief", "The foundation runs appeals for water wells, education and orphan care in Kenya. Donors need to see the story, then the appeal, then a way to give."],
+    ["What I did", "Designed and built a story-first site. A film opens the page, every appeal has its own page, and newsletter and fundraiser sign-ups keep supporters close."],
+    ["The result", "Live, and running the foundation's appeals for Kenya."]
+  ]
+},
+{
+  id: "guardian-malaysia", group: "web",
+  client: "Guardian Malaysia", title: "Free jiu-jitsu for 929 children",
+  roles: ["Website design"],
+  img: "img/guardian-malaysia", logo: "logos/guardian-malaysia.png",
+  status: "929 children reached",
+  line: "One page that shows a youth charity's impact and makes it easy to support.",
+  url: "https://www.guardianmalaysia.org", urlLabel: "Visit guardianmalaysia.org",
+  facts: [["Client", "Guardian Malaysia"], ["My role", "Website design and build"], ["Reach", "929 children"]],
+  story: [
+    ["The brief", "Guardian Malaysia gives children free jiu-jitsu scholarships. They needed one page that shows the impact and makes it easy to support them."],
+    ["What I did", "Designed and built the page with real numbers and real photos only, no stock. Cut their social links down to the one channel they actually use."],
+    ["The result", "Live on guardianmalaysia.org, showing 929 children reached."]
+  ]
+},
+{
+  id: "briggs-book-club", group: "web",
+  client: "Briggs' Book Club", title: "A reading circle of 500+ members",
+  roles: ["Brand", "Website", "Copy"],
+  tint: "dark", word: "Briggs' Book Club",
+  status: "500+ members",
+  line: "A year of work on a pay-what-you-can reading circle's brand and website.",
+  url: "https://www.briggsbook.club", urlLabel: "Visit briggsbook.club",
+  facts: [["Client", "Briggs' Book Club"], ["Years", "2025 to 2026"], ["My role", "Brand, website and copy"], ["Members", "500+"]],
+  story: [
+    ["The brief", "A teacher runs a reading circle on classical texts, funded by monthly pay-what-you-can pledges. The site has to explain the circle, show what's being read now, and make joining easy."],
+    ["What I did", "The page became six chapters you scroll through like a book. I rewrote the copy in plain, direct sentences, then led a rebrand, a design system and a members' replay library."],
+    ["The result", "A circle of 500+ members."]
+  ]
+},
+{
+  id: "khaled-siddiq", group: "artist",
+  client: "Khaled Siddiq", title: "A membership page led by film",
+  roles: ["Landing page design"],
+  img: "img/khaled-siddiq",
+  status: "Live",
+  line: "A video-first membership page for a UK artist.",
+  url: "https://www.khaledsiddiq.com", urlLabel: "Visit khaledsiddiq.com",
+  facts: [["Client", "Khaled Siddiq, UK artist"], ["Years", "2025 to 2026"], ["My role", "Landing page design"]],
+  story: [
+    ["The brief", "The artist wanted a single page that sells a membership: their film first, then one clear way to join."],
+    ["What I did", "Let the film carry the page: no headline over it, one membership tier, and a single button straight to checkout."],
+    ["The result", "Live at khaledsiddiq.com."]
+  ]
+}
+];
+
+</script>
+<script>
+const LINKS = { email: "hello@praised.studio" };
+
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const PLAY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>';
+const TITLE = "PRAISED · Creative studio for charities";
+const pad = n => String(n).padStart(2, "0");
+
+/* theme */
+(function () {
+  let saved = null;
+  try { saved = localStorage.getItem("theme"); } catch (e) {}
+  if (saved === "dark" || saved === "light") document.documentElement.dataset.theme = saved;
+  $("#theme").addEventListener("click", () => {
+    const cur = document.documentElement.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    const next = cur === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+})();
+
+const mailBtn = (label, cls = "btn solid") => `<a class="${cls}" href="mailto:${esc(LINKS.email)}">${label}</a>`;
+
+/* the picture for a project: a photograph, or the client's logo on a tinted panel */
+function mediaHTML(p, big) {
+  if (p.img) return `<img${p.video ? ' class="c"' : ""}${p.pos ? ` style="object-position:${p.pos}"` : ""} src="${p.img}${big ? "" : "-t"}.jpg" alt="${esc(p.title)}, ${esc(p.client)}" loading="lazy" width="${big ? 1200 : 480}" height="${big ? 750 : 300}">`;
+  const tint = p.tint ? ` ${p.tint}` : "";
+  if (p.logo) return `<span class="cover${tint}"><img${p.logoWhite ? ' class="white"' : ""} src="${p.logo}" alt="${esc(p.client)} logo">${p.coverSub ? `<span class="sub"><span>${esc(p.coverSub)}</span><span>${esc(p.roles[0])}</span></span>` : ""}</span>`;
+  return `<span class="cover${tint}"><span class="word">${esc(p.word || p.client)}</span><span class="sub"><span>${esc(p.roles[0])}</span><span>${esc(p.year || "")}</span></span></span>`;
+}
+
+function cardHTML(p, n) {
+  return `<a class="card reveal${p.featured && p.video ? " wide" : ""}" href="#${p.id}" data-group="${p.group}">
+    <span class="media">${mediaHTML(p, true)}${p.video ? `<span class="play">${PLAY}Watch the film</span>` : ""}</span>
+    <span class="meta">
+      <span class="idx">${n ? pad(n) : ""}</span>
+      <span class="t">${esc(p.title.replace(/\s+\S+$/, ""))} <span class="nw">${esc(p.title.split(" ").pop())}&nbsp;<span class="ar" aria-hidden="true">→</span></span></span>
+      <span class="st">${esc(p.status || "")}</span>
+      <span class="who">${esc(p.client)}${p.year ? ` · ${esc(p.year)}` : ""} · ${p.roles.map(esc).join(", ")}</span>
+    </span>
+  </a>`;
+}
+
+/* home */
+let filter = "all";
+const listed = () => PROJECTS.filter(p => p.group !== "artist");
+function renderGrid() {
+  const all = listed();
+  $("#grid").innerHTML = all.filter(p => filter === "all" || p.group === filter).map(p => cardHTML(p, all.indexOf(p) + 1)).join("");
+  document.querySelectorAll("#filters button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f === filter)));
+}
+function renderHome() {
+  $("#filters").innerHTML = [["all", "All work", listed().length], ...GROUPS.map(([g, l]) => [g, l, PROJECTS.filter(p => p.group === g).length])]
+    .map(([g, l, n]) => `<button type="button" data-f="${g}" aria-pressed="false">${esc(l)}<sup>${n}</sup></button>`).join("");
+  renderGrid();
+  const a = PROJECTS.find(p => p.group === "artist");
+  $("#artist").innerHTML = a ? `<a class="artist reveal" href="#${a.id}">
+      <span class="media">${mediaHTML(a, true)}</span>
+      <span>
+        <span class="eyebrow">${esc(a.client)} · UK artist</span>
+        <span class="t">${esc(a.title)}</span>
+        <p class="d">${esc(a.line)} ${esc(a.story[1][1])}</p>
+        <span class="roles">${a.roles.map(esc).join(" · ")}</span>
+        <span class="go">See the project <span class="ar" aria-hidden="true">→</span></span>
+      </span>
+    </a>` : "";
+  $("[data-mail-btn]").outerHTML = mailBtn('Email me your brief <span class="ar" aria-hidden="true">→</span>');
+  $("[data-mail]").href = `mailto:${LINKS.email}`;
+  $("[data-top-cta]").innerHTML = mailBtn("Email me", "btn solid sm");
+  $(".film .pbtn").innerHTML = PLAY;
+}
+
+/* project page */
+function renderCase(p) {
+  const i = PROJECTS.indexOf(p);
+  const more = [PROJECTS[(i + 1) % PROJECTS.length], PROJECTS[(i + 2) % PROJECTS.length]];
+  const media = p.video
+    ? `<div class="player" data-video="${esc(p.video)}"><button type="button" aria-label="Play ${esc(p.title)}"><img src="${p.img}.jpg" alt="${esc(p.title)}, still from the film" width="1200" height="750"><span class="pbtn">${PLAY}</span><span class="plabel">Play the film</span></button></div>`
+    : `<div class="shot">${mediaHTML(p, true)}</div>`;
+  $("#case").innerHTML = `<article class="wrap case">
+      <a class="back" href="#work">← All work</a>
+      <div class="top">
+        <div>
+          <p class="eyebrow">${esc(p.client)}${p.year ? ` · ${esc(p.year)}` : ""}</p>
+          <h1>${esc(p.title)}</h1>
+        </div>
+        <div>
+          <p class="line">${esc(p.line)}</p>
+          ${p.url ? `<a class="visit" href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.urlLabel || "Visit")} <span aria-hidden="true">↗</span></a>` : ""}
+        </div>
+      </div>
+      <div class="hero-media">${media}</div>
+      <div class="facts">${p.facts.map(([k, v]) => `<div><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join("")}</div>
+      ${p.gallery ? `<div class="gallery">${p.gallery.map(([src, cap]) => `<figure><img src="${src}" alt="${esc(cap)}" loading="lazy" width="1600" height="1159"><figcaption>${esc(cap)}</figcaption></figure>`).join("")}</div>` : ""}
+      <div class="story">${p.story.map(([h, t]) => `<section><h2>${esc(h)}</h2><p>${esc(t)}</p></section>`).join("")}</div>
+    </article>
+    <section class="wrap more">
+      <p class="eyebrow">More work</p>
+      <div class="grid">${more.map(m => cardHTML({ ...m, featured: false })).join("")}</div>
+    </section>
+    <footer class="wrap site" style="padding-top:32px">
+      <p class="open">Want work like this <em class="s">for your next campaign?</em></p>
+      <a class="mail" href="mailto:${esc(LINKS.email)}">hello@praised.studio <span class="ar">↗</span></a>
+    </footer>`;
+}
+
+/* clicks: filters and the film player */
+document.addEventListener("click", e => {
+  const f = e.target.closest("#filters button");
+  if (f) { filter = f.dataset.f; renderGrid(); return; }
+  const v = e.target.closest(".player button");
+  if (v) {
+    const box = v.parentElement;
+    box.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(box.dataset.video)}?autoplay=1&rel=0" title="Film player" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+  }
+});
+
+function route() {
+  const h = decodeURIComponent(location.hash.slice(1));
+  const p = PROJECTS.find(x => x.id === h);
+  if (p) {
+    renderCase(p);
+    $("#home").hidden = true; $("#case").hidden = false;
+    document.title = `${p.title} · ${p.client} · PRAISED`;
+    window.scrollTo(0, 0);
+  } else {
+    $("#case").hidden = true; $("#home").hidden = false;
+    document.title = TITLE;
+    const map = { work: "work-section", services: "services-section", about: "about-section", contact: "contact-section" };
+    if (map[h]) requestAnimationFrame(() => document.getElementById(map[h]).scrollIntoView());
+    else if (!h) window.scrollTo(0, 0);
+  }
+}
+
+renderHome();
+route();
+addEventListener("hashchange", route);
+</script>
+</body>
+</html>
