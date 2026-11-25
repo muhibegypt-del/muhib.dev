@@ -162,7 +162,9 @@ em.s { font-style: normal; color: var(--olive); }
 .cover { position: absolute; inset: 0; display: grid; place-items: center; padding: 14%; background: var(--t-default); transition: transform 1.1s cubic-bezier(.2, .7, .2, 1); }
 .cover.pa { background: #f26a03; color: #fff; } .cover.ink { background: #151412; color: #f4efe6; } .cover.iac { background: #123f33; color: #fff; }
 .cover.amwt { background: #008c70; color: #fff; } .cover.ink2 { background: #0f1a17; color: #e9f5f1; }
-.cover.warm { background: var(--t-warm); color: #1d1a17; } .cover.dark { background: var(--t-dark); color: #f4efe6; }
+.cover.warm { background: var(--t-warm); color: #1d1a17; }
+:root[data-theme="dark"] .cover.warm { background: #2a241c; color: #f3ebe0; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .cover.warm { background: #2a241c; color: #f3ebe0; } } .cover.dark { background: var(--t-dark); color: #f4efe6; }
 .cover img { max-height: 30%; max-width: 64%; width: auto; }
 .cover img.white { filter: brightness(0) invert(1); }
 .cover .sub { position: absolute; left: 24px; right: 24px; bottom: 22px; display: flex; justify-content: space-between; gap: 16px; font: 500 12px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; opacity: .8; }
@@ -205,7 +207,7 @@ em.s { font-style: normal; color: var(--olive); }
 
 /* about */
 .about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 80px; align-items: start; }
-.about .big { font: 400 clamp(22px, 2.2vw, 29px)/1.38 var(--sans); letter-spacing: -.02em; margin-top: 28px; }
+.about .big { font: 400 clamp(19px, 1.8vw, 24px)/1.45 var(--sans); letter-spacing: -.02em; margin-top: 28px; }
 .xp { display: grid; border-top: 1px solid var(--ink); }
 .job { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 20px; padding-block: 26px; border-bottom: 1px solid var(--rule); }
 .job h3 { font: 500 19px/1.35 var(--sans); letter-spacing: -.015em; }
@@ -225,6 +227,12 @@ em.s { font-style: normal; color: var(--olive); }
 .orgs .did { font-size: 16px; color: var(--ink-2); }
 .orgs .did strong { display: block; font: 500 13px/1.3 var(--sans); color: var(--muted); margin-bottom: 8px; }
 .note { margin-top: 28px; font-size: 13px; color: var(--muted); max-width: 90ch; }
+.notes { margin-top: 28px; }
+.notes summary { cursor: pointer; font-size: 14px; color: var(--ink-2); list-style: none; display: inline-flex; gap: 8px; align-items: center; }
+.notes summary::-webkit-details-marker { display: none; }
+.notes summary::after { content: "+"; font-size: 16px; color: var(--olive); transition: transform .2s; }
+.notes[open] summary::after { transform: rotate(45deg); }
+.notes .note { margin-top: 14px; }
 
 /* AI, as a quiet side note */
 .ai { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 80px; align-items: start; }
@@ -245,8 +253,8 @@ footer .open { font: 500 clamp(36px, 5vw, 72px)/1.02 var(--sans); letter-spacing
 .case { padding-block: 48px 0; }
 .back { font-size: 14px; color: var(--muted); text-decoration: none; }
 .back:hover { color: var(--ink); }
-.case h1 { font: 500 clamp(44px, 7vw, 104px)/.95 var(--sans); letter-spacing: -.05em; margin-top: 18px; max-width: 14ch; }
-.case .top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px 64px; align-items: end; margin-top: 40px; }
+.case h1 { font: 500 clamp(40px, 5.6vw, 84px)/.98 var(--sans); letter-spacing: -.045em; margin-top: 18px; max-width: 18ch; }
+.case .top { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 24px 64px; align-items: end; margin-top: 40px; }
 .case .line { font-size: 19px; color: var(--ink-2); max-width: 40ch; }
 .case .visit { display: inline-flex; gap: 8px; margin-top: 16px; font-size: 15px; font-weight: 500; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 4px; }
 .case .visit:hover { border-color: var(--ink); }
@@ -523,7 +531,7 @@ footer .open { font: 500 clamp(36px, 5vw, 72px)/1.02 var(--sans); letter-spacing
           <p class="did"><strong>My work</strong>The brand, the whole website and all of its copy.</p>
         </li>
       </ul>
-      <p class="note">£235M+ is the income reported to the Charity Commission over the last five financial years by Orphans In Need (£99.6M), Penny Appeal (£85.8M), Al Mustafa Welfare Trust (£47.3M) and IAC UK (£2.7M). It leaves out Penny Appeal Canada and Australia, so the real total is higher. The 40 countries are where these charities, and the others on this page, deliver aid, from the Charity Commission register and the charities' own reports: Afghanistan, Azerbaijan, Bangladesh, Bosnia and Herzegovina, Cameroon, Central African Republic, Djibouti, Eritrea, Ethiopia, Greece, Guinea, Guinea-Bissau, India, Indonesia, Iraq, Kenya, Lebanon, Malawi, Malaysia, Mali, Mauritania, Myanmar, Nepal, Niger, Nigeria, Pakistan, Palestine, Rwanda, Senegal, Sierra Leone, Somalia, South Africa, Sri Lanka, Sudan, Syria, Tanzania, The Gambia, Türkiye, the United Kingdom and Yemen. Logos are shown with permission.</p>
+      <details class="notes"><summary>How these figures are worked out</summary><p class="note">£235M+ is the income reported to the Charity Commission over the last five financial years by Orphans In Need (£99.6M), Penny Appeal (£85.8M), Al Mustafa Welfare Trust (£47.3M) and IAC UK (£2.7M). It leaves out Penny Appeal Canada and Australia, so the real total is higher. The 40 countries are where these charities, and the others on this page, deliver aid, from the Charity Commission register and the charities' own reports: Afghanistan, Azerbaijan, Bangladesh, Bosnia and Herzegovina, Cameroon, Central African Republic, Djibouti, Eritrea, Ethiopia, Greece, Guinea, Guinea-Bissau, India, Indonesia, Iraq, Kenya, Lebanon, Malawi, Malaysia, Mali, Mauritania, Myanmar, Nepal, Niger, Nigeria, Pakistan, Palestine, Rwanda, Senegal, Sierra Leone, Somalia, South Africa, Sri Lanka, Sudan, Syria, Tanzania, The Gambia, Türkiye, the United Kingdom and Yemen. Logos are shown with permission.</p></details>
     </div>
   </section>
 
@@ -587,7 +595,7 @@ function mediaHTML(p, big) {
 }
 
 function cardHTML(p, n) {
-  return `<a class="card reveal${p.featured && p.video ? " wide" : ""}" href="#${p.id}" data-group="${p.group}">
+  return `<a class="card reveal${(p.featured && p.video) || p.wide ? " wide" : ""}" href="#${p.id}" data-group="${p.group}">
     <span class="media">${mediaHTML(p, true)}${p.video ? `<span class="play">${PLAY}Watch the film</span>` : ""}</span>
     <span class="meta">
       <span class="idx">${n ? pad(n) : ""}</span>
@@ -653,7 +661,7 @@ function renderCase(p) {
     </article>
     <section class="wrap more">
       <p class="eyebrow">More work</p>
-      <div class="grid">${more.map(m => cardHTML({ ...m, featured: false })).join("")}</div>
+      <div class="grid">${more.map(m => cardHTML({ ...m, featured: false, wide: false })).join("")}</div>
     </section>
     <footer class="wrap site" style="padding-top:32px">
       <p class="open">Want work like this <em class="s">for your next campaign?</em></p>
