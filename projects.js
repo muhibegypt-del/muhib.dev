@@ -19,6 +19,33 @@ const GROUPS = [
 ];
 
 const PROJECTS = [
+/* ------------------------------------------------------------------ SARA */
+{
+  id: "sara-ai-programme", group: "ai", name: "AI programme at Sara International Travel",
+  status: "70%+ weekly AI use · 2 peak seasons",
+  line: "A two-year AI programme across sales, document checks and field operations for an international group travel operator.",
+  facts: [["Company", "Sara International Travel, 30,000+ travellers served"], ["My role", "AI Enablement Lead"], ["Length", "Nov 2024 to Nov 2026"], ["Adoption", "70%+ weekly active use, 8 champions"]],
+  keyHuman: "Person signs off",
+  flows: [{ steps: [
+    ["", "Pick high-volume work", "Inquiries, travel documents, field issues"],
+    ["ai", "Build the AI workflow", "Intake assistant, document checks, live dashboard"],
+    ["human", "Person signs off", "Every exception and every high-stakes reply"],
+    ["", "Champions keep it running", "8 champions and a written playbook"]
+  ]}],
+  tree: [
+    N("The company", "A US-based group travel operator with operations across North America, the Caribbean, South America and the UK, and more than 30,000 travellers served. The work had to hold up through two high-volume peak seasons."),
+    N("What I built", "",
+      N("An AI intake assistant", "First replies to inquiries went from about 24 hours to under 1 hour, and the share of inquiries that became bookings rose by about 12%."),
+      N("AI document checks", "Passports, visas and registrations are checked by an AI workflow first. Manual review time fell by about 35% and file errors by about 25%. A person signs off every exception."),
+      N("A live operations dashboard", "Field staff work around the clock. At peak, average issue-resolution time fell by about 30%.")),
+    N("How people adopted it", "",
+      N("Champions", "I trained 8 internal AI champions to support their own teams."),
+      N("Measured use", "Weekly active use reached more than 70% of staff."),
+      N("A playbook", "I documented the programme so it runs without me.")),
+    N("Governance", "I wrote the company's AI policy. It covers sensitive personal data and sets when high-stakes or specialist content must go to a person."),
+    N("Result", "A programme that lifted response times, conversion and accuracy, with most staff using AI every week and people still signing off where it matters.")
+  ]
+},
 /* ------------------------------------------------------------------ COMPANION */
 {
   id: "companion", group: "ai", name: "Companion",
@@ -201,7 +228,7 @@ const PROJECTS = [
 /* ------------------------------------------------------------------ LATIF */
 {
   repo: "muhibhome2-spec/ltfweb", id: "latif-foundation", group: "charity", name: "The Latif Foundation",
-  status: "Live · £50,000 raised",
+  status: "Live · memorial foundation",
   line: "A memorial foundation's website, rebuilt through several versions until it felt like a memorial, not a campaign.",
   url: "https://www.thelatiffoundation.org",
   facts: [["Stack", "React, Vite, TypeScript, Tailwind"], ["Versions", "6 iterations"], ["Built with", "Bolt, then Claude Code"], ["History", "Feb to May 2026"]],
@@ -235,7 +262,7 @@ const PROJECTS = [
       N("Pages 404'd on refresh", "Direct links to client-side routes failed on Vercel. A `vercel.json` rewrite fixed it.",
         E("ce538e4", "fix: add vercel.json SPA rewrite for client-side routing")),
       N("Small leaks", "An unused Inter font (about 20 KB per visitor) removed; an OG image still named `gemini_generated_…` renamed.")),
-    N("Result", "I wrote the whole website and all of its copy. The foundation's team raised £50,000."),
+    N("Result", "I wrote the whole website and all of its copy, and it is live at thelatiffoundation.org."),
     N("What I learned", "Restraint was the brief. Most of the improvement came from deleting things.")
   ]
 },
@@ -414,7 +441,7 @@ const PROJECTS = [
 },
 /* ------------------------------------------------------------------ THIS SITE */
 {
-  img: "img/this-site", repo: "muhibegypt-del/muhib.dev", claude: [17, 17], id: "this-site", group: "apps", name: "muhib.dev (this site)",
+  img: "img/this-site", repo: "muhibegypt-del/muhib.dev", claude: [18, 18], id: "this-site", group: "apps", name: "muhib.dev (this site)",
   status: "Live · every commit made with Claude Code",
   line: "This portfolio: researched from my own git history, written, built and deployed with Claude Code.",
   url: "https://muhib.dev",
